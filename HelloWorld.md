@@ -10,4 +10,4 @@
 
 This is a test Document!
 
-Well you are reading this so everything *must* be working!
+Well you are reading this so everything *must* be working! :P
