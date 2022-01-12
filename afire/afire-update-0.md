@@ -1,6 +1,8 @@
 @Title = afire Update
+@Author = Connor Slade
 @Date = 01-11-21
 @Description = Changes to afire in V0.3.0
+@Tags = afire, afire v0.3.0, afire update
 @Path = afire/update-0
 @Assets = .
 

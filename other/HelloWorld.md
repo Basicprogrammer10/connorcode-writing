@@ -1,6 +1,8 @@
 @Title = Hello, World
+@Author = Connor Slade
 @Date = 01-10-21
 @Description = Test Document
+@Tags = Hello World
 @Path = hello-world
 @Assets = .
 

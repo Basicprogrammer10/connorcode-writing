@@ -1,6 +1,8 @@
 @Title = afire Update
+@Author = Connor Slade
 @Date = 01-11-21
 @Description = Changes to afire in V0.3.0
+@Tags = afire, rust webserver framework, web server
 @Path = afire
 @Assets = .
 @Hidden = true

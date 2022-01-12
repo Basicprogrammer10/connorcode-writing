@@ -1,6 +1,8 @@
 @Title = Tutorial: Rust Crate
+@Author = Connor Slade
 @Date = 01-12-21
 @Description = Learn how to create a rust crate and publish it on crates.io
+@Tags = Rust, Rust Crate, Make a rust crate
 @Path = tutorial/rust-crate
 @Assets = .
 
