@@ -25,7 +25,7 @@ cargo new --lib <PROJECT_NAME>
 
 Now cd into the `<PROJECT_NAME>` directory and launch your favorite text editor :P
 
-### 🗳 The Package
+### 📦️ The Package
 
 Open the `Cargo.toml` file, here we will configure the values `description` and `license`.
 These values are needed to publish on crates.io.
@@ -118,7 +118,7 @@ pub fn greet(name: &str) -> String {
 
 ### 🦀 Lets try it!
 
-Now that we have our *amazeing* crate, we should try it out!
+Now that we have our _amazing_ crate, we should try it out!
 To do this I like to use examples.
 
 First make a new folder named `examples` in the crate root (Folder with `Cargo.toml`).
@@ -136,4 +136,8 @@ fn main() {
 
 To run this file use `cargo run --example test` and If everything is working we can move on to publishing the crate!
 
-### 📢 Publishing 
+### 📢 Publishing
+
+First go to [crates.io](https://crates.io) and login with GitHub. Then go to [https://crates.io/settings/tokens](https://crates.io/settings/tokens) and create a new token. Now run this command to save the token `cargo login <TOKEN>`.
+
+To publish the package just use `cargo publish`. Yay, you now have made a rust crate, tested it, added documentation and published it on crates.io.
