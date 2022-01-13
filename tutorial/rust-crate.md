@@ -1,7 +1,7 @@
 @Title = Tutorial: Rust Crate
 @Author = Connor Slade
 @Date = 01-12-21
-@Description = Learn how to create a rust crate and publish it on crates.io
+@Description = Learn how to create, test, package, document and publish a rust crate
 @Tags = Rust, Rust Crate, Make a rust crate
 @Path = tutorial/rust-crate
 @Assets = .
@@ -75,7 +75,7 @@ Here is the unit test I will use. It has two test cases for `"Darren"` and `"Bre
 #[cfg(test)]
 mod tests {
   // Include the functions in the module tests is defined in
-  // This will give the tests access to all of the public functions in out example
+  // This gives the tests access to all public functions in our example
   use super::*;
 
   // Define the tests
