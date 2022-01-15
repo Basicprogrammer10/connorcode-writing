@@ -5,6 +5,7 @@
 @Tags = Tutorials, Learn
 @Path = tutorial
 @Assets = .
+@Hidden = true
 
 ---
 
