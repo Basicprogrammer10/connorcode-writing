@@ -81,13 +81,14 @@ Here are the main extensions I use:
 <img src="../assets/other/my-stack/rust.svg" width="150" alt="Rust-Lang Logo"></img>
 
 [Rust](https://www.rust-lang.org/) is a performant, reliable and safe modern programming language.
-I have used it in all of my recent projects, including this website! The spectacular tooling, comprehensive standard library, and open package ecosystem gives rust a really great developer experience.
+I have used it in all of my recent projects, including this website!
+The spectacular tooling, comprehensive standard library, elegant error handling philosophy, and open package ecosystem gives rust a really great developer experience.
 The rust libraries do still need time to mature for it to become more prevalent in [Game Development](https://arewegameyet.rs), [Machine Learning](https://www.arewelearningyet.com/) and other fields.
 If you want to get started with rust I would recommend reading [The Rust Book](https://doc.rust-lang.org/stable/book/), which is a free online book outlining everything from setting up your environment to building your own simple web server!
 
 #### afire [<sup><i class="fa fa-code"></i></sup>](github.com/basicprogrammer10/afire)
 
-<img src="../assets/other/my-stack/afire.png" width="150" alt="afire Logo"></img>
+<p style="font-size: 125px;margin: 0;" alt="afire Logo">🔥</p>
 
 [afire](https://crates.io/crates/afire) is my dependency free web server framework.
 I made it with rust over the course of a month and have been adding to it since then!
@@ -122,3 +123,14 @@ server.start().unwrap();
 [Sass](https://sass-lang.com/) or Syntactically Awesome Style Sheets is a CSS preprocessor with an extended syntax. It compiles from .scss and .sass files to standard CSS.
 With sass, you can use selector nesting, complied variables, loops, inheritance, mixins and import code from other files.
 It is actively used by a very large community of people. Get started with sass by reading the official [guide](https://sass-lang.com/guide).
+
+---
+
+## Services
+
+#### Vultr
+
+<img src="../assets/other/my-stack/vultr.png" width="150" alt="Vultr Logo"></img>
+
+[Vultr](https://www.vultr.com/?ref=8859764) is an easy way to deploy a VPS or Virtual Private Server.
+The price per VPS goes as low as `$3.50` per month _(this is a fantastic price)_, there are currently 21 location you can pick from and over 25M instances have been deployed.
