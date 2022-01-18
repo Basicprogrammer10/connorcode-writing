@@ -11,5 +11,6 @@
 
 # 🎲 Other Things
 
+- [My Analytics](/writing/other/my-analytics)
 - [My Stack](/writing/other/my-stack)
 - [Hello World](/writing/hello-world)
