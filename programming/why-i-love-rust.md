@@ -36,7 +36,7 @@ Rust has great Documentation in two ways.
 
 The **first way** is Actual Documentation, when you are getting started with rust there is [The Rust Book](https://doc.rust-lang.org/stable/book/).
 It teaches the important concepts of rust, going from printing `"Hello World"` to making a webserver.
-The [Standard Library](https://doc.rust-lang.org/std/) is very well documented with clear information and lots of examples.
+The [Standard Library](https://doc.rust-lang.org/std/) is also very well documented with clear information and lots of examples.
 
 The **second way** is with [Rust Doc](https://doc.rust-lang.org/rustdoc/index.html), which is a program to generate Documentation pages from Doc comments on Functions, Structs, Enums, etc.
 These doc comments support Markdown, including Code Blocks that are actually tested like unit tests.
@@ -70,6 +70,40 @@ Here we can see the final output of the documentation
 
 ![Cargo Doc Example](../assets/programming/why-i-love-rust/CargoDoc.png)
 
+## 🐡 TurboFish
+
+This is a smaller feature bit ofen comes in handy.
+TurboFish as it is often called is a way of passing a type to a function that returns a Gerneric.
+It is needed when the compiler cant infer the type.
+It is much cleaner than haveing to to assign the value to a varable with an explicit type if you are going to use it again after.
+
+Here is an example
+
+```rust
+let x = vec![2, 4, 6, 8];
+let y = x.iter().map(|x| x * 2).collect().len();
+
+assert_eq!(y, 4);
+```
+
+When trying to compile this we get this error
+
+```
+error[E0282]: type annotations needed
+ --> src/main.rs:4:37
+  |
+  |     let y = x.iter().map(|x| x * 2).collect().len();
+  |                                     ^^^^^^^ cannot infer type for type parameter `B` declared on the associated function `collect`
+  |
+  = note: type must be known at this point
+```
+
+This can be fixed by changeing line `2` to the following
+
+```rust
+let y = x.iter().map(|x| x * 2).collect::<Vec<_>>().len();
+```
+
 ## 🧊 Ways to Improve
 
 ## 🚧 Conclusion
@@ -78,14 +112,14 @@ Here we can see the final output of the documentation
 
 Positives
 
-- Fish Generics
+- TurboFish
 - Cargo Tools
   - Cargo Doc
   - Cargo FMT
   - Cargo Clippy
   - Cargo Test
 - Error Messages
-- *✨ Error Handling ✨*
+- _✨ Error Handling ✨_
 - Comprehensive STD
 - Ownership
 - Cute Mascot
@@ -97,4 +131,3 @@ Negatives
 - Annoying Safe Multithreading
 - Young Library Ecosystem
 - Learning Curve?
--
