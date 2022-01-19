@@ -3,7 +3,7 @@
 @Date = 01-17-21
 @Description = How my custom analytics system for connorcode.com works
 @Tags = Analytics, Web Dev, Server, afire, ApexCharts, Log4Shell
-@Path = other/my-analytics
+@Path = programming/my-analytics
 @Assets = .
 
 ---
@@ -28,7 +28,7 @@ An API route will also be made to remotely retrieve the data (with authenticatio
 > [here](https://github.com/Basicprogrammer10/connorcode/blob/master/src/analytics.rs)
 
 This whole system runs as _pre_ Middleware for [afire](https://crates.io/crates/afire),
-So every request it will add the request starts to an internal buffer.
+So every request it will add the request stats to an internal buffer.
 About every hour it will load the analytics file for that day, deserialize
 it, merge in the data from the buffer, clear the buffer, re serialize it and save it.
 
@@ -41,7 +41,7 @@ At the top it shows total requests per day, under it shows the 5 most common HTT
 It is a bit redundant on the paths, but again It's still _experimental_.
 The very bottom has some simple global stats.
 
-![Analytics Viewer Screenshot](../assets/other/my-analytics/viewer.png)
+![Analytics Viewer Screenshot](../assets/programming/my-analytics/viewer.png)
 
 ## 🚧 Conclusion
 
