@@ -18,6 +18,7 @@ In this article I will explain why **I** like rust, and at the end I will touch 
 
 ## ✨ Why It's Great
 
+To me rust feels like a mix of the best parts from `C++`, `JavaScript` and `Python`.
 Here I will show some amazing parts of rust!
 
 ### 🚄 Speed
@@ -155,7 +156,7 @@ assert!(true)
 
 Let's now run Rust Clippy (`cargo clippy`).
 
-```
+```text
 warning: value assigned to `pi` is never read
  --> src/main.rs:3:13
   |
@@ -217,6 +218,30 @@ println!("E: {e}");
 println!("Circumference: {circumference}");
 ```
 
+This is a rather extreme example, but especially when starting in rust this tool is incredibly useful.
+Even now I will occasionally make one of these mistakes that I wouldn't have even noticed without Clippy.
+
+## 📜 Rust Analyzer
+
+[rust-analyzer](https://rust-analyzer.github.io/) is a library for semantic analysis of Rust code.
+It can be used to let IDEs and Text Editors get information on rust projects, it can being the following features to your editor
+
+- Syntax Highlighting
+- Code Completion
+- Annotations
+- Macro Expantion
+- Find All References
+- Go to Definition
+- Inlay Type Hints
+- Error _Squiggles_
+- _More_
+
+In this screenshot you can see how my text Editor [atom](https://atom.io/) is showing autocomplete options.
+This is made possible with rust-analyzer.
+![Rust Language Server In Atom](../assets/programming/why-i-love-rust/rls.png)
+
+This is less of a language feature but it makes the process much easyer because of the features mentions above and the ability for it to hilight errors right in your code.
+
 ## 🐡 TurboFish
 
 This is a smaller feature bit frequently comes in handy.
@@ -224,23 +249,23 @@ TurboFish as it is typically called is a way of passing a type to a function tha
 It is needed when the compiler cant infer the type.
 It is much cleaner than having to assign the value to a variable with an explicit type if you are going to use it again after.
 
-Here is an example
+Here is an example that gets the amount of even numbers in a Vector
 
 ```rust
-let x = vec![2, 4, 6, 8];
-let y = x.iter().map(|x| x * 2).collect().len();
+let x = vec![1, 2, 3, 4, 5, 6, 7, 8];
+let y = x.iter().filter(|x| *x % 2 == 0).collect().len();
 
 assert_eq!(y, 4);
 ```
 
 When trying to compile this we get this error
 
-```
+```text
 error[E0282]: type annotations needed
- --> src/main.rs:4:37
+ --> src/main.rs:3:46
   |
-  |     let y = x.iter().map(|x| x * 2).collect().len();
-  |                                     ^^^^^^^ cannot infer type for type parameter `B` declared on the associated function `collect`
+  |     let y = x.iter().filter(|x| *x % 2 == 0).collect().len();
+  |                                              ^^^^^^^ cannot infer type for type parameter `B` declared on the associated function `collect`
   |
   = note: type must be known at this point
 ```
@@ -250,12 +275,21 @@ To fix this we could remove the `.len()` and add the type `Vec<_>` to the variab
 With turbo fish this can be fixed by changing line `2` to the following
 
 ```rust
-let y = x.iter().map(|x| x * 2).collect::<Vec<_>>().len();
+let y = x.iter().filter(|x| *x % 2 == 0).collect::<Vec<_>>().len();
 ```
 
 The underscore tells the compiler to infer the type. In this case it just needed to know that we were collecting into a Vector.
 Now it compiles and runs perfectly. _Cool Beans_!
-Check it out on the playground [here](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=bbbc56b6e772f987c51433fb73a7d256).
+Check it out on the playground [here](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=c2a1c22ebfb8287e251312760decdf01).
+
+## <img src="../assets/programming/why-i-love-rust/ferris-party.svg" alt="Party Ferris" width="30px"></img> Ferris
+
+As this is the final positive point in this article it's the **most importent**.
+
+Rust has one of the _Cutest_ mascots of any programming language.
+![Ferris the Crab](../assets/programming/why-i-love-rust/ferris.svg)
+
+Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 
 ## 🧊 Ways to Improve
 
@@ -270,14 +304,15 @@ Positives
   - 🟢 Cargo Doc
   - 🟢 Cargo FMT
   - 🟢 Cargo Clippy
-  - 🟡 Cargo Test
+  - 🔴 Cargo Test
 - 🔴 Error Messages
 - 🔴 _✨ Error Handling ✨_
 - 🔴 Comprehensive STD
 - 🔴 Ownership
 - 🔴 Cute Mascot
 - 🔴 Crates.io
-- 🔴 Rust Language Server
+- 🟢 rust-analyzer
+- 🟢 Ferris
 
 Negatives
 
