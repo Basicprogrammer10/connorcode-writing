@@ -116,12 +116,66 @@ fn parse_key_value(inp: &str) -> Result<[&str; 2], KeyValueError> {
 }
 ```
 
+### ⛔️ Error Messages
+
+One thing rust is often praised for is its error messages.
+They not only tell you what the problem is but will typically tell how to fix it.
+
+Starting off with a rather simple Example.
+
+```rust
+let nums = vec![1, 2, 3, 4];
+println!("Thare are {} Numbers!", nums.len);
+```
+
+Trying to build this code will produce the following error message.
+
+```text
+error[E0616]: field `len` of struct `Vec` is private
+ --> src/main.rs:2:44
+  |
+2 |     println!("Thare are {} Numbers!", nums.len);
+  |                                            ^^^ private field
+  |
+help: a method `len` also exists, call it with parentheses
+  |
+2 |     println!("Thare are {} Numbers!", nums.len());
+  |                                               ++
+
+For more information about this error, try `rustc --explain E0616`.
+```
+
+It not only tells you the issue, in this case that the length field is private.
+But it gives a possible solution of using the `.len()` method.
+
+This next example is much ore sneaky. Even if you know rust you may not be able to see the issue.
+
+```rust
+println!("Hello, World!");
+```
+
+Yep, that's all. See if you can find the issue.
+Trying to build this will yield the following message:
+
+```text
+error: unknown start of token: \u{37e}
+ --> src/main.rs:1:26
+  |
+1 | println!("Hello, World!");
+  |                          ^
+  |
+help: Unicode character ';' (Greek Question Mark) looks like ';' (Semicolon), but it is not
+  |
+1 | println!("Hello, World!");
+  |                          ~
+```
+
 ### 📖 Documentation
 
 Rust has great Documentation in two ways.
 
 The **first way** is Actual Documentation, when you are getting started with rust there is [The Rust Book](https://doc.rust-lang.org/stable/book/).
-It teaches the important concepts of rust, going from printing `"Hello World"` to making a webserver.
+It teaches the important concepts offo rust, going from printing `"Hello World"` to making a webserver.
 The [Standard Library](https://doc.rust-lang.org/std/) is also very well documented with clear information and lots of examples.
 
 The **second way** is with [Rust Doc](https://doc.rust-lang.org/rustdoc/index.html), which is a program to generate Documentation pages from Doc comments on Functions, Structs, Enums, etc.
@@ -408,7 +462,7 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 
 ## 🟠 To-do
 
-Positives
+### Positivess
 
 - 🟢 Speed
 - 🟢 _✨ Error Handling ✨_
@@ -426,7 +480,7 @@ Positives
 - 🟢 TurboFish
 - 🟢 Cute Mascot
 
-Negatives
+### Negatives
 
 - 🔴 Slower Compile Times
 - 🔴 Annoying Safe Multithreading
