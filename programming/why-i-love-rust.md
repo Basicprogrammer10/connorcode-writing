@@ -306,6 +306,31 @@ println!("Circumference: {circumference}");
 This is a rather extreme example, but especially when starting in rust this tool is incredibly useful.
 Even now I will occasionally make a mistake that I wouldn't have even noticed without Clippy.
 
+### 🎈 Crates.io
+
+[Crates.io](htpps://crates.io) is the official rust package repository. It's similar to [NPM](https://npmjs.com) for JavaScript.
+At the time of writing Crates.io has `74,962` Crates, anybody can use or add crates.
+
+There are crates for everything from Loggers to Machine Learning.
+This website uses `151` different crates (`13` directly).
+
+This is interesting because not many Lower Level languages like Rust, C, C++, etc. have an official Package repository and manager.
+On C++ for example installing a dependency consists of downloading the library and putting the source code in your project directory.
+In Rust installing a package is as easy as adding one line to the project's Cargo.toml.
+
+This section is a bit short so, How about an Example?
+Here is an example `Cargo.toml` that's adds afire (my webserver framework) into your project.
+
+```toml
+[package]
+name = "<PROJECT_NAME>"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+afire = "0.2.3" # Note at this point this may be an old version
+```
+
 ### 📜 Rust Analyzer
 
 [rust-analyzer](https://rust-analyzer.github.io/) is a library for semantic analysis of Rust code.
@@ -396,7 +421,7 @@ Positives
   - 🟢 Cargo FMT
   - 🟢 Cargo Clippy
   - 🔴 Cargo Test
-- 🔴 Crates.io
+- 🟢 Crates.io
 - 🟢 rust-analyzer
 - 🟢 TurboFish
 - 🟢 Cute Mascot
