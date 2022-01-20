@@ -37,7 +37,7 @@ This may be my favorite part of rust! Rust has a very different and elegant erro
 
 In most languages errors must be caught in ugly try/catch blocks. In rust there is no trying!
 Instead of crashing rust panics, panicking terminates the program immediately providing a message to the caller.
-But panic should be used when a program reaches an unrecoverable state. The rest of the time you should use `Options` and `Results`.
+But panic should be used when a program reaches an unrecoverable state. The rest of the time you should use `Option`s and `Result`s.
 
 You can use `Result<Sucess, Failure>` as a return type from a function.
 Within the function you will either return `OK(Sucess)` or `Err(Failure)`.
@@ -116,12 +116,66 @@ fn parse_key_value(inp: &str) -> Result<[&str; 2], KeyValueError> {
 }
 ```
 
+### ⛔️ Error Messages
+
+One thing rust is often praised for is its error messages.
+They not only tell you what the problem is but will typically tell how to fix it.
+
+Starting off with a rather simple Example.
+
+```rust
+let nums = vec![1, 2, 3, 4];
+println!("Thare are {} Numbers!", nums.len);
+```
+
+Trying to build this code will produce the following error message.
+
+```text
+error[E0616]: field `len` of struct `Vec` is private
+ --> src/main.rs:2:44
+  |
+2 |     println!("Thare are {} Numbers!", nums.len);
+  |                                            ^^^ private field
+  |
+help: a method `len` also exists, call it with parentheses
+  |
+2 |     println!("Thare are {} Numbers!", nums.len());
+  |                                               ++
+
+For more information about this error, try `rustc --explain E0616`.
+```
+
+It not only tells you the issue, in this case that the length field is private.
+But it gives a possible solution of using the `.len()` method.
+
+This next example is much ore sneaky. Even if you know rust you may not be able to see the issue.
+
+```rust
+println!("Hello, World!");
+```
+
+Yep, that's all. See if you can find the issue.
+Trying to build this will yield the following message:
+
+```text
+error: unknown start of token: \u{37e}
+ --> src/main.rs:1:26
+  |
+1 | println!("Hello, World!");
+  |                          ^
+  |
+help: Unicode character ';' (Greek Question Mark) looks like ';' (Semicolon), but it is not
+  |
+1 | println!("Hello, World!");
+  |                          ~
+```
+
 ### 📖 Documentation
 
 Rust has great Documentation in two ways.
 
 The **first way** is Actual Documentation, when you are getting started with rust there is [The Rust Book](https://doc.rust-lang.org/stable/book/).
-It teaches the important concepts of rust, going from printing `"Hello World"` to making a webserver.
+It teaches the important concepts offo rust, going from printing `"Hello World"` to making a webserver.
 The [Standard Library](https://doc.rust-lang.org/std/) is also very well documented with clear information and lots of examples.
 
 The **second way** is with [Rust Doc](https://doc.rust-lang.org/rustdoc/index.html), which is a program to generate Documentation pages from Doc comments on Functions, Structs, Enums, etc.
@@ -354,7 +408,7 @@ This is less of a language feature, but it makes the development process much ea
 
 ### 🐡 TurboFish
 
-This is a smaller feature bit frequently comes in handy.
+This is a smaller feature but it frequently comes in handy.
 TurboFish as it is typically called is a way of passing a type to a function that returns a Generic.
 It is needed when the compiler cant infer the type.
 It is much cleaner than having to assign the value to a variable with an explicit type if you are going to use it again after.
@@ -408,7 +462,7 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 
 ## 🟠 To-do
 
-Positives
+### Positivess
 
 - 🟢 Speed
 - 🟢 _✨ Error Handling ✨_
@@ -426,7 +480,7 @@ Positives
 - 🟢 TurboFish
 - 🟢 Cute Mascot
 
-Negatives
+### Negatives
 
 - 🔴 Slower Compile Times
 - 🔴 Annoying Safe Multithreading
