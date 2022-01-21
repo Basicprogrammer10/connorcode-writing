@@ -121,7 +121,7 @@ fn parse_key_value(inp: &str) -> Result<[&str; 2], KeyValueError> {
 One thing rust is often praised for is its error messages.
 They not only tell you what the problem is but will typically tell how to fix it.
 
-Starting off with a rather simple Example.
+Starting off with a rather simple example:
 
 ```rust
 let nums = vec![1, 2, 3, 4];
@@ -148,13 +148,14 @@ For more information about this error, try `rustc --explain E0616`.
 It not only tells you the issue, in this case that the length field is private.
 But it gives a possible solution of using the `.len()` method.
 
-This next example is much ore sneaky. Even if you know rust you may not be able to see the issue.
+This next example is much more sneaky. Even if you know rust you may not be able to see the issue.
 
 ```rust
 println!("Hello, World!");
 ```
 
-Yep, that's all. See if you can find the issue.
+Yep, that's all. See if you can find the issue. I'll wait.
+
 Trying to build this will yield the following message:
 
 ```text
@@ -169,6 +170,8 @@ help: Unicode character ';' (Greek Question Mark) looks like ';' (Semicolon), b
 1 | println!("Hello, World!");
   |                          ~
 ```
+
+Yes the `;` is actually not a semicolon, but the rust compiler shows the issue and again shows how to fix it.
 
 ### 📖 Documentation
 
@@ -209,6 +212,137 @@ cargo doc --open
 Here we can see the final output of the documentation
 
 ![Cargo Doc Example](../assets/programming/why-i-love-rust/CargoDoc.png)
+
+### 🧰 Comprehensive Standard Library
+
+The rust environment is more than just the language itself. It is made up of different libraries and tools.
+The most extensive library is the [Rust Standard Library](https://doc.rust-lang.org/std/) or `STD`.
+
+> The Rust Standard Library is the foundation of portable Rust software, a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
+>
+> — [STD Docs](https://doc.rust-lang.org/std/)
+
+Instead of needing to write different code for different platforms like in C++ that is all handled in the Standard Library.
+So we can rust call a standard function on any platform and get the same expected result.
+
+For an example lets check if a file exists.
+
+#### C++
+
+```cpp
+bool exists(const std::string &name) {
+    if (name.empty()) return false;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+    struct stat buffer{};
+    return (stat(name.c_str(), &buffer) == 0);
+#else
+    std::ifstream file(name);
+    return file.is_open();
+#endif
+}
+```
+
+As you can see you need to check if the code is being compiled for windows or not and change that code is used.
+
+#### Rust
+
+```rust
+fn exists(file: &str) -> bool {
+  std::path::Path::new(file).exists()
+}
+```
+
+The Rust version does not directly use any operating system specific code, making it much cleaner and easier to work with / test.
+
+Now for an even more complex example let's make a simple Web Server in both languages.
+
+#### C++
+
+This code if modified from Adrian Novelo at [ncona.com](https://ncona.com/2019/04/building-a-simple-server-with-cpp/).
+
+```cpp
+#include <sys/socket.h> // For socket functions
+#include <netinet/in.h> // For sockaddr_in
+#include <cstdlib> // For exit() and EXIT_FAILURE
+#include <iostream> // For cout
+#include <unistd.h> // For read
+
+int main() {
+  // Create a socket (IPv4, TCP)
+  int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+  if (sockfd == -1) {
+    std::cout << "Failed to create socket. errno: " << errno << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // Listen to port 9999 on any address
+  sockaddr_in sockaddr;
+  sockaddr.sin_family = AF_INET;
+  sockaddr.sin_addr.s_addr = INADDR_ANY;
+  sockaddr.sin_port = htons(9999); // htons is necessary to convert a number to
+                                   // network byte order
+  if (bind(sockfd, (struct sockaddr*)&sockaddr, sizeof(sockaddr)) < 0) {
+    std::cout << "Failed to bind to port 9999. errno: " << errno << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // Start listening. Hold at most 10 connections in the queue
+  if (listen(sockfd, 10) < 0) {
+    std::cout << "Failed to listen on socket. errno: " << errno << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // Grab a connection from the queue
+  auto addrlen = sizeof(sockaddr);
+  int connection = accept(sockfd, (struct sockaddr*)&sockaddr, (socklen_t*)&addrlen);
+  if (connection < 0) {
+    std::cout << "Failed to grab connection. errno: " << errno << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // Read from the connection
+  char buffer[100];
+  auto bytesRead = read(connection, buffer, 100);
+  std::cout << "Client > " << buffer;
+
+  // Send a message to the connection
+  std::string response = "Hello, World\n";
+  send(connection, response.c_str(), response.size(), 0);
+
+  // Close the connections
+  close(connection);
+  close(sockfd);
+}
+```
+
+As you can see this is fairly complicated, but it also only works for Linux systems.
+
+#### Rust
+
+```rust
+use std::io::prelude::*;
+use std::net::TcpListener;
+
+fn main() {
+    // Init TCP Listener
+    let listener = TcpListener::bind("127.0.0.1:9999").unwrap();
+
+    for stream in listener.incoming() {
+        let mut stream = stream.unwrap();
+        let mut buffer = [0; 100];
+
+        // Read Client Data
+        stream.read(&mut buffer).unwrap();
+        println!("Client > {}", String::from_utf8_lossy(&buffer[..]));
+
+        // Send Data
+        stream.write("Hello, World".as_bytes()).unwrap();
+        stream.flush().unwrap();
+    }
+}
+```
+
+The rust version of this program is a lot shorter and easier to understand, and is also cross-platform giving it a huge advantage over C++.
 
 ### 📦 Cargo
 
@@ -466,9 +600,9 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 
 - 🟢 Speed
 - 🟢 _✨ Error Handling ✨_
-- 🔴 Error Messages
+- 🟢 Error Messages
 - 🟢 Documentation
-- 🔴 Comprehensive STD
+- 🟢 Comprehensive STD
 - 🔴 Ownership
 - 🟡 Cargo Tools
   - 🟢 Cargo Doc
