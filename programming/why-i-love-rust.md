@@ -375,7 +375,7 @@ This is a big one!
 > — [Cargo Documentation](https://doc.rust-lang.org/cargo/)
 
 Basically it makes creating, building, running, testing, documenting and benchmarking easier.
-So you can use Cargo to easily use other libraries with your programs.
+You can use Cargo to easily use other libraries with your programs.
 But Cargo is much more…
 
 Cargo can make use of other programs like [Rust FMT](https://github.com/rust-lang/rustfmt) for code formatting and
@@ -515,6 +515,42 @@ println!("Circumference: {circumference}");
 This is a rather extreme example, but especially when starting in rust this tool is incredibly useful.
 Even now I will occasionally make a mistake that I wouldn't have even noticed without Clippy.
 
+#### 🕯 Cargo Test
+
+Unit testing can be very importent for writing great, bug free software.
+Most languages don't have a built-in system for unit testing and rely on of other frameworks.
+Rust's built-in unit testing makes unit testing even easier to get into.
+
+_Example Time!_ As always this is on the playground [here](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=de8db9637d77e3e4059d223864bdf4af).
+
+```rust
+// Define a function to test
+fn greet(name: &str) -> String {
+    format!("Hello, {name}!")
+}
+
+// Make a testing function
+// Use the `test` attribute to define it as a test
+#[test]
+fn test_greet() {
+    // Assert some things
+    assert_eq!(greet("Darren"), "Hello, Darren!");
+}
+```
+
+We can run out unit test with `cargo test`.
+
+```text
+running 1 test
+test test_greet ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+```
+
+As you can see it reports that all tests have passed.
+With this you can set up a continuous integration system to test your code on every git push / pr.
+This is what I have set up for my website and most of my other projects too.
+
 ### 🎈 Crates.io
 
 [Crates.io](htpps://crates.io) is the official rust package repository. It's similar to [NPM](https://npmjs.com) for JavaScript.
@@ -625,11 +661,11 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 - 🟢 Documentation
 - 🟢 Comprehensive STD
 - 🟢 Ownership
-- 🟡 Cargo Tools
+- 🟢 Cargo Tools
   - 🟢 Cargo Doc
   - 🟢 Cargo FMT
   - 🟢 Cargo Clippy
-  - 🔴 Cargo Test
+  - 🟢 Cargo Test
 - 🟢 Crates.io
 - 🟢 rust-analyzer
 - 🟢 TurboFish
