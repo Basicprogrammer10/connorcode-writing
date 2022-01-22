@@ -344,6 +344,27 @@ fn main() {
 
 The rust version of this program is a lot shorter and easier to understand, and is also cross-platform giving it a huge advantage over C++.
 
+### 🗻 Ownership
+
+> Ownership is a set of rules that governs how a Rust program manages memory.
+> Some languages have garbage collection that constantly looks for no-longer used memory as the program runs; in other languages, the programmer must explicitly allocate and free the memory.
+> Rust uses a third approach: memory is managed through a system of ownership with a set of rules that the compiler checks.
+>
+> — [The Rust Book](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
+
+Languages such as Java, Go, JavaScript, Python and Haskell use garbage collection to manage memory.
+One problem with garbage collection is that it uses system resources when deciding what to free.
+A [paper](https://people.cs.umass.edu/~emery/pubs/gcvsmalloc.pdf) found that garbage collection needs five times the memory to perform as fast as the same program using explicit memory management.
+
+Manually handling memory like in C _can_ be the most efferent way but it also much more difficult and error-prone.
+
+Rusts ownership system is like a middle ground. There is no garbage collection, but you don't need to manage memory yourself.
+Let's see the rules for rust's ownership:
+
+- Each value has an owner variable
+- There can only be one owner at a time
+- When the owner goes out of scope, the value will be dropped
+
 ### 📦 Cargo
 
 This is a big one!
@@ -603,7 +624,7 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 - 🟢 Error Messages
 - 🟢 Documentation
 - 🟢 Comprehensive STD
-- 🔴 Ownership
+- 🟢 Ownership
 - 🟡 Cargo Tools
   - 🟢 Cargo Doc
   - 🟢 Cargo FMT
