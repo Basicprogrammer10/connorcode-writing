@@ -10,6 +10,8 @@
 
 # 🦀 Why I Love Rust
 
+The Rust programming language is a relatively new programming language that was designed to be fast, safe, and concurrent.
+It is a systems programming language that has been gaining traction over the past few years.
 On the [2021 Stack Overflow Survey](https://insights.stackoverflow.com/survey/2021) Rust is the **most loved** language.
 This is the 6th year rust had been voted most loved. People definitely love Rust, but why?
 In this article I will explain why **I** like rust, and at the end I will touch on some improvements it needs.
@@ -553,7 +555,8 @@ This is what I have set up for my website and most of my other projects too.
 
 ### 🎈 Crates.io
 
-[Crates.io](htpps://crates.io) is the official rust package repository. It's similar to [NPM](https://npmjs.com) for JavaScript.
+[Crates.io](htpps://crates.io) is the official rust package repository.
+It's similar to [NPM](https://npmjs.com) for JavaScript.
 At the time of writing Crates.io has `74,962` Crates, anybody can use or add crates.
 
 There are crates for everything from Loggers to Machine Learning.
@@ -633,7 +636,8 @@ With turbo fish this can be fixed by changing line `2` to the following
 let y = x.iter().filter(|x| *x % 2 == 0).collect::<Vec<_>>().len();
 ```
 
-The underscore tells the compiler to infer the type. In this case it just needed to know that we were collecting into a Vector.
+The underscore tells the compiler to infer the type.
+In this case it just needed to know that we were collecting into a Vector.
 Now it compiles and runs perfectly. _Cool Beans_!
 Check it out on the playground [here](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=c2a1c22ebfb8287e251312760decdf01).
 
@@ -649,31 +653,37 @@ Head to [rustacean.net](https://www.rustacean.net/) for more Ferris!
 
 ## 🧊 Ways to Improve
 
+Now as much as I love rust there are some things that still need improvement, as there are with anything.
+
+### 🎀 Young Library Ecosystem
+
+In languages like python there are packages for everything, the Python Package Index (PyPI) has over `352k` packages.
+In rust there are lots of packages but not nearly as many as thare are in more mature ecosystems.
+For things like [Web Frameworks](https://www.arewewebyet.org/) and [Asynchronous](https://areweasyncyet.rs/) rust has great libraries.
+However, when it comes to [Machine Learning](https://www.arewelearningyet.com/), [GUI](https://areweguiyet.com/) and lots of other stuff we have a way to go.
+
+This is something that will improve with time as projects develop and more people help.
+
+### 📈 Learning Curve
+
+I first started with rust `11 months` ago, so I don't really remember how long it took for me to really understand everything.
+From looking at old project commits it looks like it took a few months.
+
+Learning rust is more than just learning its syntax, rust requires knowing more about low level computing principles.
+So coming from high level languages rust may take longer to learn.
+
 ## 🚧 Conclusion
 
-## 🟠 To-do
+This is my longest article to date :P.
+I spent about a week on it and its ~3000 words.
+I hope you enjoyed this and learned something new.
 
-### Positivess
+All in all, Rust is an amazing language.
+It may be a bit difficult to learn but doing so unlocks a new world of programming.
+Coming from C, C++ or any low level language rust is a nice upgrade in safety and consistency and from high level languages rust is a huge boost in terms of speed and reliability.
+It's a good fit for backend web development and a Great fit for Driver and embedded system programming.
 
-- 🟢 Speed
-- 🟢 _✨ Error Handling ✨_
-- 🟢 Error Messages
-- 🟢 Documentation
-- 🟢 Comprehensive STD
-- 🟢 Ownership
-- 🟢 Cargo Tools
-  - 🟢 Cargo Doc
-  - 🟢 Cargo FMT
-  - 🟢 Cargo Clippy
-  - 🟢 Cargo Test
-- 🟢 Crates.io
-- 🟢 rust-analyzer
-- 🟢 TurboFish
-- 🟢 Cute Mascot
+This article has a lot of content and as such it also has lots of possible errors.
+If you find anything inaccurate you can file an [Issue](https://github.com/Basicprogrammer10/connorcode-writing/issues) or submit a [PR](https://github.com/Basicprogrammer10/connorcode-writing/pulls)
 
-### Negatives
-
-- 🔴 Slower Compile Times
-- 🔴 Annoying Safe Multithreading
-- 🔴 Young Library Ecosystem
-- 🔴 Learning Curve?
+- Connor Slade
