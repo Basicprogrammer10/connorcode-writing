@@ -1,6 +1,6 @@
 @Title = Why I Love Rust
 @Author = Connor Slade
-@Date = 01-18-21
+@Date = 01-22-21
 @Description = Why I Love the Rust Programming Language and where it needs Improvement
 @Tags = Programming, Software Development, Rust, Rust Lang, Ferris
 @Path = programming/why-i-love-rust
@@ -20,7 +20,7 @@ In this article I will explain why **I** like rust, and at the end I will touch 
 
 ## ✨ Why It's Great
 
-To me rust feels like a mix of the best parts from `C++`, `JavaScript` and `Python`.
+To me rust feels like a mix of the best parts from `C++`, `JavaScript`, `Python` as well as some new ideas.
 Here I will show some amazing parts of rust!
 
 ### 🚄 Speed
@@ -39,7 +39,8 @@ This may be my favorite part of rust! Rust has a very different and elegant erro
 
 In most languages errors must be caught in ugly try/catch blocks. In rust there is no trying!
 Instead of crashing rust panics, panicking terminates the program immediately providing a message to the caller.
-But panic should be used when a program reaches an unrecoverable state. The rest of the time you should use `Option`s and `Result`s.
+But panic should be used when a program reaches an unrecoverable state.
+The rest of the time you should use `Option`s and `Result`s.
 
 You can use `Result<Sucess, Failure>` as a return type from a function.
 Within the function you will either return `OK(Sucess)` or `Err(Failure)`.
@@ -47,7 +48,7 @@ Within the function you will either return `OK(Sucess)` or `Err(Failure)`.
 When you don't want an error type you can use a `Option`.
 With options, you will either return `None` or `Some(Sucess)`.
 
-Example Time! If you want to play with the example check it out on the [Plaground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3d92bd4da853496ff2ac32a16c335325).
+Example Time! If you want to play with the example check it out on the [Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3d92bd4da853496ff2ac32a16c335325).
 
 ```rust
 // Parse the Key Value data and make make sure it returned a sucessfull
@@ -121,7 +122,7 @@ fn parse_key_value(inp: &str) -> Result<[&str; 2], KeyValueError> {
 ### ⛔️ Error Messages
 
 One thing rust is often praised for is its error messages.
-They not only tell you what the problem is but will typically tell how to fix it.
+They not only tell you what the problem is but can even tell you how to fix it.
 
 Starting off with a rather simple example:
 
@@ -180,7 +181,7 @@ Yes the `;` is actually not a semicolon, but the rust compiler shows the issue 
 Rust has great Documentation in two ways.
 
 The **first way** is Actual Documentation, when you are getting started with rust there is [The Rust Book](https://doc.rust-lang.org/stable/book/).
-It teaches the important concepts offo rust, going from printing `"Hello World"` to making a webserver.
+It teaches the important concepts of rust, going from printing `"Hello World"` to making a webserver.
 The [Standard Library](https://doc.rust-lang.org/std/) is also very well documented with clear information and lots of examples.
 
 The **second way** is with [Rust Doc](https://doc.rust-lang.org/rustdoc/index.html), which is a program to generate Documentation pages from Doc comments on Functions, Structs, Enums, etc.
@@ -658,7 +659,7 @@ Now as much as I love rust there are some things that still need improvement, as
 ### 🎀 Young Library Ecosystem
 
 In languages like python there are packages for everything, the Python Package Index (PyPI) has over `352k` packages.
-In rust there are lots of packages but not nearly as many as thare are in more mature ecosystems.
+In rust there are lots of packages but not nearly as many as there are in more mature ecosystems.
 For things like [Web Frameworks](https://www.arewewebyet.org/) and [Asynchronous](https://areweasyncyet.rs/) rust has great libraries.
 However, when it comes to [Machine Learning](https://www.arewelearningyet.com/), [GUI](https://areweguiyet.com/) and lots of other stuff we have a way to go.
 
@@ -681,9 +682,9 @@ I hope you enjoyed this and learned something new.
 All in all, Rust is an amazing language.
 It may be a bit difficult to learn but doing so unlocks a new world of programming.
 Coming from C, C++ or any low level language rust is a nice upgrade in safety and consistency and from high level languages rust is a huge boost in terms of speed and reliability.
-It's a good fit for backend web development and a Great fit for Driver and embedded system programming.
+It's a good fit for backend web development and a great fit for driver and embedded system programming.
 
 This article has a lot of content and as such it also has lots of possible errors.
 If you find anything inaccurate you can file an [Issue](https://github.com/Basicprogrammer10/connorcode-writing/issues) or submit a [PR](https://github.com/Basicprogrammer10/connorcode-writing/pulls)
 
-- Connor Slade
+— Connor Slade
