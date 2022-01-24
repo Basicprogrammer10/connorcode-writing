@@ -1,12 +1,14 @@
 @Title = Social Media Privacy
 @Author = Connor Slade
 @Date = 01-24-21
-@Description = How companys and the governmant invade your privacy
-@Tags = Privicy, Facebook, Social Media
+@Description = How companies and the government invade your privacy
+@Tags = Privacy, Facebook, Social Media
 @Path = other/social-media-privacy
 @Assets = .
 
 ---
+
+![Facebook Logo](../assets/other/social-media-privacy/privacy-laws.png)
 
 # 🧐 Social Media Privacy
 
@@ -61,10 +63,10 @@ This information can be used by anyone for whatever they want.
 
 ## Stronger Privacy Laws​
 
-If we had laws that stopped companies from all this tracking we would be a better society.
+If we had laws that stopped companies from all this tracking we would be a _better society_.
 People would be able to have a private life and not have to worry about companies and the government looking into everything they do.
 
-For more infomation on privicy respecting servases, check out [Privacy Guides](https://privacyguides.org/).
+For more information on privacy respecting services, check out [Privacy Guides](https://privacyguides.org/).
 
 [^1]: Application Programming Interface
 [^2]: Software Development Kit
