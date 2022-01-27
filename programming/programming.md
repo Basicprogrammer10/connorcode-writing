@@ -11,4 +11,5 @@
 
 # 📀 Programming
 
-- [My Analytics](/writing/other/my-analytics)
+- [Why I Love Rust](/writing/programming/why-i-love-rust)
+- [My Analytics](/writing/programming/my-analytics)
