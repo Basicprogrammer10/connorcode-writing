@@ -11,4 +11,6 @@
 
 # 📀 Programming
 
+- [Plaster Box](/writing/other/plaster-box)
+- [Why I Love Rust](/writing/other/why-i-love-rust)
 - [My Analytics](/writing/other/my-analytics)
