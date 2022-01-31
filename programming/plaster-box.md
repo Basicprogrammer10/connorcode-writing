@@ -19,10 +19,10 @@ Go try it out at [paste.connorcode.com](https://paste.connorcode.com).
 
 ## 🐾 Features
 
-PlasterBox currently only has some planed features, so expect more stuff in the future.
+PlasterBox currently only has some off the planned features, so expect more stuff in the future.
 
-For now you can make new Bins with a Title and Body, and view the other bins in chronological order.
-You can get a raw view in plain text of any bin and use the API to make new bins programmatically.
+For now, you can make new Bins with a Title and Body, and view the other bins in chronological order.
+You can get a raw view in plain text of any bin and use the API to make / view bins programmatically.
 
 ## 📚 Stack
 
@@ -47,7 +47,7 @@ As always I used Rust for the backend with my web server framework [afire][afire
 This app is mostly server side rendered, only using JavaScript for submitting the form, resizing the text box and the Raw / Copy buttons.
 
 Each _bin_ or paste is defined with the following `struct`.
-Each bin has a UUID, the stored text, a name, and the time of creation.
+Each bin has a UUID, the stored text, a name, and the time of creation (Unix epoch time).
 
 ```rust
 #[derive(Debug, Serialize, Deserialize)]
