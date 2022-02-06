@@ -3,7 +3,7 @@
 @Date = 01-15-21
 @Description = Tools I use to create Websites / Software
 @Tags = Stack, Tools, Tech
-@Path = other/stack
+@Path = other/my-stack
 @Assets = .
 
 ---

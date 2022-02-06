@@ -13,9 +13,9 @@
 # 📦 Plaster Box
 
 Introducing **PlasterBox**! My clean, simple, and open source Pastebin.
-Go try it out at [paste.connorcode.com](https://paste.connorcode.com).
+<!-- Go try it out at [paste.connorcode.com](https://paste.connorcode.com). -->
 
-> Source code can be found [on GitHub](https://github.com/Basicprogrammer10/plaster-box),
+> Source code can be found [on GitHub](https://github.com/Basicprogrammer10/plaster-box)
 
 ## 🐾 Features
 
