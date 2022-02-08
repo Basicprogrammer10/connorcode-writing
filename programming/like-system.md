@@ -1,8 +1,8 @@
 @Title = Like System
 @Author = Connor Slade
-@Date = 02-07-21
-@Description = TODO
-@Tags = TODO
+@Date = 02-08-21
+@Description = How I implemented the View count and Like system
+@Tags = Like System, Likes, View Count, Rust, Programming
 @Path = programming/like-system
 @Assets = .
 
@@ -33,8 +33,7 @@ So how did I implement this feature? Well, I'm glad you ask!
 
 ### The UI
 
-![The article *meta* and like bar](../assets/programming/like-system/meta_like_bar.png)
-
+> ![The article *meta* and like bar](../assets/programming/like-system/meta_like_bar.png)
 > The article _meta_ and like bar
 
 The first step for me (right after planning) is the front end design.
