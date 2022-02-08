@@ -129,5 +129,8 @@ DELETE FROM article_likes where name = ?1 AND ip = ?2
 
 Now this is big progress for me but as always, it can be made bettor.
 
+Right now, each IP address gets only one view per article. I could improve on this by alloying each IP to add a new view every 20 min to an hour or something.
+This would help improve the accuracy of the counter because one person could have many views but not all at once.
+
 Thank you for reading!
 I wrote this all surprisingly quickly. I guess I just wanted to tell someone :p
