@@ -21,7 +21,7 @@ This has some advantages, but it also has some disadvantages.
 The first advantage is that it is much more simple to implement.
 You don't need to create and manage any user accounts or anything. You just need to store the client IPs.
 The second advantage is that it is more private. No personal information like email or name is stored.
-The third advantage is that there is no security risk. You can't leak information that is not there!
+The third advantage is that there is no security risk. You can't leak information that's not there!
 
 The disadvantage is that the view count may not be very accurate.
 For example, in places like Schools or Workplaces, different people may be using the same IP address.
@@ -32,6 +32,10 @@ So the view count for an article would be lower than the actual number of views.
 So how did I implement this feature? Well, I'm glad you ask!
 
 ### The UI
+
+![The article *meta* and like bar](../assets/programming/like-system/meta_like_bar.png)
+
+> The article _meta_ and like bar
 
 The first step for me (right after planning) is the front end design.
 I usually do this because I find it the most challenging and prefer to get it out of the way at the start.
@@ -90,11 +94,11 @@ SELECT COUNT(*) FROM article_views WHERE name = ?1
 
 The view count can then be formatted into the article page and sent to the client.
 It was here when I noticed a big problem with this system. It was _way_ too slow.
-The queries (in a commit) were taking `~50ms`. To some this may not seam very long, but lets put it in prospective.
-Before, the server was taking in total `~2ms` from the client sending to it receiving the request.
-Now because of the database it was 25 times slower.
+The queries (in a commit) were taking `~50ms`. To some this may not seam very long, but let's put it in prospective.
+Before, the server was taking in total `~1ms` from the client sending to it receiving the request.
+Now because of the database it was 50 times slower.
 
-I opened a discussion on the Rusqlite GitHub repo and eventually found that setting `synchronous` to `NORMAL` massively decreased execution time.
+I opened [a discussion](https://github.com/rusqlite/rusqlite/discussions/1119) on the Rusqlite GitHub repo and eventually found that setting `synchronous` to `NORMAL` massively decreased execution time.
 I assume this is because before it was waiting for the operating system to save the database every time.
 This is the pragma statement I mentioned before.
 
@@ -110,7 +114,9 @@ SELECT COUNT(*) FROM article_likes WHERE name = ?1 AND ip = ?2;
 The first query gives how many total likes there are for an article, and the second one tells if the current client is liking the article or not.
 
 Where the likes get more complicated is with the API. Obviously, there needs to be a way to toggle your IPs like state.
-To do this, I created a new route at `POST /api/writing/like`. It takes in a JSON body like this one `{"doc": "other/hello-world", "like": true}`.
+To do this, I created a new route at `POST /api/writing/like`.
+It takes in a JSON body like this one `{"doc": "other/hello-world", "like": true}`.
+When clicking the like button in the web interface, it POSTs to this API.
 
 Then it parses the body and JSON and if like is true it runs the following SQL:
 
@@ -129,8 +135,10 @@ DELETE FROM article_likes where name = ?1 AND ip = ?2
 
 Now this is big progress for me but as always, it can be made bettor.
 
-Right now, each IP address gets only one view per article. I could improve on this by alloying each IP to add a new view every 20 min to an hour or something.
+Right now, each IP address gets only one view per article.
+I could improve on this by allowing each IP to add a new view every 20 min to an hour or something.
 This would help improve the accuracy of the counter because one person could have many views but not all at once.
+This is why I have the view and like tables store the date, so implementing this feature won't require migrating the database.
 
 Thank you for reading!
 I wrote this all surprisingly quickly. I guess I just wanted to tell someone :p
