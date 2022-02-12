@@ -21,4 +21,5 @@
 
 ## Articles
 
+- [Update 02-12-21](/writing/afire/update-1)
 - [Update 01-11-21](/writing/afire/update-0)
