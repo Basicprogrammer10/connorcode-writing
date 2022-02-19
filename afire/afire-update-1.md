@@ -14,6 +14,18 @@
 
 > Full changelog can be found on GitHub [here](https://github.com/Basicprogrammer10/afire/blob/0.3.1/Changelog.md).
 
+## 🪙 Changes
+
+### Removed Deprecated Function
+
+The following functions have been removed from afire.
+They have all been deprecated for at least one version.
+
+```
+Replace: \.(default_header|header)\(Header::new\((.*)\)\)
+With   : .$1($2)
+```
+
 ## 🗽 New Features
 
 ### Middleware Error Handling
