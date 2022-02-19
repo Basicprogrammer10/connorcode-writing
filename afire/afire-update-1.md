@@ -47,7 +47,7 @@ This regex will remove the [`Header::new`](https://docs.rs/afire/latest/afire/st
 call from all header and default_header statements.
 Use with caution of course :P
 
-```
+```regex
 Replace: \.(default_header|header)\(Header::new\((.*)\)\)
 With   : .$1($2)
 ```
@@ -83,7 +83,7 @@ In all previous versions of afire, if you panicked in the context of middleware,
 But now the `panic_handler` feature has been extended to middleware!
 
 The panic handler for routes and middleware has also been updated to support [`String`][string]s and [`&str`][&str]s in the message.
-Unlike before, where it would only take `&str`s. Eventually this will be extended to all displayable types.
+Unlike before, where it would only take [`&str`][&str]s. Eventually this will be extended to all displayable types.
 
 ### Prelude
 
