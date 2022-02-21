@@ -13,7 +13,12 @@
 [afire](crates.io/crates/afire) `V0.4.0` has some big changes.
 Many of which break compatibility with the previous version, so make sure to read to the end.
 
-> Full changelog can be found on GitHub [here](https://github.com/Basicprogrammer10/afire/blob/0.4.0/Changelog.md).
+<div ad info>
+Info
+
+Full changelog can be found on GitHub [here](https://github.com/Basicprogrammer10/afire/blob/0.4.0/Changelog.md).
+
+</div>
 
 ## ⛓ Changes
 

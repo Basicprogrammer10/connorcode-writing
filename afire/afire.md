@@ -27,7 +27,6 @@
 ## Things Built with afire
 
 Documentation is great but, sometimes the best way to learn how to use something is through examples!
-If you make something and want it added to the list, email me (base64 [`Y29ubm9yQGNvbm5vcmNvZGUuY29t`][email_encodeing])
 
 | Name                | Description                      |                              Code                              |                 Link                 |
 | ------------------- | -------------------------------- | :------------------------------------------------------------: | :----------------------------------: |
@@ -38,4 +37,11 @@ If you make something and want it added to the list, email me (base64 [`Y29ubm9y
 | Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |  [🔗](https://tmp.connorcode.com/)   |
 | Journey-to-the-Moon | A choose your own adventure game | [📀](https://github.com/Basicprogrammer10/Journey-to-the-Moon) |                  ❌                  |
 
-[email_encodeing]: https://duckduckgo.com/?t=ffab&q=base64+decode+Y29ubm9yQGNvbm5vcmNvZGUuY29t&atb=v214-1&ia=answer
+<div ad info>
+Add your project!
+
+If you make something and want it added to the list, [message me][contact]!
+
+</div>
+
+[contact]: https://connorcode.com/contact/

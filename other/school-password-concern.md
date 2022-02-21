@@ -10,21 +10,31 @@
 
 # 🏫 School Password Concern
 
-> A document I made a while ago (Apr 2021) and sent to my school district addressing the poor student account security.
->
-> About 18 days later the school IT person responded saying they have a mechanism in place to limit the number of password retries to 8.
-> I looked into how they implemented this and found that when an account is tried more than 8 it disables the account...
-> At first I thought they just shifted the problem because now you could lock people out of their accounts by spamming login attempts.
-> But I soon realized that it didn't even fix the original problem!
->
-> When your login failed it would show an error message. If it was because of an incorrect password this message would *always* be `"Username or password is incorrect."`.
-> But if you had a correct passwords but the account was under the 'ratelimit' it would say `"Account is Inactive."`. So you could still tell if the password was correct.
->
-> A few months later I rewrote the system in Rust making it like thousands of times faster, often cracking a password in under 30 seconds.
->
-> And nothing much has happened since. I hope they fix this because I cant have been the only one to see a problem here.
->
-> Source Code [here](https://raw.githubusercontent.com/Basicprogrammer10/SchoolPasswordCrack).
+<div ad note>
+Note
+
+A document I made a while ago (Apr 2021) and sent to my school district addressing the poor student account security.
+
+About 18 days later the school IT person responded saying they have a mechanism in place to limit the number of password retries to 8.
+I looked into how they implemented this and found that when an account is tried more than 8 it disables the account...
+At first I thought they just shifted the problem because now you could lock people out of their accounts by spamming login attempts.
+But I soon realized that it didn't even fix the original problem!
+
+When your login failed it would show an error message. If it was because of an incorrect password this message would _always_ be `"Username or password is incorrect."`.
+But if you had a correct passwords but the account was under the 'ratelimit' it would say `"Account is Inactive."`. So you could still tell if the password was correct.
+
+A few months later I rewrote the system in Rust making it like thousands of times faster, often cracking a password in under 30 seconds.
+
+And nothing much has happened since. I hope they fix this because I cant have been the only one to see a problem here.
+
+</div>
+
+<div ad info>
+Info
+
+Source Code can be found [here](https://raw.githubusercontent.com/Basicprogrammer10/SchoolPasswordCrack).
+
+</div>
 
 ## 🧠 Intro
 
@@ -96,7 +106,7 @@ This would be good in terms of security, but it will also teach students the imp
 ### 💿 Option 2
 
 Another way to fix this problem is by making some modifications to the Genesis login system.
-This is something that would require working with the Genesis 'team' to fix but would be *ok* if option 1 is not viable.
+This is something that would require working with the Genesis 'team' to fix but would be _ok_ if option 1 is not viable.
 
 Currently, Genesis has no rate limit or CAPTCHA. This means that many automated password attempts can be made within very quick succession.
 For example, the program mentioned above was able to make over 30 requests per second.
