@@ -28,7 +28,7 @@ To start, let's keep it simple and use these endpoints:
 - Get a random quote
 - Get a quote by ID
 
-## 🛠 Building
+## 🏨 Building
 
 Now that we have our plan, we can start the fun part!
 
@@ -114,7 +114,7 @@ First import `std::fs`, you can also move the `serde_json::Value` import up here
 <div ad tip>
   Tip
 
-  When working with rust `use` statements, I usually organize them in the following order.
+  When working with rust use statements, I usually organize them in the following order.
   With newlines separating them.
 
   - STD Imports
