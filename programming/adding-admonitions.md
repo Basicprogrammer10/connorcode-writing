@@ -10,7 +10,7 @@
 
 <style>
   .colors > .color{
-    width: 25px;
+    width: 20px;
     height: 25px;
     border-radius: 4px;
     display: inline-block;
@@ -53,7 +53,7 @@ Now to figure out _how_ to do it.
 
 My website uses [comrak][comrak] as the markdown renderer.
 Comrak supports for modifying the HTML renderer process, but It's a bit complicated;
-This is why I decided to stay away from this idea and instead decided to implement it in all CSS.
+This is why I decided to stay away from all that and instead decided to implement it in all CSS.
 
 ## 📀 The Implementation
 
@@ -61,7 +61,9 @@ This is the markdown / HTML for one of my admonitions:
 
 ```html
 <div ad info>
-  Title Content
+  Title
+
+  Content
 </div>
 ```
 
@@ -70,7 +72,7 @@ Then to add the little [FontAwesome][fontawesome] icon, I set the content of `[a
 I also set the font to be `normal normal normal 14px/1 FontAwesome;`, which is usually automatically set by the FontAwesome's `fa` class.
 
 At this point, I needed to find some colors for all the admonitions.
-So I did some thinking and eventually decided to steal these colors from the [Microsoft docs][microsoft-docs]:
+So I did some searching and eventually decided to steal these colors from the [Microsoft docs][microsoft-docs]:
 
 <div class="colors">
   <div class="color" style="background:#00417380;border-color:#004173;"></div>
@@ -81,7 +83,7 @@ So I did some thinking and eventually decided to steal these colors from the [Mi
 </div>
 
 The only 'problem' was that I was repeating a lot of CSS for each color.
-So I looked into SCSS [Minins][scss-mixins]. These let you define reusable CSS code and then call upon it with parameters.
+So I looked into SCSS [Mixins][scss-mixins]. These let you define reusable CSS code and then call upon it with parameters.
 
 This is the SCSS I ended up with. See it in context on GitHub [here][final-code-context].
 
@@ -154,8 +156,9 @@ Caution
 ## ✨ Conclusion
 
 I think this was a nice little _CSS adventure_. I learned about SCSS mixins, which I had never used before.
-Getting a delightful end result and adding another feature to my site is great too, :p
-In this article, I also tried to add some pleasant little visuals (In [## The Implamentation](#-the-implementation)) to show the colors I picked.
+Getting a delightful end result and adding another feature to my site is great too :p
+
+In this article, I also tried to add some little visuals (In [## The Implamentation](#-the-implementation)) to show the colors I picked.
 This is something I will definitely try to do more in the future.
 
 [ad-docusaurus]: https://docusaurus.io/docs/markdown-features/admonitions
