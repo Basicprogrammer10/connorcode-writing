@@ -19,6 +19,10 @@
 - [Crates.io](https://crates.io/crates/afire)
 - [Docs](https://docs.rs/afire)
 
+## Tutorials
+
+- [Making a simple JSON API](/writing/afire/making-a-simple-api)
+
 ## Updates
 
 - [[0.4.0] Update 02-19-21](/writing/afire/update-1)
