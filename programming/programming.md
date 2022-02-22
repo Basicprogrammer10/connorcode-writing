@@ -11,6 +11,7 @@
 
 # 📀 Programming
 
+- [Adding Markdown Admonitions](/writing/programming/adding-admonitions)
 - [Like System](/writing/programming/like-system)
 - [Plaster Box](/writing/programming/plaster-box)
 - [Why I Love Rust](/writing/programming/why-i-love-rust)
