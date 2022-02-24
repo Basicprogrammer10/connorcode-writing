@@ -317,6 +317,7 @@ If you did, make sure to press the like button :p
 This website is written with afire, everything from static page serving to APIs to this writing section.
 Rust is really a great language for API / backend development because of its *speed* and being compiled significantly reduces the possibility of errors.
 
+also happy twosday
 
 [afire]: https://crates.io/crates/afire
 [rust-book]: https://doc.rust-lang.org/stable/book/
