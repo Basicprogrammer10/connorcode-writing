@@ -1,6 +1,6 @@
 @Title = My Stack
 @Author = Connor Slade
-@Date = 01-15-21
+@Date = 01-15-22
 @Description = Tools I use to create Websites / Software
 @Tags = Stack, Tools, Tech
 @Path = other/my-stack

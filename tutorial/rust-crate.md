@@ -1,6 +1,6 @@
 @Title = Tutorial: Rust Crate
 @Author = Connor Slade
-@Date = 01-12-21
+@Date = 01-12-22
 @Description = Learn how to create, test, package, document and publish a rust crate
 @Tags = Rust, Rust Crate, Make a rust crate
 @Path = tutorial/rust-crate

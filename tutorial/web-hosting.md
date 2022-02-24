@@ -1,6 +1,6 @@
 @Title = Tutorial: Hosting a Web app
 @Author = Connor Slade
-@Date = 01-13-21
+@Date = 01-13-22
 @Description = Learn how to host a web app with a reverse proxy on Vultr.
 @Tags = Website, Web app, Vultr, Nginx
 @Path = tutorial/web-hosting

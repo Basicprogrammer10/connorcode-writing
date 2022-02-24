@@ -1,6 +1,6 @@
 @Title = Best Worst Compression
 @Author = Connor Slade
-@Date = 02-15-21
+@Date = 02-15-22
 @Description = Making the best (worst) compression system
 @Tags = Compression, Hash, sha256, Rust, Programming
 @Path = programming/best-worst-compression

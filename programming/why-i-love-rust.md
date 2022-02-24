@@ -1,6 +1,6 @@
 @Title = Why I Love Rust
 @Author = Connor Slade
-@Date = 01-22-21
+@Date = 01-22-22
 @Description = Why I Love the Rust Programming Language and where it needs Improvement
 @Tags = Programming, Software Development, Rust, Rust Lang, Ferris
 @Path = programming/why-i-love-rust

@@ -1,6 +1,6 @@
 @Title = Making a Simple API
 @Author = Connor Slade
-@Date = 02-22-21
+@Date = 02-22-22
 @Description = Making a simple JSON API with afire
 @Tags = afire, rust, webserver framework, web server, API
 @Path = afire/making-a-simple-api
@@ -258,7 +258,7 @@ fn main() {
 
     println!("[*] Loaded {} quotes", quotes.len());
 
-    let mut server = Server::new("localhost", 8818);
+    let mut server = Server::new("localhost", 8080);
 
     server.error_handler(|_, err| {
         Response::new()

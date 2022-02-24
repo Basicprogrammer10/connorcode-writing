@@ -1,6 +1,6 @@
 @Title = School Password Concern
 @Author = Connor Slade
-@Date = 02-11-21
+@Date = 02-11-22
 @Description = How I hacked my school (that caught your attention huh)
 @Tags = School, Passwords, Hacking, Genesis
 @Path = other/school-password-concern

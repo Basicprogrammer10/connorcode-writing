@@ -1,6 +1,6 @@
 @Title = Like System
 @Author = Connor Slade
-@Date = 02-08-21
+@Date = 02-08-22
 @Description = How I implemented the View count and Like system
 @Tags = Like System, Likes, View Count, Rust, Programming
 @Path = programming/like-system

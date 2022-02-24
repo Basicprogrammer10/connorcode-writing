@@ -1,6 +1,6 @@
 @Title = afire Update
 @Author = Connor Slade
-@Date = 01-11-21
+@Date = 01-11-22
 @Description = Changes to afire in V0.3.0
 @Tags = afire, rust webserver framework, web server
 @Path = afire
@@ -25,8 +25,8 @@
 
 ## Updates
 
-- [[0.4.0] Update 02-19-21](/writing/afire/update-1)
-- [[0.3.0] Update 01-11-21](/writing/afire/update-0)
+- [[0.4.0] Update 02-19-22](/writing/afire/update-1)
+- [[0.3.0] Update 01-11-22](/writing/afire/update-0)
 
 ## Things Built with afire
 

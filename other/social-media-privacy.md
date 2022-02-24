@@ -1,6 +1,6 @@
 @Title = Social Media Privacy
 @Author = Connor Slade
-@Date = 01-24-21
+@Date = 01-24-22
 @Description = How companies and the government invade your privacy
 @Tags = Privacy, Facebook, Social Media
 @Path = other/social-media-privacy

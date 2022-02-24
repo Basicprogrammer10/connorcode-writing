@@ -1,6 +1,6 @@
 @Title = Adding Admonitions
 @Author = Connor Slade
-@Date = 02-21-21
+@Date = 02-21-22
 @Description = How I added markdown admonitions to my website
 @Tags = Markdown, Admonitions, Markdown Rendering, Markdown Extension
 @Path = programming/adding-admonitions

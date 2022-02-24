@@ -1,6 +1,6 @@
 @Title = How my Analytics Work
 @Author = Connor Slade
-@Date = 01-17-21
+@Date = 01-17-22
 @Description = How my custom analytics system for connorcode.com works
 @Tags = Analytics, Web Dev, Server, afire, ApexCharts, Log4Shell
 @Path = programming/my-analytics
