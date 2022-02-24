@@ -9,7 +9,7 @@
 ---
 
 <style>
-  .contents {
+  .example-contents {
     box-shadow: 0 5px 10px 3px #00000080;
     background: #323546;
     border-radius: 12px;
@@ -18,13 +18,13 @@
     width: fit-content;
   }
 
-  .contents div {
+  .example-contents div {
     padding: 5px;
     border-radius: 4px;
     cursor: pointer;
   }
 
-  .contents div:hover {
+  .example-contents div:hover {
     background: #272937;
   }
 </style>
@@ -141,7 +141,7 @@ function initContents() {
 
 Here it is!
 
-<div class="contents">
+<div class="example-contents">
   <div style="padding-left: 0em;" onclick="goto('-table-of-contents')">🏓 Table of Contents</div>
   <div style="padding-left: 2em;" onclick="goto('-planning')">🌵 Planning</div>
   <div style="padding-left: 2em;" onclick="goto('-execution')">🎯 Execution</div>
