@@ -11,6 +11,7 @@
 
 # 📀 Programming
 
+- [Adding Table of Contents](/writing/programming/table-of-contents)
 - [Adding Markdown Admonitions](/writing/programming/adding-admonitions)
 - [Like System](/writing/programming/like-system)
 - [Plaster Box](/writing/programming/plaster-box)

@@ -8,10 +8,37 @@
 
 ---
 
+<style>
+  .contents {
+    box-shadow: 0 5px 10px 3px #00000080;
+    background: #323546;
+    border-radius: 12px;
+    margin-top: 8px;
+    padding: 10px;
+    width: fit-content;
+  }
+
+  .contents div {
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .contents div:hover {
+    background: #272937;
+  }
+</style>
+
+<script>
+  function goto(i) {
+    window.location.href = `#${i}`;
+  }
+</script>
+
 # 🏓 Table of Contents
 
-In this article, I will walk through my process of adding a table of contents or TOC to my articles.
-The button is right next to the like button. Give it a try!
+In this article, I will walk through my process of adding a table of contents or _TOC_ to my articles.
+The button to open it is to the left of the like button. Give it a try!
 
 ## 🌵 Planning
 
@@ -114,10 +141,17 @@ function initContents() {
 
 Here it is!
 
-![Result](../assets/programming/table-of-contents/result_toc.png)
+<div class="contents">
+  <div style="padding-left: 0em;" onclick="goto('-table-of-contents')">🏓 Table of Contents</div>
+  <div style="padding-left: 2em;" onclick="goto('-planning')">🌵 Planning</div>
+  <div style="padding-left: 2em;" onclick="goto('-execution')">🎯 Execution</div>
+  <div style="padding-left: 2em;" onclick="goto('-the-result')">🥝 The Result</div>
+  <div style="padding-left: 2em;" onclick="goto('-conclusion')">🧱 Conclusion</div>
+</div>
 
 ## 🧱 Conclusion
 
 Well this sure was a quick article!
+I tried to add an interactive element in the result section, where the result is an actually working TOC not just an image.
 I think adding a table of contents to an article is a great way to help a reader quickly navigate to the section they are interested in.
 I hope you found the result and this article helpful!
