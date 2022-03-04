@@ -142,7 +142,7 @@ function initContents() {
 Here it is!
 
 <div class="example-contents">
-  <div style="padding-left: 0em;" onclick="goto('-table-of-contents')">🏓 Table of Contents</div>
+  <div style="padding-left: 10px;" onclick="goto('-table-of-contents')">🏓 Table of Contents</div>
   <div style="padding-left: 2em;" onclick="goto('-planning')">🌵 Planning</div>
   <div style="padding-left: 2em;" onclick="goto('-execution')">🎯 Execution</div>
   <div style="padding-left: 2em;" onclick="goto('-the-result')">🥝 The Result</div>
