@@ -24,10 +24,8 @@ It used a 6 by 6 chunk (96 blocks) array of cauldrons where the player is moved 
 Hopper minecarts then collect the powder snow bucket items created and move them to a storage system.
 There is also a system to send new buckets to the player to be able to collect more than just 16 powder snow :p
 
-<!-- <img src="../assets/minecraft/powder-snow-farm/random_tick_chunks.svg" width="40%" alt="Random Tick Diagram" align="right" style="border-radius: 0; margin-left: 10px;"></img> -->
-So why go with this size of farm?
-Here on the right is an ugly diagram I spent way too long making that shows the chunk the player is currently in with blue, Green for the approximate area that will be random ticked and red the size of the farm I picked.
-Going any bigger would cause the farm to need more than one player to have the whole thing being ticked at all times.
+So why go with this size of farm? Because the [Random Tick distance][random_tick_wiki] is the chunks within 128 blocks of the player.
+This means that 6 chunks is the largest it can be with one player ticking the whole farm from anywhere in the farm.
 
 Unfortunately, there is no world download or schematic for this Peaceful Series farm, leaving me to design my own based off of the video.
 
@@ -49,16 +47,23 @@ When the player goes by the needed buckets are picked up, and slice is activated
 You can see the two wide tillable segment here on the right.
 
 I then started work on the control panel / storage thing. The storage system loads the powder snow into skulkers and puts the skulkers into an array of 75 double chests.
-Nothing crazy here, just a bunch of hoppers. The control panel is a little cooler, it's the system that sends the buckets to the player.
+Nothing crazy here, just a bunch of hoppers.
 
-<img src="../assets/minecraft/powder-snow-farm/control_panel.png" width="40%" alt="Random Tick Diagram" align="left" style="margin-right: 20px;"></img>
+<img src="../assets/minecraft/powder-snow-farm/control_panel.png" width="40%" alt="Farm Control Panel" align="left" style="margin-right: 20px;"></img>
 
+The control panel is a little cooler, it's the system that sends the buckets to the player.
 It uses 8 droppers, they each fire twice to drop 16 buckets to refill the stack.
 This dispensing system is controlled by a hopper clock (with `35` items).
-The hopper clock can then be controlled with a toggle switch. It is also turned off if any of the following 'errors' are detected.
-Storage Full, Out of skulker, and Out of buckets.
+The hopper clock can then be controlled with a toggle switch. It is also turned off if any of the following 'errors' are detected,
+Storage Full, Out of skulker, or Out of buckets.
+
+## 🛸 Getting Resources
+
+Needing 12k gold, over 18k concrete blocks, and over 67k iron not including the buckets this farm require a lot of materials.
+Luckily we already had most, there was just a lot of crafting involved.
 
 [powder_snow]: https://minecraft.fandom.com/wiki/Powder_Snow
 [404_tmc]: https://discord.gg/eBJbuNcGkH
 [ilmango]: https://www.youtube.com/channel/UCHSI8erNrN6hs3sUK6oONLA
 [farm-concept-video]: https://www.youtube.com/watch?v=42t72abCJPE
+[random_tick_wiki]: https://minecraft.fandom.com/wiki/Tick#Chunk_tick
