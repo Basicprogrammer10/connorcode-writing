@@ -1,12 +1,37 @@
 @Title = Powder Snow Farm
 @Author = Connor Slade
-@Date = 03-03-22
+@Date = 03-06-22
 @Description = My process of creating a large scale powder snow farm
 @Tags = Minecraft, Farm, Powder Snow, Powder Snow Farm
 @Path = minecraft/powder-snow-farm
 @Assets = .
 
 ---
+
+<style>
+ .render-image {
+   background: linear-gradient(0deg, rgba(188,203,229,1) 0%, rgba(126,166,255,1) 100%);
+ }
+</style>
+
+<script defer>
+  let images = new Array(37);
+  for (let i = 0; i <= 36; i++) {
+      fetch(`../assets/minecraft/powder-snow-farm/render/area_render_${i}.png`)
+          .then((r) => r.blob())
+          .then((blob) => {
+              let objectURL = URL.createObjectURL(blob);
+              images[i] = objectURL;
+          });
+  }
+
+  const image = document.querySelector("[render-image]");
+  image.addEventListener("mousemove", (e) => {
+      const percent = e.offsetX / image.offsetWidth;
+      const imageNum = Math.round(percent * 36);
+      image.src = images[imageNum];
+  });
+</script>
 
 ![Powder Snow Cover Image](../assets/minecraft/powder-snow-farm/cover.png)
 
@@ -62,15 +87,23 @@ It uses 8 droppers, each firing twice to drop 16 buckets to refill the stack.
 This dispensing system is controlled by a hopper clock (with `35` items).
 The hopper clock can then be controlled with a toggle switch. It is also turned off if any of the following 'errors' are detected,
 storage full, out of skulkers, or out of buckets.
-If the farm is turned off eather by the player or by an error all the hopper minecarts and the player in a minecart are held in a
+If the farm is turned off by either the player or by an error, all the hopper mine carts and the player in a minecarts are held in a
 
 ## 🛸 Building
 
-Needing 12k gold, over 18k concrete blocks, and over 67k iron not including the buckets, this farm require a lot of materials.
+Needing 12k gold, over 18k concrete blocks, and over 67k iron not including the buckets, this farm requires a lot of materials.
 Luckily, we already had most, there was just a lot of crafting involved.
+I spent a night just crafting resources for this, then built it the next day by clearing an area in a snowy biome and level by level built it up.
 
-I cleared an area in a snowy biome for the farm and level by level built it up.
-This article is getting kinda boring, so I'll finish it up quickly :p.
+Unfortunately, I didn't do enough testing and found some problems after running the farm for a while.
+The first one was that hopper minecarts and player minecart would desync after some time.
+This turned out to be caused by the rail path for the hopper minecart being a bit shorter than the other one.
+
+The second major issue I found was with the minecart parking system.
+This system was indented to hold the minecart when the system was stopped so when it is restarted the minecart are all properly synced.
+This was solved by a full redesign of the parking systems.
+
+(These problems are all fixed in the schematic)
 
 <div ad info>
   Info
@@ -81,37 +114,17 @@ The schematic for this farm can be found [here][schematic]
 
 ## 🚙 Render
 
+Move your mouse across this image to get a 3D view of the farm.
+Pretty cool, huh? This took way too long to make, lol.
+
 <img render-image class="render-image" src="../assets/minecraft/powder-snow-farm/render/area_render_14.png"></img>
 
 ## 🥨 Conclusion
 
-This was kinda boring. The same farm concept can be used for a lava farm as well.
+This is my first Minecraft related article,,, so that's cool.
+The same farm concept can be used for a lava farm as well (new article idea??).
 A lava farm would be a lot smaller because it is generated much faster.
-
-<style>
- .render-image {
-   background: linear-gradient(0deg, rgba(188,203,229,1) 0%, rgba(126,166,255,1) 100%);
- }
-</style>
-
-<script defer>
-  let images = new Array(37);
-  for (let i = 0; i <= 36; i++) {
-      fetch(`../assets/minecraft/powder-snow-farm/render/area_render_${i}.png`)
-          .then((r) => r.blob())
-          .then((blob) => {
-              let objectURL = URL.createObjectURL(blob);
-              images[i] = objectURL;
-          });
-  }
-
-  const image = document.querySelector("[render-image]");
-  image.addEventListener("mousemove", (e) => {
-      const percent = e.offsetX / image.offsetWidth;
-      const imageNum = Math.round(percent * 36);
-      image.src = images[imageNum];
-  });
-</script>
+Figuring out the best size required plotting geometric distributions and other calculus stuff, so keep an eye out for that article.
 
 [powder_snow]: https://minecraft.fandom.com/wiki/Powder_Snow
 [404_tmc]: https://discord.gg/eBJbuNcGkH
