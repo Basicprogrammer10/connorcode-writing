@@ -5,6 +5,7 @@
 @Tags = Minecraft
 @Path = minecraft
 @Assets = .
+@Hidden = true
 
 ---
 
