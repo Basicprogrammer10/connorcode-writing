@@ -14,25 +14,6 @@
  }
 </style>
 
-<script defer>
-  let images = new Array(37);
-  for (let i = 0; i <= 36; i++) {
-      fetch(`../assets/minecraft/powder-snow-farm/render/area_render_${i}.png`)
-          .then((r) => r.blob())
-          .then((blob) => {
-              let objectURL = URL.createObjectURL(blob);
-              images[i] = objectURL;
-          });
-  }
-
-  const image = document.querySelector("[render-image]");
-  image.addEventListener("mousemove", (e) => {
-      const percent = e.offsetX / image.offsetWidth;
-      const imageNum = Math.round(percent * 36);
-      image.src = images[imageNum];
-  });
-</script>
-
 ![Powder Snow Cover Image](../assets/minecraft/powder-snow-farm/cover.png)
 
 # 🌨 Powder Snow Farm
@@ -52,7 +33,7 @@ This farm was designed for [Minecraft 1.17.1][mc_1_17_1]
 Yay! It's everyone's favorite part of the design process, planning!
 First, I need to get a general concept for the farm.
 For this, I looked at the powder snow farm used in [ilmangos][ilmango] Peaceful Series ([Video][farm-concept-video]).
-It used a 6 by 6 chunk (96 blocks) array of cauldrons where the player is moved through them, collecting the powder snow with buckets.  
+It used a 6 by 6 chunk (96 blocks) array of cauldrons where the player is moved through them, collecting the powder snow with buckets.
 Hopper minecarts then collect the powder snow bucket items created and move them to a storage system.
 There is also a system to send new buckets to the player to be able to collect more than just 16 powder snow :p
 Unfortunately, there is no world download or schematic for this Peaceful Series farm, leaving me to design my own based off of the video.
@@ -87,11 +68,11 @@ It uses 8 droppers, each firing twice to drop 16 buckets to refill the stack.
 This dispensing system is controlled by a hopper clock (with `35` items).
 The hopper clock can then be controlled with a toggle switch. It is also turned off if any of the following 'errors' are detected,
 storage full, out of skulkers, or out of buckets.
-If the farm is turned off by either the player or by an error, all the hopper mine carts and the player in a minecarts are held in a
+If the farm is turned off by either the player or by an error, all the hopper mine carts and the player in a minecarts are held in a parking station thing.
 
 ## 🛸 Building
 
-Needing 12k gold, over 18k concrete blocks, and over 67k iron not including the buckets, this farm requires a lot of materials.
+Needing 12k gold, over 18k concrete blocks, and over 67k iron not including the buckets, this farm requires a lot of [materials][materials].
 Luckily, we already had most, there was just a lot of crafting involved.
 I spent a night just crafting resources for this, then built it the next day by clearing an area in a snowy biome and level by level built it up.
 
@@ -126,10 +107,30 @@ The same farm concept can be used for a lava farm as well (new article idea??).
 A lava farm would be a lot smaller because it is generated much faster.
 Figuring out the best size required plotting geometric distributions and other calculus stuff, so keep an eye out for that article.
 
+<script defer>
+  let images = new Array(37);
+  for (let i = 0; i <= 36; i++) {
+      fetch(`../assets/minecraft/powder-snow-farm/render/area_render_${i}.png`)
+          .then((r) => r.blob())
+          .then((blob) => {
+              let objectURL = URL.createObjectURL(blob);
+              images[i] = objectURL;
+          });
+  }
+
+  const image = document.querySelector(".render-image");
+  image.addEventListener("mousemove", (e) => {
+      const percent = e.offsetX / image.offsetWidth;
+      const imageNum = Math.round(percent * 36);
+      image.src = images[imageNum];
+  });
+</script>
+
 [powder_snow]: https://minecraft.fandom.com/wiki/Powder_Snow
 [404_tmc]: https://discord.gg/eBJbuNcGkH
 [mc_1_17_1]: https://minecraft.fandom.com/wiki/Java_Edition_1.17.1
 [ilmango]: https://www.youtube.com/channel/UCHSI8erNrN6hs3sUK6oONLA
 [farm-concept-video]: https://www.youtube.com/watch?v=42t72abCJPE
 [random_tick_wiki]: https://minecraft.fandom.com/wiki/Tick#Chunk_tick
+[materials]: /writing/assets/minecraft/powder-snow-farm/materials.png
 [schematic]: https://connorcode.com/files/Schematics/Powder_Snow_Farm.litematic
