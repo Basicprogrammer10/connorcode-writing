@@ -18,7 +18,8 @@ This farm was designed for the [404 Technical Minecraft Server][404_tmc].
 <div ad note>
   Note
 
-  This farm was designed for [Minecraft 1.17.1][mc_1_17_1]
+This farm was designed for [Minecraft 1.17.1][mc_1_17_1]
+
 </div>
 
 ## 📐 Planning
@@ -74,17 +75,43 @@ This article is getting kinda boring, so I'll finish it up quickly :p.
 <div ad info>
   Info
 
-  The schematic for this farm can be found [here][schematic]
+The schematic for this farm can be found [here][schematic]
+
 </div>
 
 ## 🚙 Render
 
-<img render-image src="../assets/minecraft/powder-snow-farm/render/area_render_14.png"></img>
+<img render-image class="render-image" src="../assets/minecraft/powder-snow-farm/render/area_render_14.png"></img>
 
 ## 🥨 Conclusion
 
 This was kinda boring. The same farm concept can be used for a lava farm as well.
 A lava farm would be a lot smaller because it is generated much faster.
+
+<style>
+ .render-image {
+   background: linear-gradient(0deg, rgba(188,203,229,1) 0%, rgba(126,166,255,1) 100%);
+ }
+</style>
+
+<script defer>
+  let images = new Array(37);
+  for (let i = 0; i <= 36; i++) {
+      fetch(`../assets/minecraft/powder-snow-farm/render/area_render_${i}.png`)
+          .then((r) => r.blob())
+          .then((blob) => {
+              let objectURL = URL.createObjectURL(blob);
+              images[i] = objectURL;
+          });
+  }
+
+  const image = document.querySelector("[render-image]");
+  image.addEventListener("mousemove", (e) => {
+      const percent = e.offsetX / image.offsetWidth;
+      const imageNum = Math.round(percent * 36);
+      image.src = images[imageNum];
+  });
+</script>
 
 [powder_snow]: https://minecraft.fandom.com/wiki/Powder_Snow
 [404_tmc]: https://discord.gg/eBJbuNcGkH
