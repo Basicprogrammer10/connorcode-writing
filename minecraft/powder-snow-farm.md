@@ -18,7 +18,7 @@ This farm was designed for the [404 Technical Minecraft Server][404_tmc].
 <div ad note>
   Note
 
-  This farm was designed for Minecraft 1.17
+  This farm was designed for [Minecraft 1.17.1][mc_1_17_1]
 </div>
 
 ## 📐 Planning
@@ -42,12 +42,12 @@ This is just a 9x9 chunk area of white concrete.
 I then used world edit to add in all the powered rails for this layer.
 Then I made a new layer of white concrete the same size one layer up from the rails, this is where the player minecrat would go.
 Every 18 blocks, I put in a row of redstone blocks to power the rails.
-The player minecart system used normal rails as well as powered rails, and as it turns out world edit does not work too well with cloning rails, lol.
+The player minecart system used normal rails as well as powered rails, and as it turns out world edit does not work too well with cloning rails, lol (see picture on the left).
 Fortunately the fill command worked fine allowing me to set the rail direction.
 I then put in all `9,312` cauldrons, completing the easy part of the farm :). Now it was onto the bucket refiller system.
 
 <img src="../assets/minecraft/powder-snow-farm/bucket_slice_iso.png" width="40%" alt="Bucket Refill Slice" align="right" style="margin-left: 10px;"></img>
-This system uses droppers to remember the rail lane the player minecart is at and used a trap door to stop the buckets at that point.
+This system uses a dropper line to remember the rail lane the player minecart is at and used a trap door to stop the buckets at that point.
 When the player goes by, the needed buckets are picked up, and slice is activated, causing the extras buckets to be sent back to storage and the next lane activated.
 At the very end, the item is sent back to the beginning and the whole thing starts again.
 You can see the two wide tillable segment here on the right.
@@ -57,10 +57,11 @@ Nothing crazy here, just a bunch of hoppers.
 <img src="../assets/minecraft/powder-snow-farm/control_panel.png" width="40%" alt="Farm Control Panel" align="left" style="margin-right: 20px;"></img>
 
 The control panel is a little cooler, it's the system that sends the buckets to the player.
-It uses 8 droppers, they each fire twice to drop 16 buckets to refill the stack.
+It uses 8 droppers, each firing twice to drop 16 buckets to refill the stack.
 This dispensing system is controlled by a hopper clock (with `35` items).
 The hopper clock can then be controlled with a toggle switch. It is also turned off if any of the following 'errors' are detected,
-storage full, out of skulker, or out of buckets.
+storage full, out of skulkers, or out of buckets.
+If the farm is turned off eather by the player or by an error all the hopper minecarts and the player in a minecart are held in a
 
 ## 🛸 Building
 
@@ -76,6 +77,10 @@ This article is getting kinda boring, so I'll finish it up quickly :p.
   The schematic for this farm can be found [here][schematic]
 </div>
 
+## 🚙 Render
+
+<img render-image src="../assets/minecraft/powder-snow-farm/render/area_render_14.png"></img>
+
 ## 🥨 Conclusion
 
 This was kinda boring. The same farm concept can be used for a lava farm as well.
@@ -83,6 +88,7 @@ A lava farm would be a lot smaller because it is generated much faster.
 
 [powder_snow]: https://minecraft.fandom.com/wiki/Powder_Snow
 [404_tmc]: https://discord.gg/eBJbuNcGkH
+[mc_1_17_1]: https://minecraft.fandom.com/wiki/Java_Edition_1.17.1
 [ilmango]: https://www.youtube.com/channel/UCHSI8erNrN6hs3sUK6oONLA
 [farm-concept-video]: https://www.youtube.com/watch?v=42t72abCJPE
 [random_tick_wiki]: https://minecraft.fandom.com/wiki/Tick#Chunk_tick
