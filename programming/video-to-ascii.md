@@ -1,17 +1,26 @@
-@Title = Video to Ascii
+@Title = Video to ASCII
 @Author = Connor Slade
 @Date = 03-13-22
-@Description = Converting video into Ascii
-@Tags = Programming, Ascii, Video to Ascii
+@Description = Converting video into ASCII
+@Tags = Programming, ASCII, Video to ASCII
 @Path = programming/video-to-ascii
 @Assets = .
 
 ---
 
-# 🎹 Video to Ascii
+<style>
+  .show {
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+
+# 🎹 Video to ASCII
 
 so i wanted to make a video into text,,, as we all do...
-Here in this article I will outline how I did it.
+Here in this article, I will outline how I did it.
 
 <div ad note>
 Note
@@ -22,10 +31,10 @@ This is all on GitHub [here][github].
 
 ## 🌏 Planning
 
-Its that time again!!!
-The first idea I had was to convert each image to grayscale then scale down the image to be console size.
-The greyscale values could be interpolated from 0-255 to 0-9 in order to pick a character for the pixel.
-For the pixel characters here is that I came up with:
+It's that time again!!!
+The first idea I had was to convert each image to grayscale, then scale down the image to be console size.
+The grayscale values could be interpolated from 0-255 to 0-9 in order to pick a character for the pixel.
+For the pixel characters, here is that I came up with:
 
 ```
 ....................
@@ -47,8 +56,8 @@ I also thought that this would be a good time for [dithering][dithering].
 ### Image Preprocessing
 
 First step was to open and scale the image.
-For this task I made use of the [image crate][image-crate].
-Here is the little bit of code for that.
+For this task, I made use of the [image crate][image-crate].
+Here is the bit of code for that.
 
 ```rust
 let img = image::open(i.path()).unwrap();
@@ -61,7 +70,7 @@ let img = img
 
 The next thing to do was to convert the image into a grayscale pixel array.
 This function I made takes in the image and returns a value from 0 to 1.
-0 is black and 1 is white and everything in between is a gray of some sort.
+0 is black and 1 is white, and everything in between is a gray of some sort.
 
 ```rust
 fn im_load(img: RgbImage) -> Vec<Vec<f32>> {
@@ -91,10 +100,10 @@ fn im_load(img: RgbImage) -> Vec<Vec<f32>> {
 
 ### ASCIIfication
 
-Now onto the _most importent_ part of this system.
+Now onto the _most important_ part of this system.
 Turning the image into text!
-This function builds a string by picking the best charector.
-The diffrence from the best charector to the acutal value is then passed off to surrounding pixels with dithering.
+This function builds a string by picking the best character.
+The difference from the best character to the actual value is then passed off to surrounding pixels with dithering.
 
 ```rust
 const IMG_CHARS: [char; 10] = ['.', ',', '+', '^', 'o', '*', '&', '0', '#', '@'];
@@ -138,7 +147,10 @@ fn asciify(mut image: Vec<Vec<f32>>) -> String {
 }
 ```
 
-## Showcase
+## 🎨 Showcase
+
+Here is a little [clip][clip] from Doja Cat's Say So in ASCII.
+It probably looks horrible if you're on mobile... _sorry_.
 
 <pre>
   <div class="show">
@@ -152,7 +164,7 @@ let e = document.querySelector(".show");
 fetch("/writing/assets/programming/video-to-ascii/sayso.txt")
     .then((d) => d.text())
     .then((d) => {
-        let frames = d.replace(/\r/g, "").split('\n\n');
+        let frames = d.replace(/\r/g, "").split('\n\n\n');
         let frame = 0;
 
         setInterval(() => {
@@ -162,6 +174,15 @@ fetch("/writing/assets/programming/video-to-ascii/sayso.txt")
     });
 </script>
 
+## 🌵 Conclusion
+
+This was a really cool project.
+Much bettor than doing homework at least!
+(_i am a master of procrastinating_)
+
+well im off to go find something else to waste time one,,, those antique films aren't gonna watch themselves!
+
 [github]: https://github.com/Basicprogrammer10/ascii-video
 [dithering]: https://en.wikipedia.org/wiki/Dither
 [image-crate]: https://crates.io/crates/image
+[clip]: https://youtube.com/clip/Ugkx5QycjThBRk_5Eq8eGi6i-mMMUenx_yxL
