@@ -37,19 +37,20 @@ The grayscale values could be interpolated from 0-255 to 0-9 in order to pick a 
 For the pixel characters, here is that I came up with:
 
 ```
-....................
-,,,,,,,,,,,,,,,,,,,,
-++++++++++++++++++++
-^^^^^^^^^^^^^^^^^^^^
-oooooooooooooooooooo
-********************
-&&&&&&&&&&&&&&&&&&&&
-00000000000000000000
-####################
-@@@@@@@@@@@@@@@@@@@@
+0 ....................
+1 ,,,,,,,,,,,,,,,,,,,,
+2 ++++++++++++++++++++
+3 ^^^^^^^^^^^^^^^^^^^^
+4 oooooooooooooooooooo
+5 ********************
+6 &&&&&&&&&&&&&&&&&&&&
+7 00000000000000000000
+8 ####################
+9 @@@@@@@@@@@@@@@@@@@@
 ```
 
 I also thought that this would be a good time for [dithering][dithering].
+I will talk more about that later.
 
 ## 🦔 Programming
 
@@ -147,6 +148,39 @@ fn asciify(mut image: Vec<Vec<f32>>) -> String {
 }
 ```
 
+### Playback
+
+Then the ASCIIfication is complete all the frames are stores in a text file to be played back.
+The player reads it and displays the frames at the correct framerate.
+
+```rust
+fn play(data: String, audio: Vec<u8>, fps: u16) {
+    // Turn Frames per seconds into milliseconds per frame
+    let fpms = 1000.0 / fps as f32;
+
+    // Get the frames
+    let data = data.replace("\r", "   ");
+    let frames = data.split("\n\n");
+
+    // Play the audio
+    let (_stream, stream_handle) = OutputStream::try_default().unwrap();
+    let file = std::io::Cursor::new(audio);
+    let source = Decoder::new(file).unwrap();
+    stream_handle.play_raw(source.convert_samples()).unwrap();
+
+    // Loop through each frame and print it
+    for i in frames {
+        let start = std::time::Instant::now();
+        std::io::stdout().write_all("\x1B[H".as_bytes()).unwrap();
+        std::io::stdout().write_all(i.as_bytes()).unwrap();
+        std::io::stdout().flush().unwrap();
+
+        // Wait enough time has gone by before printing the next frame
+        while (start.elapsed().as_millis() as f32) < fpms {}
+    }
+}
+```
+
 ## 🎨 Showcase
 
 Here is a little [clip][clip] from Doja Cat's Say So in ASCII.
@@ -164,12 +198,20 @@ let e = document.querySelector(".show");
 fetch("/writing/assets/programming/video-to-ascii/sayso.txt")
     .then((d) => d.text())
     .then((d) => {
-        let frames = d.replace(/\r/g, "").split('\n\n\n');
+        let frames = d
+            .replace(/\r/g, "")
+            .split("\n\n\n")
+            .map((f) =>
+                f
+                    .split("\n")
+                    .map((x) => x.substr(11, 78))
+                    .join("\n")
+            );
         let frame = 0;
 
         setInterval(() => {
-          e.innerText = frames[frame % frames.length];
-          frame++;
+            e.innerText = frames[frame % frames.length];
+            frame++;
         }, 67);
     });
 </script>
@@ -180,7 +222,7 @@ This was a really cool project.
 Much bettor than doing homework at least!
 (_i am a master of procrastinating_)
 
-well im off to go find something else to waste time one,,, those antique films aren't gonna watch themselves!
+well im off to go find something else to waste time one,,, those antique instructinal films aren't gonna watch themselves!
 
 [github]: https://github.com/Basicprogrammer10/ascii-video
 [dithering]: https://en.wikipedia.org/wiki/Dither
