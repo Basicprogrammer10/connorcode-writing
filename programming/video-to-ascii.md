@@ -150,8 +150,8 @@ fn asciify(mut image: Vec<Vec<f32>>) -> String {
 
 ### Playback
 
-Then the ASCIIfication is complete all the frames are stores in a text file to be played back.
-The player reads it and displays the frames at the correct framerate.
+Then the ASCIIfication is complete, all the frames are stores in a text file to be played back.
+The player reads it and displays the frames at the correct frame rate.
 
 ```rust
 fn play(data: String, audio: Vec<u8>, fps: u16) {
@@ -222,7 +222,7 @@ This was a really cool project.
 Much bettor than doing homework at least!
 (_i am a master of procrastinating_)
 
-well im off to go find something else to waste time one,,, those antique instructinal films aren't gonna watch themselves!
+well im off to go find something else to waste time one,,, those antique instructional films aren't gonna watch themselves!
 
 [github]: https://github.com/Basicprogrammer10/ascii-video
 [dithering]: https://en.wikipedia.org/wiki/Dither
