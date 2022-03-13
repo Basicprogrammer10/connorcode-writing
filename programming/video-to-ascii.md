@@ -146,13 +146,13 @@ fn asciify(mut image: Vec<Vec<f32>>) -> String {
   </div>
 </pre>
 
-<!-- <script>
+<script>
 let e = document.querySelector(".show");
 
 fetch("/writing/assets/programming/video-to-ascii/sayso.txt")
     .then((d) => d.text())
     .then((d) => {
-        let frames = d.split('\n\n');
+        let frames = d.replace(/\r/g, "").split('\n\n');
         let frame = 0;
 
         setInterval(() => {
@@ -160,7 +160,7 @@ fetch("/writing/assets/programming/video-to-ascii/sayso.txt")
           frame++;
         }, 67);
     });
-</script> -->
+</script>
 
 [github]: https://github.com/Basicprogrammer10/ascii-video
 [dithering]: https://en.wikipedia.org/wiki/Dither
