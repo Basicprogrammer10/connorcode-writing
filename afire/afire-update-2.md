@@ -73,7 +73,7 @@ This is a little debugging feature.
 It's enabled with the `tracing` feature and displays when routes and Middleware are added.
 When using it with my website, it prints the following output.
 
-```
+```text
 🐍 Initializing Server v1.0.0
 😀 Adding Server Header (X-Content-Type-Options: nosniff)
 😀 Adding Server Header (X-Frame-Options: DENY)
