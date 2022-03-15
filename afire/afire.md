@@ -40,7 +40,7 @@ Documentation is great but, sometimes the best way to learn how to use something
 | FOTD Bot            | Fact of the Day Bot              |      [📀](https://github.com/Basicprogrammer10/FOTD-Bot)       |  [🔗](https://fotd.connorcode.com/)  |
 | Photo-Server        | Self hosted Photo Album Server   |    [📀](https://github.com/Basicprogrammer10/Photo-Server)     | [🔗](https://photos.connorcode.com/) |
 | Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |  [🔗](https://tmp.connorcode.com/)   |
-| Handcrafted-HTTP    | An HTTP Escape Room              |     [📀](https://github.com/Basicprogrammer10/cool-beans)      |                  ❌                  |
+| Cool Beans          | A chilled beans store...         |     [📀](https://github.com/Basicprogrammer10/cool-beans)      |                  ❌                  |
 | Journey-to-the-Moon | A choose your own adventure game | [📀](https://github.com/Basicprogrammer10/Journey-to-the-Moon) |                  ❌                  |
 
 <div ad info>
