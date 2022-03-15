@@ -25,9 +25,9 @@
 
 ## Updates
 
-- [[1.0.0] Update 03-14-22](/writing/afire/update-2)
-- [[0.4.0] Update 02-19-22](/writing/afire/update-1)
-- [[0.3.0] Update 01-11-22](/writing/afire/update-0)
+- [`[1.0.0]` Update 03-14-22](/writing/afire/update-2)
+- [`[0.4.0]` Update 02-19-22](/writing/afire/update-1)
+- [`[0.3.0]` Update 01-11-22](/writing/afire/update-0)
 
 ## Things Built with afire
 
