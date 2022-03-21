@@ -1,5 +1,7 @@
 # 🧠 Ideas
 
+mostly ai generated
+
 ## Rust
 
 - [ ] Rust for beginners – a tutorial for those who have never programmed before, explaining the basics of Rust in easy steps
@@ -8,7 +10,7 @@
 - [ ] Parsing and querying JSON data with Rust – a tutorial for how to parse and query JSON data with Rust
 - [ ] Building a basic chat server with Rust – a tutorial for how to build a basic chat server with Rust
 - [ ] Working with logs and event data with Rust – a tutorial for how to work with logs and event data with Rust
-- [-] Building a simple API with Rust – a tutorial for how to build a simple API with Rust
+- [x] Building a simple API with Rust – a tutorial for how to build a simple API with Rust
 - [ ] Developing GUI applications with Rust – a tutorial for how to develop GUI applications with Rust
 
 ## Other
