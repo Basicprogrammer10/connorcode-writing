@@ -8,6 +8,13 @@
 
 ---
 
+<style>
+  .vid {
+    width: 100%;
+    border-radius: 12px;
+  }
+</style>
+
 # 🐳 Minecraft Discord Interface
 
 In this article, I will explain how I made and how to use my new Minecraft discord interface.
@@ -55,7 +62,7 @@ _what do you mean thats not a real thing??_
 So the first thing I did was get the server communication working.
 This process starts with reading the config file into the Config struct.
 This config stored the path for the java executable, the folder the Minecraft server was in, the bot token, etc.
-It then starts the process and pipes its stdin and stdout, this is what is uses to interface with the serve.
+It then starts the process and pipes its stdin and stdout, this is what is uses to interface with the server.
 
 This approach has some benefits, but of course it also has many drawbacks.
 Some pros include working regardless of server version, and working with vanilla or heavily modded servers.
@@ -182,6 +189,7 @@ Ya know I will put that in its own section, this one is getting _very_ long.
 This is not too crazy but so far this system only goes from Minecraft to Discord, we need to handle commands to interface the other way too!
 This part of the system listens for all messages, and if it starts with the right prefix it tries to find and run the command.
 If no commands with specified name are found it used the Dice coefficient to suggest similar spelled real commands.
+The amount of languages I've implemented the dice coefficient in is a little crazy at this point, It's like my hello world!
 
 Here is the trait defecation for Command.
 The name is what the command matcher uses to see if this command should be used.
@@ -255,13 +263,16 @@ If everything worked running `.\target\release\minecraft_discord.exe` (removing 
 
 ## 🎬 Showcase
 
-<video src="../assets/programming/minecraft-discord-interface/DiscordInterface.mp4" controls></video>
+Here is a little video showing the process of the server starting, stopping and some other events being triggered.
+This took way too long to make and looks really bad lol.
+
+<video class="vid" src="../assets/programming/minecraft-discord-interface/DiscordInterface.mp4" controls></video>
 
 ## 🐈 Conclusion
 
 So this whole project came together like really fast lol.
 I think it's a nice improvement to my old system and as always I learned something new.
-What more could you ask for in a project? (*alot,,, but just ignore that*)
+What more could you ask for in a project? (_alot,,, but just ignore that_)
 
 [source-code]: https://github.com/Basicprogrammer10/minecraft-discord-interface
 [mcs-source]: https://github.com/Basicprogrammer10/Minecraft-Server-AutoRestart
