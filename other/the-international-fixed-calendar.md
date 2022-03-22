@@ -59,7 +59,7 @@ So that was a nice short little arcile!
 Hopefully you learned somthing new.
 If you want to learn more about the International Fixed Calendar system check it out on wikipedia [here][ifc-wiki].
 
-Happy Tuesday, March 23rd, 52.
+Happy Tuesday, March 24th, 52.
 
 <script>
   const months = ["January", "February", "March", "April", "May", "June", "Sol", "July", "August", "September", "October", "November", "December"];
@@ -71,7 +71,7 @@ Happy Tuesday, March 23rd, 52.
   let ifcMonthIndex = Math.floor(day / 28);
   let ifcDay = day - ifcMonthIndex * 28;
 
-  document.querySelector("[date]").innerHTML = `<pre><code>${months[ifcMonthIndex]} ${ifcDay}</code></pre>`;
+  document.querySelector("[date]").innerHTML = `<code>${months[ifcMonthIndex]} ${ifcDay}</code>`;
 </script>
 
 [ifc-wiki]: https://en.wikipedia.org/wiki/International_Fixed_Calendar
