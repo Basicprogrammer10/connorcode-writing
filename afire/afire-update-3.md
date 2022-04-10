@@ -61,7 +61,7 @@ let mut server = Server::new(host, port);
 PathTraversalFix.attach(&mut server);
 ```
 
-## ✒ New Features
+## 💎 New Features
 
 ### Socket handler
 
@@ -88,7 +88,7 @@ This example will not match on just `/files`
 afire already has some basic examples showing how to start a server, make routes, etc. but now Im starting to add some 'applacation examples'.
 This is the first one, a simple in memory Pastebin API.
 
-## 🥧 Conclusion
+## 🐱 Conclusion
 
 definitely an interesting update,,,
 Make sure to update all of your applications running on afire and make sure to keep request logs so you can see if and how you spicily were affected by this.
