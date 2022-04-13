@@ -40,7 +40,7 @@ struct PathTraversalFix;
 
 impl Middleware for PathTraversalFix {
     fn pre(&self, req: Request) -> MiddleRequest {
-        if req.path.contains("/..") {
+        if req.path.replace("\\", "/").contains("/..") {
             return MiddleRequest::Send(
                 Response::new()
                     .status(400)
