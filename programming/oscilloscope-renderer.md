@@ -13,6 +13,10 @@ th {
   font-weight: normal;
   color: #fffc;
 }
+
+tr {
+	background: #222531 !important;
+}
 </style>
 
 # 📈 Oscilloscope Renderer
@@ -113,7 +117,7 @@ Here is a flow chart showing the processes run on each cycle:
 
 ![Game Loop](../assets/programming/oscilloscope-renderer/game-loop.svg)
 
-## 🕹 Usage
+## 🎮 Usage
 
 To pick what place you want to go on the board you use the following keys.
 The terminal will say who's turn it is and will block spots that are already taken.
