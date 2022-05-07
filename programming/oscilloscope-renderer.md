@@ -59,7 +59,7 @@ Then you just gotta take that value and convert it to an analog signal on both c
 ## 🐌 Renderer Implementation
 
 This part took _wayyyyyyyyyyy_ too long.
-A lot of issues cake up while working on it.
+A lot of issues came up while working on it.
 
 The first attempt at implementing the render didn't really work as it was based on the slope of the line.
 This became an issue on fully horizontal and vertical lines, who knew negative infinity was a thing!?
@@ -132,7 +132,7 @@ Use the space key to reset the game once it ends.
 
 ![Photograph](../assets/programming/oscilloscope-renderer/photo.jpg)
 
-Yeah, it looks abut stringy, it was for a hackathon and my oscilloscope was not cooperating.
+yeah, it looks * *abit* * stringy, it was for a hackathon and my oscilloscope was not cooperating.
 
 ## 🧨 Conclusion
 
