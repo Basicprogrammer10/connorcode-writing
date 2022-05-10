@@ -8,6 +8,12 @@
 
 ---
 
+<style>
+.no-round {
+  border-radius: 4px !important;
+}
+</style>
+
 # 🥌 Minecraft Random Icon
 
 so its been what like 3 weeks.
@@ -122,10 +128,17 @@ public class Motd {
 
 ## 🧲 Showcase
 
-IMG 1
+<img class="no-round" src="../assets/programming/minecraft-random-icon/showcase_0.png"></img>
 
-IMG 2
+<img class="no-round" src="../assets/programming/minecraft-random-icon/showcase_1.png"></img>
 
 ## 💎 Conclusion
 
-in conclusion `java == bad`.
+in conclusion `java == bad`,,, or something
+
+This was such a small project that I don't have it on git or anything.
+The images and text are built-in so it's not configurable at all.
+If you want to use this just make your own mod and ~~steal~~ barrow some code from here.
+could also just message me [here](https://connorcode.com/contact/).
+
+thats all
