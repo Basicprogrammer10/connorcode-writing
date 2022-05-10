@@ -1,6 +1,6 @@
 @Title = Minecraft Random Icon
 @Author = Connor Slade
-@Date = 05-6-22
+@Date = 05-06-22
 @Description = Randomizing the Minecraft server Icon and MOTD
 @Tags = Minecraft, Fabric, Modding
 @Path = programming/minecraft-random-icon
