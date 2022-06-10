@@ -291,8 +291,77 @@ So in the text directory is all the markdown files and a script to build them in
 ### The UI
 
 For the UI I wanted to finally try out [Tailwind CSS](https://tailwindcss.com/).
+I'm not a designer so I just kinda played around with it, and really I'm not even sure how to explain this, so I'll just show the finished product:
 
-### Misc
+> Home page
+>
+> ![Home page](../assets/programming/amplify/home_page.png)
+
+> Problem page
+>
+> ![Problem page](../assets/programming/amplify/problem_page.png)
+
+> Events page
+>
+> ![Events page](../assets/programming/amplify/events_page.png)
+
+> User Page
+>
+> ![User page](../assets/programming/amplify/user_page.png)
+
+### Database
+
+For this project I used [SQLite](https://www.sqlite.org/index.html) for the database because this is a relatively simple application that I assume will be under low load.
+Also, because I don't know any other database.
+amplify uses 4 table (sessions, users, problems, solutions) and I will go into some detail about them in this section.
+
+<details>
+<summary>Table SQL</summary>
+
+```sql
+-- Sessions Table
+CREATE TABLE IF NOT EXISTS sessions (
+   created INTEGER NOT NULL,
+   user_id TEXT NOT NULL,
+   session_id TEXT NOT NULL
+)
+
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+   id TEXT NOT NULL,
+   name TEXT NOT NULL,
+   login TEXT NOT NULL,
+   avatar_url TEXT NOT NULL,
+   token TEXT,
+   created INTEGER NOT NULL,
+   new INTEGER NOT NULL,
+   UNIQUE(id)
+)
+
+-- Problems table
+CREATE TABLE IF NOT EXISTS problems (
+    user_id TEXT NOT NULL,
+    problem_id INTEGER NOT NULL,
+    start_time INTEGER NOT NULL,
+    end_time INTEGER,
+    tries INTEGER NOT NULL,
+    state INTEGER NOT NULL,
+    UNIQUE(user_id, problem_id)
+)
+
+-- Solutions table
+CREATE TABLE IF NOT EXISTS solutions (
+    user_id TEXT NOT NULL,
+    problem_id INTEGER NOT NULL,
+    state INTEGER NOT NULL,
+    code TEXT NOT NULL,
+    language TEXT NOT NULL,
+    created INTEGER NOT NULL,
+    UNIQUE(user_id, problem_id, language)
+)
+```
+
+</details>
 
 ## 🐍 Hosting
 
