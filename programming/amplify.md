@@ -365,6 +365,8 @@ CREATE TABLE IF NOT EXISTS solutions (
 
 ## 🐍 Hosting
 
-## 🌰 Challenges
+Even though the code is being run in docker containers, there is always the possibility of interfering with stuff.
+Because of this I am hosting this on a separate VM on [vultr](https://www.vultr.com/?ref=8859764).
+The web server is behind a Nginx reverse proxy that adds TLS support.
 
 ## 📝 Conclusion
