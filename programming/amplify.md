@@ -368,8 +368,8 @@ CREATE TABLE IF NOT EXISTS solutions (
 Even though amplify runs all the code in Docker containers, it's still possible that someone could find a way to cause problems.
 Because of this I'm hosting it on its own VPS through [Vultr](https://www.vultr.com/?ref=8859764).
 It's running on a High performance VPS so compile times are as fast as possible.
-
-At some point in the future if the system proves to be somewhat secure, I may move it over to my main server to save costs :p
+The web server is behind a Nginx reverse proxy that adds TLS support.
+Nothing crazy.
 
 ## 📝 Conclusion
 
