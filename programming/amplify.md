@@ -148,7 +148,7 @@ This code segment is from [`amplify/api/solve.rs`](https://github.com/Basicprogr
 This first uses the user's seed to generate the test cases.
 It then writes the user's code to a temporary file.
 Then it starts a docker container with a lot of options to limit the permissions of the container, to mount the temporary file as the source code file and to send over the URL encoded run arguments.
-After all that the programs outupt is compared with the expected output and a response is sent to the client.
+After all that the program's output is compared with the expected output and a response is sent to the client.
 
 ```rust
 // Gen test cases
@@ -198,8 +198,8 @@ let time = time.elapsed().as_millis() as u64;
 ### Problems
 
 This turned out to the hardest part of the project.
-Youve already seen the problem ideas so lest start with how a problem is defined.
-Its done with a trait!
+You've already seen the problem ideas so lest start with how a problem is defined.
+It's done with a trait!
 
 ```rust
 pub trait Problem {
@@ -224,7 +224,7 @@ pub trait Problem {
 ```
 
 The simple math problem is one of the shortest so I will use it for this example.
-Here is are some short explanations of the funtions of the functions in this trait.
+Here is are some short explanations of the functions of the functions in this trait.
 
 |  Name | Function                                                |
 | ----: | :------------------------------------------------------ |
@@ -313,7 +313,7 @@ I'm not a designer so I just kinda played around with it, and really I'm not eve
 
 For this project I used [SQLite](https://www.sqlite.org/index.html) for the database because this is a relatively simple application that I assume will be under low load.
 Also, because I don't know any other database.
-amplify uses 4 table (sessions, users, problems, solutions) and I will go into some detail about them in this section.
+amplify uses 4 table (sessions, users, problems, solutions).
 
 <details>
 <summary>Table SQL</summary>
@@ -365,6 +365,16 @@ CREATE TABLE IF NOT EXISTS solutions (
 
 ## 🐍 Hosting
 
-## 🌰 Challenges
+Even though amplify runs all the code in Docker containers, it's still possible that someone could find a way to cause problems.
+Because of this I'm hosting it on its own VPS through [Vultr](https://www.vultr.com/?ref=8859764).
+It's running on a High performance VPS so compile times are as fast as possible.
+
+At some point in the future if the system proves to be somewhat secure, I may move it over to my main server to save costs :p
 
 ## 📝 Conclusion
+
+All in all this was very rushed.
+If I do something like this next year I may build on this so there is less work to get it working, leaving more time for making the problems bettor.
+Feel free to try it out at [amplify.connorcode.com](https://amplify.connorcode.com).
+
+\- darren
