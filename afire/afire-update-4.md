@@ -21,29 +21,6 @@ As always, a full update changelog is on GitHub [here](https://github.com/Basicp
 
 </div>
 
-```
-- [X] Fix Path Traversal on windows
-- [X] Use AsRef<str> more instead of Display
-- [X] Add a serve path to Serve Static
-- [X] Serve index from serve path
-- [X] Remove the `ignore_trailing_path_slash` feature
-- [X] Redo Internal Error handling system
-- [X] Middleware use references to Requests and Responses and stuff
-- [X] Improve built-in serve_static middleware
-- [X] Re organize extension stuff
-- [X] RateLimit use RwLock
-- [X] Add Request ID Middleware
-- [X] Server Wide State
-- [X] Add Cache Middleware
-- [X] Remove insane build script
-- [ ] When building http response only add Content-Length and default headers if they are not already present
-- [ ] Add server state syste
-- [ ] Improved Request Parsing
-- [ ] Remove the requests raw_data feild
-- [ ] Remove Request::body_string in favor of String::from_utf8()
-- [ ] Fix HTTP parseing and genatation issues
-```
-
 ## 📰 New Features
 
 ### Server wide state
@@ -147,9 +124,9 @@ thats all,,, 🤷‍♂️ hey it could be useful.
 
 ### Cache Middleware
 
-Alother new extension was added to cache responses.
+Another new extension was added to cache responses.
 It stores the route paths with the response and uses this to allow for future requests to the same path and method within a timeout to be cached.
-You can use the extention like this:
+You can use the extension like this:
 
 ```rust
 Cache::new()
@@ -207,11 +184,25 @@ Now a lot more functions are taking in `AsRef<str>` instead of `Display` because
 
 The Rate limit extension got a performance enhancement when running with thread pool.
 
+Request parsing had gotten a performance boost and should now use less memory.
+
+When afire is building the HTTP response it will not add the Content-Length or any default headers that are already present.
+
 ## 🗑 Removed Things
 
 The `ignore_trailing_path_slash` feature was removed in favor or it always being active.
 
-Removed the unhinged build script that I used for genarating the Readme from the lib.rs doc comments.
+Removed the unhinged build script that I used for generating the README from the lib.rs doc comments.
 Turns out that you can import files as doc comments: `#![doc = include_str!("../README.md")]`.
 
+Removed the Request.raw_data field because it was about doubling the size of the Request instance.
+
+Removed the Request::body_string function in favor of String::from_utf8() because it gives more control if you want to use the from_utf8_lossy,
+
 ## 😺 Conclusion
+
+welp,,, thats all folks.
+
+This update had a lot of good changes, hopefully I release version 1.3.0 next month.
+Hopefully I get to adding socket keep alive support which would make it about as fast as actix, which would be really cool.
+I'm also looking into data streaming for requests and responses so it doesn't need to load lots of data into memory to send it through the socket.
