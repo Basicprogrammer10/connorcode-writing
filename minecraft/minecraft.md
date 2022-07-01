@@ -16,4 +16,5 @@
 
 ## Farms
 
-- [Powder Snow Farm](/writing/minecraft/powder-snow-farm)
+- [Powder Snow Farm](powder-snow-farm)
+- [Jukebox Plugin](jukebox-plugin)

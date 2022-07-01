@@ -11,7 +11,7 @@
 
 # 🔥 afire
 
-> **A blazeing fast web framework for Rust**
+> **A blazing fast web framework for Rust**
 
 ## Links
 
