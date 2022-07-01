@@ -18,12 +18,20 @@ It then sends packets to all the players to have their clients play note block s
 
 ## The UI
 
+So I need an easy way to select songs, toggle settings and view the song queue, and I think an Inventory UI is the best option.
+
+This is the final design that I used, the first two rows are random music discs renamed with the song name (they also have the artist and song length in the lore).
+There is a separator layer of red glass pains.
+Then a user stats item showing hoe many songs you have player, a mute button, books for going to the previous and next page, an enderpearl for viewing the queue and a heart of the sea to see system info.
+
+![Inventory UI Screenshot](../assets/minecraft/jukebox-plugin/ui.png)
+
 ## Loading the songs
 
 There is a nice document explaining the .nbs file format [here](https://opennbs.org/nbs).
-It is made up of 4 sections, but only 2 really matter here: Header and Noteblocks.
+But basically it's made up of 4 sections, but only 2 really matter here: Header and Noteblocks.
 The header had stuff like the song name, song author, tempo, length, etc.
-And the noteblock section held each noteblock and info about it (insterment, key).
+And the noteblock section held each noteblock and info about it (interment, key).
 
 Now one may think that reading such a simple file format would be easy,,, but those people don't know java.
 This turned out to be the most difficult part of this whole project, and it's all because of the `BufferedInputStream`.
@@ -91,6 +99,61 @@ while (true) {
 
 ### Converting songs
 
+This parser only supports the new nbs format so `>3`.
+Because of this I made a little python script to convert older nbs files to the newest format.
+It uses the `pynbs` library and tries to get a song and author name from the file name: `AUTHOR-NAME.nbs`.
+
+```python
+import pynbs
+import os
+
+for filename in os.listdir("."):
+    if filename.endswith(".nbs"):
+        file = pynbs.read(filename)
+        parts = filename.split(".")[0].split(" - ")
+        if len(parts) != 2:
+            print(filename + " is not in the correct format")
+            tmp = parts[0]
+            parts = ["Unknown", tmp]
+
+        file.header.song_author = parts[0].strip()
+        file.header.song_name = parts[1].strip()
+        file.save('./upgraded/' + filename.strip())
+        print("[UPGRADED] " + parts[1].strip() + " - " +
+              parts[0].strip())
+```
+
 ## Playing music
 
+So now that we have all the songs loaded in memory, how do we play one?
+This is kinda jank and very much unsafe but here we go.
+
+When a song is played it loops through all of its notes and because of the way it was loaded, it just waits `lastTick - thisTick`.
+Because this is in ticks and Thread.sleep uses milliseconds it can be converted like this: `(thisTick - lastTick) / (tempo / 1000)`
+Here is the code:
+
+```java
+Bukkit.getScheduler()
+    .runTaskAsynchronously(Cornroot.getPlugin(Cornroot.class), () -> {
+        int lastTick = 0;
+        for (Song.Note i : this.notes) {
+            try {
+                if (i.tick - lastTick != 0)
+                    Thread.sleep((long) ((float) (i.tick - lastTick) / (this.tempo / 1000)));
+                lastTick = i.tick;
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            for (Player p : getServer().getOnlinePlayers())
+                p.playSound(p.getEyeLocation(), i.getSound(), Config.baseVolume, i.getPitch());
+        }
+    });
+```
+
+Once a song finishes, if there is another one in the queue it waits a bit then starts to play that one.
+
 ## Conclusion
+
+It might not be the most usefull thing, but it is kinda cool.
+You could use it to rick roll your Minecraft server or just sync music between your friends.
+Enjoy this example video:
