@@ -16,33 +16,35 @@ Well I certainly haven't but I'm going to do it anyway.
 I made a bukkit plugin to read [Note block Studio](https://opennbs.org/) files and use a nice in game UI to let players pick songs to be played.
 It then sends packets to all the players to have their clients play note block sounds.
 
-## The UI
+## 👓️ The UI
 
 So I need an easy way to select songs, toggle settings and view the song queue, and I think an Inventory UI is the best option.
 
 This is the final design that I used, the first two rows are random music discs renamed with the song name (they also have the artist and song length in the lore).
 There is a separator layer of red glass pains.
-Then a user stats item showing hoe many songs you have player, a mute button, books for going to the previous and next page, an enderpearl for viewing the queue and a heart of the sea to see system info.
+Then a user stats item showing how many songs you have player, a mute button, books for going to the previous and next page, an enderpearl for viewing the queue and a heart of the sea to see system info.
 
 ![Inventory UI Screenshot](../assets/minecraft/jukebox-plugin/ui.png)
 
-## Loading the songs
+## 📼 Loading the songs
 
 There is a nice document explaining the .nbs file format [here](https://opennbs.org/nbs).
-But basically it's made up of 4 sections, but only 2 really matter here: Header and Noteblocks.
+Basically it's made up of 4 sections, but only 2 really matter here: Header and Noteblocks.
 The header had stuff like the song name, song author, tempo, length, etc.
-And the noteblock section held each noteblock and info about it (interment, key).
+And the noteblock section holds each noteblock and info about it (instrument, key).
 
 Now one may think that reading such a simple file format would be easy,,, but those people don't know java.
 This turned out to be the most difficult part of this whole project, and it's all because of the `BufferedInputStream`.
 
 I thought this class would make it easy to read the 2-byte shorts and the 4-byte ints from the file data easily, but it just wouldn't work.
+It would read the number but then wouldn't increment the byte index or something.
 I still have no idea why, it just wouldn't work.
 I spent hours working with it and eventually decided to just do it my self.
 
 I first got a byte array from each song file with `Files.readAllBytes`, then went on to parsing it.
 I made functions to read the different data types like shorts, ints and strings.
 But because java, I couldn't pass a mutable reference to the byte index, so I had to make a new class: `MutInt`.
+It's just a wrapper around an int that you can call `.increment(int)` on.
 
 So here is how it parses the file header:
 
@@ -97,7 +99,7 @@ while (true) {
 }
 ```
 
-### Converting songs
+### 🌀 Converting songs
 
 This parser only supports the new nbs format so `>3`.
 Because of this I made a little python script to convert older nbs files to the newest format.
@@ -123,7 +125,7 @@ for filename in os.listdir("."):
               parts[0].strip())
 ```
 
-## Playing music
+## 🎶 Playing music
 
 So now that we have all the songs loaded in memory, how do we play one?
 This is kinda jank and very much unsafe but here we go.
@@ -152,7 +154,7 @@ Bukkit.getScheduler()
 
 Once a song finishes, if there is another one in the queue it waits a bit then starts to play that one.
 
-## Conclusion
+## 😸 Conclusion
 
 It might not be the most usefull thing, but it is kinda cool.
 You could use it to rick roll your Minecraft server or just sync music between your friends.
