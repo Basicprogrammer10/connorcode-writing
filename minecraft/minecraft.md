@@ -16,5 +16,6 @@
 
 ## Farms
 
+- [Universal Tick](universal-tick)
 - [Powder Snow Farm](powder-snow-farm)
 - [Jukebox Plugin](jukebox-plugin)
