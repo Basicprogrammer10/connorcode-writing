@@ -15,7 +15,7 @@ _gotta go slow_
 <div ad info>
 Info
 
-Fabric mod source code on github [here](https://github.com/Basicprogrammer10/UniversalTick)
+Fabric mod source code on GitHub [here](https://github.com/Basicprogrammer10/UniversalTick)
 
 </div>
 
@@ -52,19 +52,19 @@ Now onto the code!
 
 ### Commands
 
-On server startup we register the tick command with a blob of code setting permision requirements and argument sugusters.
-Below is a code snipit that defines the tick set command.
-For the execution on the command ([code here](https://github.com/Basicprogrammer10/UniversalTick/blob/84e77fb19b3752b9663e2082a7e3b79e0d5c032b/src/main/java/com/connorcode/universaltick/commands/TickSet.java)) we parse the tps / percentage and weither we are changeing the tick rate of the server, client or bolth.
+On server startup we register the tick command with a blob of code setting permission requirements and argument suggester.
+Below is a code snippet that defines the tick set command.
+For the execution of the command ([code here](https://github.com/Basicprogrammer10/UniversalTick/blob/84e77fb19b3752b9663e2082a7e3b79e0d5c032b/src/main/java/com/connorcode/universaltick/commands/TickSet.java)) we parse the TPS / percentage and whether we are changing the tick rate of the server, client or both.
 
 <div ad note>
 Note
 
 **TPS**: Ticks per second (`MSPT / 1000`)
-**MSPT**: Miliseconds per tick (`1000 / TPS`)
+**MSPT**: Milliseconds per tick (`1000 / TPS`)
 
 </div>
 
-If we are changing the tick rate of the clients, we brodcast a `universialtick.tickspeed` packet with the target MSPT.
+If we are changing the tick rate of the clients, we broadcast a `universialtick.tickspeed` packet with the target MSPT.
 
 ```java
 /* SNIP */
@@ -79,15 +79,15 @@ dispatcher.register(
                             new String[]{"server", "clients", "universal"}, b))
                     .executes(tickSetCommand::execute)))
             .executes(ctx -> easyErr(ctx, "No tick rate provided")))
-/* SNIP */                 
+/* SNIP */
 ```
 
-The other commands are simaler, they just parse some arguments and send some packets.
+The other commands are slimier, they just parse some arguments and send some packets.
 
 ### Server
 
-So now onto modifyins the TPS of the server.
-This really couldent be easyer, we just need a simple Mixin on the `MinecraftServer` that changes the MSPT value from 50 to whatever the user has set.
+So now onto modifying the TPS of the server.
+This really couldnt be easier, we just need a simple Mixin on the `MinecraftServer` that changes the MSPT value from 50 to whatever the user has set.
 
 ```java
 @Mixin(MinecraftServer.class)
@@ -99,17 +99,18 @@ public class TickTime {
 
 ### Client
 
-On the client things get abit,,, diffacult.
-Forchanally setting the baisc tick speed is just as easy with the server:
+On the client things get abit,,, difficult.
+fortunately setting the basic tick speed is just as easy with the server:
 
 ```java
 ((ClientRenderTickCounter) ((ClientTickEvent) MinecraftClient.getInstance()).renderTickCounter()).tickTime(mspt);
 ```
 
 #### Sound
-In order to slow down the sounds in game we can just ajust the pitch with a Mixin!
-This code ajusts the pitch by the percent speed the game is running at.
-So if it were running at 10 TPS (100 MSPT) it would multaply the sound pitch by 50% (50 / 100).
+
+In order to slow down the sounds in game we can just adjust the pitch with a Mixin!
+This code adjusts the pitch by the percent speed the game is running at.
+So if it were running at 10 TPS (100 MSPT) it would multiply the sound pitch by 50% (50 / 100).
 
 ```java
 @Mixin(SoundSystem.class)
@@ -124,10 +125,10 @@ public class ClientSoundSystem {
 
 #### Enchant
 
-Now on to the speed of the Item glint anamation.
+Now on to the speed of the Item glint animation.
 This one is easy to set but It took a long time for me to figure out how to do it.
 
-Just like with the sould it takes the orginal value and changes it 
+Just like with the sound it takes the original value and changes it
 
 ```java
 @Mixin(RenderPhase.class)
@@ -139,6 +140,37 @@ public class ClientRenderItem {
 
 #### Input handling
 
+Now the part that is actually hard.
+Minecraft only checks inputs every tick, which is fine if the game is running at 20TPS.
+But if it's not then you get input lag; at 0.1TPS you can get up to 2 seconds of delay before some inputs are processed.
+
+Because of this I made it update inputs every frame, which removed the input lag but added some other issues.
+When you would try to break a block the client would break it too fast.
+So in the end I fixed it by making it so when the client updates a block's break percent it sets a cooldown of the client's target MSPT before it will handle an input again.
+
+Here is the code that handles the events if the cooldown has expired:
+
+```java
+@Mixin(MinecraftClient.class)
+public abstract class ClientMixin {
+
+    /* SNIP */
+
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Mouse;updateMouse()V"))
+    private void checkInputs(boolean tick, CallbackInfo ci) {
+        if (currentScreen != null || Util.getEpochTimeMs() - UniversalTickClient.lastBlockHitTimestamp < UniversalTickClient.clientTickSpeed)
+            return;
+        this.handleInputEvents();
+        this.gameRenderer.updateTargetedEntity(1.0F);
+    }
+
+    /* SNIP */
+}
+```
+
 ## See it in action
 
 ## Conclusion
+
+Well I spent <img src="https://wakatime.com/badge/user/172d7c74-6872-40e7-9e7a-8365ac707ca1/project/95c60917-2a1e-49db-9654-3a2ee0ce99a9.svg" style="transform: translateY(25%)"> on this project so,,, thats um _cool_.
+As always I learned a lot about Minecraft, Fabric Modding and Mixins.
