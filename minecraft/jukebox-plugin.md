@@ -16,6 +16,17 @@ Well I certainly haven't but I'm going to do it anyway.
 I made a bukkit plugin to read [Note block Studio](https://opennbs.org/) files and use a nice in game UI to let players pick songs to be played.
 It then sends packets to all the players to have their clients play note block sounds.
 
+<div ad info>
+Info
+
+Source code can be found [here](https://github.com/Basicprogrammer10/cornroot) on Github.
+If you want to set it up and use it there are builds for MC `1.16.5` under releases and instructions in the README.
+
+This was made as a plugin commission _(feel free to [dm me](/contacts) :P)_ so to play music you need credits, you can gain these with the `/globalkeyadd <UUID> [count]` command.
+(Op bypasses the need for keys)
+
+</div>
+
 ## 👓️ The UI
 
 So I need an easy way to select songs, toggle settings and view the song queue, and I think an Inventory UI is the best option.
@@ -160,4 +171,12 @@ It might not be the most usefull thing, but it is kinda cool.
 You could use it to rick roll your Minecraft server or just sync music between your friends.
 Enjoy this example video:
 
-<video src="../assets/minecraft/jukebox-plugin/video.mp4"></video>
+<video src="../assets/minecraft/jukebox-plugin/video.mp4" controls></video>
+
+<div ad note>
+Note
+
+This sounds weird because of the limitations with converting midi into note block sequences.
+The delay from the serve to the client doesn't help.
+
+</div>
