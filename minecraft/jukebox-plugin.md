@@ -159,3 +159,5 @@ Once a song finishes, if there is another one in the queue it waits a bit then s
 It might not be the most usefull thing, but it is kinda cool.
 You could use it to rick roll your Minecraft server or just sync music between your friends.
 Enjoy this example video:
+
+<video src="../assets/minecraft/jukebox-plugin/video.mp4"></video>
