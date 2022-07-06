@@ -22,7 +22,7 @@ Info
 Source code can be found [here](https://github.com/Basicprogrammer10/cornroot) on Github.
 If you want to set it up and use it there are builds for MC `1.16.5` under releases and instructions in the README.
 
-This was made as a plugin commission _(feel free to [dm me](/contacts) :P)_ so to play music you need credits, you can gain these with the `/globalkeyadd <UUID> [count]` command.
+This was made as a plugin commission _(feel free to [dm me](/contact) :P)_ so to play music you need credits, you can gain these with the `/globalkeyadd <UUID> [count]` command.
 (Op bypasses the need for keys)
 
 </div>
@@ -177,6 +177,6 @@ Enjoy this example video:
 Note
 
 This sounds weird because of the limitations with converting midi into note block sequences.
-The delay from the serve to the client doesn't help.
+The delay from the server to the client also doesn't help.
 
 </div>

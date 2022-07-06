@@ -10,7 +10,7 @@
 
 # 🧵 Universal Tick
 
-_gotta go slow_
+_gotta go sllooowwww_
 
 <div ad info>
 Info
@@ -19,7 +19,7 @@ Fabric mod source code on GitHub [here](https://github.com/Basicprogrammer10/Uni
 
 </div>
 
-## The idea
+## 🧊 The idea
 
 A Minecraft fabric mod that lets you change the tick speed of servers and clients.
 
@@ -46,7 +46,7 @@ And here are the settings that can be set with the config command:
 | clientMouse | true          | Weather the client tick rate will affect mouse sensitivity        |
 | clientSound | true          | Weather the client tick rate will affect the sound playback speed |
 
-## How it works
+## 🚧 How it works
 
 Now onto the code!
 
@@ -168,9 +168,19 @@ public abstract class ClientMixin {
 }
 ```
 
-## See it in action
+## 🎭 See it in action
 
-## Conclusion
+Here is a video of me just playing around abit :p.
+My poor git repo is not going to like holding another long video lol.
 
-Well I spent <img src="https://wakatime.com/badge/user/172d7c74-6872-40e7-9e7a-8365ac707ca1/project/95c60917-2a1e-49db-9654-3a2ee0ce99a9.svg" style="transform: translateY(25%)"> on this project so,,, thats um _cool_.
+<video src="../assets/minecraft/universal-tick/video.mp4" controls></video>
+
+## 🙀 Conclusion
+
+Well I spent <img src="https://wakatime.com/badge/user/172d7c74-6872-40e7-9e7a-8365ac707ca1/project/95c60917-2a1e-49db-9654-3a2ee0ce99a9.svg" style="transform: translateY(-10%);border-radius: 0"> on this project so,,, thats um _cool_.
 As always I learned a lot about Minecraft, Fabric Modding and Mixins.
+Thats all.
+
+> Have a nice day
+>
+> \- Darren
