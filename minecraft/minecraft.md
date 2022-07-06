@@ -16,6 +16,6 @@
 
 ## Farms
 
-- [Universal Tick](universal-tick)
-- [Powder Snow Farm](powder-snow-farm)
-- [Jukebox Plugin](jukebox-plugin)
+- [Universal Tick](/writing/minecraft/universal-tick)
+- [Powder Snow Farm](/writing/minecraft/powder-snow-farm)
+- [Jukebox Plugin](/writing/minecraft/jukebox-plugin)
