@@ -20,18 +20,18 @@ In this project I wanted to make my own system to de/encode data into sound wave
 On the [Commodore Dataset](https://en.wikipedia.org/wiki/Commodore_Datasette) the voltage crossing from positive to negative is measured and the time between two of these crossings represents a 1 or 0 bit.
 A longer time may represent a 1 while a shorter time may represent a 0.
 This is the encoding method I decided to use.
-And here is a photo from Wikipedia showing the process:
+Here is a photo from Wikipedia showing the process:
 
 ![Diagram of data encoding](../assets/programming/encoding-data-with-sound/waveform.png)
 
 ## Implementation
 
-To make the sound files I used the rust [`hound`](https://github.com/ruuda/hound) crate for reading / writing wav files.
+To make the sound files I used the [`hound`](https://github.com/ruuda/hound) crate for reading / writing wav files.
 I also used the [`bitvec`](https://github.com/bitvecto-rs/bitvec) library to cleanly access the bits inside the bytes.
 
 ### Encoding
 
-For making the waveform I made an iterator that could be given a some bytes and when next is called will output the next value needed to make the waveform.
+For making the waveform I made an iterator that takes in some bytes and when next is called will output the next value needed to make the waveform.
 
 In the `new` function it uses the bitvec `view_bits` method and makes a bit vec with all the bits of the supplied byte array.
 It also inits the index and wave fields.
@@ -62,6 +62,7 @@ Now in the iterator implementation every time next is called, it first checks if
 If there is still data it gets the value of the current bit and adds to the wave percent (3% if 1 6% if 0).
 It then checks if the wave percent is grater than or equal to 200%, in which case the bit index is incremented, and the wave percent is reset.
 Finally, it calculates the audio value with `-(PI * self.wave).sin()` and if the bit is 0 divides it by 2.
+Which makes a sine wave that is shorter and thinner when on a 0 bit.
 
 ```rust
 impl Iterator for BinEncoder {
@@ -171,7 +172,7 @@ For an example I converted this nice picture of a mango.
 <div style="display:flex;align-items:center;">
   <img src="../assets/programming/encoding-data-with-sound/mango.jpg" width="30%" style="margin-right:10px;" />
 
-  <audio controls>
+  <audio controls style="border-radius:12px;">
     <source src="../assets/programming/encoding-data-with-sound/mango.mp3" type="audio/mp3" />
   </audio>
 </div>
