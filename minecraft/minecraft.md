@@ -16,6 +16,7 @@
 
 ## Mods
 
+- [A new Utility Mod](/writing/minecraft/a-new-utility-mod)
 - [Universal Tick](/writing/minecraft/universal-tick)
 - [Jukebox Plugin](/writing/minecraft/jukebox-plugin)
 
