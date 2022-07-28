@@ -14,8 +14,11 @@
 > Minecraft is a 3D sandbox game developed by Mojang Studios where players interact with a fully modifiable three-dimensional environment made of blocks and entities.
 > Its diverse gameplay lets players choose the way they play, allowing for countless possibilities.
 
-## Farms
+## Mods
 
 - [Universal Tick](/writing/minecraft/universal-tick)
-- [Powder Snow Farm](/writing/minecraft/powder-snow-farm)
 - [Jukebox Plugin](/writing/minecraft/jukebox-plugin)
+
+## Farms
+
+- [Powder Snow Farm](/writing/minecraft/powder-snow-farm)
