@@ -15,12 +15,13 @@ I was thinking about having it disable the built-in telemetry or add a custom HU
 Instead of making lots of little mods I decided to make a Utility mod with lots of little tweaks.
 
 <div ad info>
+Info
 
 Final source code is available [here](https://github.com/Basicprogrammer10/SigmaUtils) on GitHub!
 
 _don't forget to give it a star_
 
-<div>
+</div>
 
 ## Interface
 
