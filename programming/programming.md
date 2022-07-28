@@ -11,6 +11,7 @@
 
 # 📀 Programming
 
+- [Encoding Data with Sound](/writing/programming/encoding-data-with-sound)
 - [amplify](/writing/programming/amplify)
 - [Minecraft Random Icon](/writing/programming/minecraft-random-icon)
 - [Oscilloscope Renderer](/writing/programming/oscilloscope-renderer)
