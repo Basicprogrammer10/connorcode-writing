@@ -32,7 +32,7 @@ And nothing much has happened since. I hope they fix this because I cant have be
 <div ad info>
 Info
 
-Source Code can be found [here](https://raw.githubusercontent.com/Basicprogrammer10/SchoolPasswordCrack).
+Source Code can be found [here](https://github.com/Basicprogrammer10/SchoolPasswordCrack).
 
 </div>
 
