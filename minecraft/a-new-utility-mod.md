@@ -31,11 +31,11 @@ Lots of utility mods have fancy GUIs, but for this one I just wanted something s
 What I eventually got was a screen with different categories (Interface, Rendering, Misc, Hud and Meta).
 And rows of module buttons for easy one.
 
-[IMAGE HERE]
+![Mod Interface](../assets/minecraft/a-new-utility-mod/interface.png)
 
 I also wanted to have module toggle hotkeys so, when the mod is starting it registers a key bind for every module.
 
-[IMAGE HERE]
+![Keybinds Page](../assets/minecraft/a-new-utility-mod/keybinds.png)
 
 ## The Modules
 
@@ -77,7 +77,18 @@ private void setShaderTexture(int texture, Identifier id) throws Exception {
 
 This ends up looking really cool:
 
-[IMAGES HERE]
+<img background src="../assets/minecraft/a-new-utility-mod/loading-0.png" />
+
+<script>
+const background = document.querySelector('[background]');
+const images = ['loading-0.png', 'loading-1.png', 'loading-2.png']
+let index = 0;
+
+setInterval(() => {
+    index = index + 1 % 3;
+    background.src = `../assets/minecraft/a-new-utility-mod/${images[index]}`;
+}, 1000);
+</script>
 
 ### Glowing Players
 
@@ -93,7 +104,7 @@ void onHasOutline(Entity entity, CallbackInfoReturnable<Boolean> cir) throws Exc
 }
 ```
 
-[IMAGE HERE]
+![Player with an outline](../assets/minecraft/a-new-utility-mod/glowing-module.png)
 
 ### No Boss bar Value
 
@@ -119,7 +130,7 @@ int onDrawWithShadow(TextRenderer instance, MatrixStack matrices, Text text, flo
 }
 ```
 
-[IMAGE HERE]
+![Hiddel Boss Bar Value](../assets/minecraft/a-new-utility-mod/hypixel.png)
 
 ### No Telemetry
 
