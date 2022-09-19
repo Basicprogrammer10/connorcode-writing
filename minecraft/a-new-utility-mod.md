@@ -12,7 +12,7 @@
 
 After making my [Universal Tick](/writing/minecraft/universal-tick) mod I wanted to make a new mod, but I wasn't really sure what I wanted it to do.
 I was thinking about having it disable the built-in telemetry or add a custom HUD.
-Instead of making lots of little mods I decided to make a Utility mod with lots of little tweaks.
+But instead of making lots of little mods, I ultamatly decided to make a Utility mod with lots of little tweaks.
 
 <div ad info>
 Info
@@ -29,7 +29,7 @@ Before I can make any of the modules I need a way to toggle them and change sett
 Lots of utility mods have fancy GUIs, but for this one I just wanted something simple.
 
 What I eventually got was a screen with different categories (Interface, Rendering, Misc, Hud and Meta).
-And rows of module buttons for easy one.
+And rows of module buttons for each one.
 
 ![Mod Interface](../assets/minecraft/a-new-utility-mod/interface.png)
 
@@ -39,7 +39,7 @@ I also wanted to have module toggle hotkeys so, when the mod is starting it regi
 
 ## The Modules
 
-The mod currently has ~40 modules so I'm just going to focus on some of the more interesting ones in this section.
+The mod currently has ~55 modules so I'm just going to focus on some of them in this article.
 
 ### Random Background
 
@@ -85,7 +85,7 @@ const images = ['loading-0.png', 'loading-1.png', 'loading-2.png']
 let index = 0;
 
 setInterval(() => {
-    index = index + 1 % 3;
+    index = (index + 1) % 3;
     background.src = `../assets/minecraft/a-new-utility-mod/${images[index]}`;
 }, 1000);
 </script>
@@ -183,6 +183,73 @@ public static String eggify(String inp) {
 
 With this module enabled, boring chat messages like "That's excellent" become more eggtastic ("eggcellent").
 No further explanation is needed.
+
+## Module Systems
+
+Now that you have seen some of the simple mixins making up a few of the modules, we can look into the other systems making up the mod.
+
+### Module Class
+
+There is an abstract `Module` class that defines the structure all the modules are built on.
+It contains the following bits of data:
+
+```java
+// A Module id (EX: egg_chat)
+public final String id;
+// The modules frendly name (EX: Egg Chat)
+public final String name;
+// A discription of the module (EX: Modifies your outgoing chat messages to use maximum egg puns)
+public final String description;
+// A catagory (EX: Category.Chat)
+public final Category category;
+// And weather the module is enabled
+public boolean enabled;
+```
+
+Although all the modules are built on this, they often don't need much control and only need the ability to be en/disabled.
+That is where the `BasicModule` comes in!
+It's a class extending Module and it makes defining simple modules very easy.
+Here is the module definition for the Egg chat module.
+The BasicModule class takes care of config loading so its very simple.
+
+```java
+public class EggChat extends BasicModule {
+    public EggChat() {
+        super("egg_chat", "Egg Chat", "Modifies your outgoing chat messages to use maximum egg puns", Category.Chat);
+    }
+}
+```
+
+### Config System
+
+Being able to enable and disable modules at runtime is great but having to do it every time you start your game is annoying.
+So SigmaUtils has a config system!
+It uses an NBT file and module gets its own components to store whatever it wants.
+Most modules simply have an `enabled` property, but others like `AutoSign` store the 4 lines of text to put on the signs.
+
+When the mod starts, after all the modules have been loaded it reads the config file.
+For each loaded module it then tries to find its matching config entry and runs the module's own `loadConfig` method.
+This lets the module do whatever it wants with the config but it is usually just storing the enabled property.
+
+The final part of the config system is saving of course!
+On config save it makes a new `NbtCompound` and adds the results of each module's `saveConfig` method.
+The final result is then saved to your game directory.
+
+### Event System
+
+### Async Runner
+
+## Commands
+
+### Chat
+
+### Map
+
+### Resource Pack
+
+### Run / Task
+
+### Toggle / Set
 
 ## Conclusion
 
