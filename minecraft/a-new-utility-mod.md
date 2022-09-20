@@ -235,15 +235,57 @@ The final part of the config system is saving of course!
 On config save it makes a new `NbtCompound` and adds the results of each module's `saveConfig` method.
 The final result is then saved to your game directory.
 
-### Event System
-
 ### Async Runner
+
+The next section is on the client commands added to the game.
+Some of these commands take a long time to run, and would block the main thread freezing the game.
+So thats what the Asycn runner is, a system for running and manageing tasks in other threads.
+
+The runner runs classes implamenting the `Task` interface:
+
+```java
+public interface Task {
+    // A friendly name for the task
+    String getName();
+    // A function to check if the task is running
+    boolean running();
+    // Starts task execution on a diffrent thread
+    void start(UUID uuid);
+    // Trys to stop the task - the task can ignore this
+    void stop();
+}
+```
 
 ## Commands
 
+Some functions of the client are invoked through commands.
+The commands are not just normal commands, but they are subcommands to the `/util` command.
+This is don't to keep all the SigmaUtill commands together and to reduce the possibility of one of the client commands interfering with a server one.
+They all implement the `Command` interface which has one method: `register`.
+The register method is used to pass a `CommandDispatcher<FabricClientCommandSource>` to all the commands for registration.
+
 ### Chat
 
+One interesting commands I made is the `chat` command.
+It does what you expect: sends text as a chat message.
+Although it is very simple, I found an interesting property of it.
+
+Minecraft has different ways of sending commands and chat messages to the server, so using this commands you could do something like: `/util chat "/gamemode creative"`.
+This would actually send the commands in chat and it won't be run (on vanilla servers).
+
 ### Map
+
+This command lets you get info and save maps.
+The info sub, sub command gives you the map's ID, scale, and locked status.
+Nothing super interesting.
+
+The save command however lets you save the image on a map to your screenshots folder.
+This could be useful for saving map arts.
+
+The commonality between these two commands is that they need a map to work with.
+To get the map it first checks if you are holding a filled map item.
+If you are that's the chosen map, but if not it checks if you are looking at an item frame.
+If you are then the map in the item frame is chosen.
 
 ### Resource Pack
 
