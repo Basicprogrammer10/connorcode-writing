@@ -260,9 +260,10 @@ public interface Task {
 
 Some functions of the client are invoked through commands.
 The commands are not just normal commands, but they are subcommands to the `/util` command.
-This is don't to keep all the SigmaUtill commands together and to reduce the possibility of one of the client commands interfering with a server one.
+This is to keep all the SigmaUtill commands together and to reduce the possibility of one of the client commands interfering with a server one.
 They all implement the `Command` interface which has one method: `register`.
 The register method is used to pass a `CommandDispatcher<FabricClientCommandSource>` to all the commands for registration.
+The next subsections will go over a few of the commands.
 
 ### Chat
 
@@ -287,12 +288,22 @@ To get the map it first checks if you are holding a filled map item.
 If you are that's the chosen map, but if not it checks if you are looking at an item frame.
 If you are then the map in the item frame is chosen.
 
-### Resource Pack
+### Run
 
-### Run / Task
+This is the most advanced command, it allows for repeating / delaying commands as well as formatting commands.
+Repeating and delaying are kinda really simple, it just runs a commands n times or waits n milliseconds before running it.
 
-### Toggle / Set
+Formatting commands in SigmaUtils means that if you run for example `/util run formatted "Hello %PLAYERNAME%"` it will send a chat message saying hello to all online players.
+But you can do so much more, by using multiple formatters it will go through all the permutations.
+So running with the format `"%PLAYERNAME% says hi to %PLAYERNAME%"`, it will have every online player say hi to every online player.
+
+But wait!
+There's even more, formatters can use modifiers too.
+These can even be chained to make formatters like this: `%PLAYERNAME:isonline:randomcase%`, which will make sure the player is online and if so randomly change the case of letters in the name.
 
 ## Conclusion
 
-// Todo
+This will definitely be a project that I come back to every so often.
+There are so many things I want to add at some point.
+
+Feel free to download the most recent prebuilt version [here](https://nightly.link/Basicprogrammer10/SigmaUtils/workflows/build/master/Artifacts.zip).

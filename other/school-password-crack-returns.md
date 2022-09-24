@@ -1,7 +1,7 @@
 @Title = School Password Crack Returns
 @Author = Connor Slade
 @Date = 08-10-22
-@Description = How I hacked my school again
+@Description = How I hacked my school, again
 @Tags = School, Passwords, Hacking, Genesis
 @Path = other/school-password-crack-returns
 @Assets = .
