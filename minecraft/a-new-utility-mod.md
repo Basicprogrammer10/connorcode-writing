@@ -1,6 +1,6 @@
 @Title = A new Utility Mod
 @Author = Connor Slade
-@Date = 07-28-22
+@Date = 09-25-22
 @Description = My process of making a shiny new Minecraft utility mod
 @Tags = Minecraft, Mod, Modding, Fabric, Utility
 @Path = minecraft/a-new-utility-mod

@@ -1,6 +1,6 @@
 @Title = Encoding Data with Sound
 @Author = Connor Slade
-@Date = 07-27-22
+@Date = 07-28-22
 @Description = Using audio to store binary data
 @Tags = Audio, Rust, Programming
 @Path = programming/encoding-data-with-sound
