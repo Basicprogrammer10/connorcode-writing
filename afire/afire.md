@@ -34,16 +34,16 @@
 
 Documentation is great but, sometimes the best way to learn how to use something is through examples!
 
-| Name                | Description                      |                              Code                              |                 Link                 |
-| ------------------- | -------------------------------- | :------------------------------------------------------------: | :----------------------------------: |
-| connorcode          | This Website                     |     [📀](https://github.com/Basicprogrammer10/connorcode/)     |    [🔗](https://connorcode.com/)     |
-| amplify             | A programming chalange thing     |       [📀](https://github.com/Basicprogrammer10/amplify)       | [🔗](https://amplify.connorcode.com/)|
-| Plaster Box         | Clean and Simple Pastebin        |     [📀](https://github.com/Basicprogrammer10/plaster-box)     | [🔗](https://paste.connorcode.com/)  |
-| FOTD Bot            | Fact of the Day Bot              |      [📀](https://github.com/Basicprogrammer10/FOTD-Bot)       |  [🔗](https://fotd.connorcode.com/)  |
-| Photo-Server        | Self hosted photo album server   |    [📀](https://github.com/Basicprogrammer10/Photo-Server)     | [🔗](https://photos.connorcode.com/) |
-| Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |  [🔗](https://tmp.connorcode.com/)   |
-| Cool Beans          | A chilled beans store...         |     [📀](https://github.com/Basicprogrammer10/cool-beans)      |                  ❌                  |
-| Journey-to-the-Moon | A choose your own adventure game | [📀](https://github.com/Basicprogrammer10/Journey-to-the-Moon) |                  ❌                  |
+| Name                | Description                      |                              Code                              |                 Link                  |
+| ------------------- | -------------------------------- | :------------------------------------------------------------: | :-----------------------------------: |
+| connorcode          | This Website                     |     [📀](https://github.com/Basicprogrammer10/connorcode/)     |     [🔗](https://connorcode.com/)     |
+| amplify             | A programming challenge thing    |       [📀](https://github.com/Basicprogrammer10/amplify)       | [🔗](https://amplify.connorcode.com/) |
+| Plaster Box         | Clean and Simple Pastebin        |     [📀](https://github.com/Basicprogrammer10/plaster-box)     |  [🔗](https://paste.connorcode.com/)  |
+| FOTD Bot            | Fact of the Day Bot              |      [📀](https://github.com/Basicprogrammer10/FOTD-Bot)       |  [🔗](https://fotd.connorcode.com/)   |
+| Photo-Server        | Self hosted photo album server   |    [📀](https://github.com/Basicprogrammer10/Photo-Server)     | [🔗](https://photos.connorcode.com/)  |
+| Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |   [🔗](https://tmp.connorcode.com/)   |
+| Cool Beans          | A chilled beans store...         |     [📀](https://github.com/Basicprogrammer10/cool-beans)      |                  ❌                   |
+| Journey-to-the-Moon | A choose your own adventure game | [📀](https://github.com/Basicprogrammer10/Journey-to-the-Moon) |                  ❌                   |
 
 <div ad info>
 Add your project!
