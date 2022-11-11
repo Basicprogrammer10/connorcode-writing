@@ -1,4 +1,4 @@
-@Title = afire Update
+@Title = afire Hub
 @Author = Connor Slade
 @Date = 01-11-22
 @Description = afire hub
