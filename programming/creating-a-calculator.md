@@ -8,9 +8,25 @@
 
 ---
 
+<style>
+    summary {
+        cursor: pointer;
+    }
+
+    [repl] {
+        font-size: 14px;
+        display: block;
+        padding: 10px;
+        overflow-x: auto;
+        color: #abb2bf;
+        background: #282c34;
+        border-radius: 4px;
+    }
+</style>
+
 # Creating a Calculator
 
-_is the default calculator for your operating system just to convenient?_
+_is the default calculator for your operating system just too convenient?_
 Well then I have some good news for you, because I have created the next step in human evolution, a calculator that is so advanced that it can do math!
 
 <div ad note>
@@ -96,7 +112,6 @@ Output: [
 ```
 
 </details>
-<br>
 
 ## Making the Expression Tree
 
@@ -145,7 +160,6 @@ Output: Tree(
 ```
 
 </details>
-<br>
 
 ## Evaluating
 
@@ -173,6 +187,7 @@ fn evaluate(tree: Token) -> i32 {
 ```
 
 Now all I have to do it print the result and I solve the problem and learn a new thing!
+In the end it really wasn't that hard, I just thought it would be and that's why I put it off for so long.
 You can see the final code for amplify [here][final-amplify-code].
 
 ## Calculator
@@ -188,23 +203,26 @@ These were really easy, just a few new lines of code each.
 
 Then I added a nice REPL:
 
-<pre><code> ▷ 5*(4+-1)
+<div repl>
+ ▷ 5*(4+-1)
+ <br>
  ⮩ 15
+ <br>
  ▷ <span blink>▌</span>
-</code></pre>
+</div>
 
 <script>
-const blinker = document.querySelector('span[blink]');
-let blink = true;
+    const blinker = document.querySelector('span[blink]');
+    let blink = true;
 
-setInterval(() => {
-    blinker.style.opacity = blink ? 0 : 1;
-    blink = !blink;
-}, 500);
+    setInterval(() => {
+        blinker.style.opacity = blink ? 0 : 1;
+        blink = !blink;
+    }, 500);
 </script>
 
 Then I added support for variables.
-Well more constants, because you couldn't change them.
+Well more like constants, because you couldn't change them.
 By default, it has a few constants like `pi` and `e`.
 I added variable assignment later.
 
@@ -212,10 +230,16 @@ I also added support for functions, which are kinda just variables with groups n
 They can be used like this `5 + sin(pi)`.
 I then proceeded to go a bit crazy and added ~60 functions including trig functions, logic, conditions, and other math stuff.
 
+It was surprising to see how close it now is to a real programming language, it just needs other datatypes and loops.
+Maybe that will be one of my next projects.
+
 ## Conclusion
 
 It may or may not have been four months since the last post.
-I've been busy and haven't _completed_ anything cool, there is a lot of stuff in the works so you can _look forward to that_.
+I've been busy and haven't _really completed_ anything cool, there is a lot of stuff in the works so you can _look forward to that_.
+I hope you enjoyed this post, and I hope you maybe learned something new.
+
+\- Connor <3
 
 <!-- LINKS -->
 
