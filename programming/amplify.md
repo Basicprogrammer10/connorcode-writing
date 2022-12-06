@@ -18,6 +18,7 @@ Every day a new challenge opens and you have to write some code to solve it.
 The concept is simple, the execution - welllll ill get into it.
 
 <div ad info>
+Info
 
 You can try it out here: [amplify.connorcode.com](https://amplify.connorcode.com)
 
