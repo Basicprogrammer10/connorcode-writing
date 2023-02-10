@@ -155,7 +155,7 @@ First off, **HAPPY PI DAY**!!!
 This is the first version of afire to use SemVer, so that's nice.
 Hopefully this means that I will release more frequent updates and not have to reference the git repo as a dependency all the time :p
 
-Have a nice day - Darren
+Have a nice day - Connor
 
 [afire]: https://crates.io/crates/afire
 [refcell]: https://doc.rust-lang.org/std/cell/struct.RefCell.html

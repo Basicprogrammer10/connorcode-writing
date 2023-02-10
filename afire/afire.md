@@ -10,7 +10,14 @@
 
 # 🔥 afire
 
-> **A blazingly fast web framework for Rust**
+> **A blazing fast web framework for Rust**
+
+<div ad info>
+Note
+
+An afire update (2.0.0) is coming very soon!
+
+</div>
 
 ## Links
 

@@ -378,4 +378,4 @@ All in all this was very rushed.
 If I do something like this next year I may build on this so there is less work to get it working, leaving more time for making the problems bettor.
 Feel free to try it out at [amplify.connorcode.com](https://amplify.connorcode.com).
 
-\- darren
+\- connor
