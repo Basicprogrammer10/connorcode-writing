@@ -13,7 +13,7 @@
 Happy new year! (yes i know its february).
 There have been some big changes to afire in the past, uh, _8 months_!
 Ive only been working on afire again for about the past two weeks, but there is still a lot of new stuff!
-There is a lot to cover, this is the biggest afire update to date - so lets get into it!
+This is the biggest afire update to date - so lets get into it!
 
 <div ad info>
 Info
@@ -26,7 +26,7 @@ You can also find the afire docs on [docs.rs here](https://docs.rs/afire/latest/
 
 ## TL;DR
 
-There are a lot of changes in this update so her is a quick summery.
+There are a lot of changes in this update so here is a quick summery.
 
 - Added support for socket keep alive. ([more](#socket-handling))
 - Responses can now stream data with chunked transfer encoding. ([more](#streaming-responses))
@@ -39,8 +39,8 @@ There are a lot of changes in this update so her is a quick summery.
 ### Socket Handling
 
 When benchmarking previous versions of afire against [actix][actix-web] for example, afire would always score worse.
-This wasn't an issue with request parsing or routing it was actually because a new socket hand to be established for every request.
-Clearly this is not very good.
+This wasn't an issue with request parsing or routing it was actually because a new socket had to be established for every request.
+Clearly this is not very efficient.
 So in this new update afire _finally_ has support for persistent connections with `Connection: keep-alive`!
 You can read the RFC on persistent connections [here][persistant-connections].
 
@@ -64,20 +64,20 @@ pub enum ResponseBody {
 ```
 
 A static body will be sent in one go, while streams are sent in chunks using chunked transfer encoding.
-This ResponseBody struct is not accessible to the users though, you will still add bodies to responses the same as usual (with `text` or `bytes`), but you can now use `stream` to add a streamed response.
+This ResponseBody struct is not accessible to the users though, you will still add bodies to responses the same as usual (with [`text`][res-text] or [`bytes`][res-bytes]), but you can now use [`stream`][res-stream] to add a streamed response.
 This new streaming system is used internally by the ServeStatic middleware extension, which allows for faster download times and lower memory usage.
 
 ### Tracing
 
-In afire there is a `tracing` feature which allowed you to see a helpful debug message when starting afire, showing the ordering of routes, number of threads and more.
+In afire there is a `tracing` feature which allows you to see a helpful debug message when starting afire, showing the ordering of routes, number of threads and more.
 While working on the new socket handling systems I needed some way to log socket events, so I used the built in trace! macro (from the tracing feature).
 This gave me the idea to add log levels, so the socket errors could be colored red.
 This was the beginning of the built-in trace system, which you can use for simple logging in your application.
 
 Because of how its used internally there is a global log level, not one per server.
-You can set this level with `afire::trace::set_log_level`, which takes one parameter a `afire::trace::Level`.
-You can also set weather the logs have ANSI codes for color using `afire::trace::set_log_color`, color is enabled by default.
-Now to use the logger there is the `trace!` macro, which you can use one of two different ways:
+You can set this level with [`afire::trace::set_log_level`][set-log-level], which takes one parameter an [`afire::trace::Level`][trace-level].
+You can also set weather the logs have ANSI codes for color using [`afire::trace::set_log_color`][set-log-color], color is enabled by default.
+Now to use the logger there is the [`trace!`][trace-macro] macro, which you can use one of two different ways:
 
 ```rust
 trace!(Level::<LOG_LEVEL>, <FORMATTED ARGS>)
@@ -89,9 +89,16 @@ trace!("The var a is currently {a}");
 trace!(Level::Error, "An error occurred!");
 ```
 
+<div ad note>
+Note
+
+The `tracing` feature if off by default.
+So if you want to see the debug output or use trace! in your own code make sure to enable it.
+
+</div>
+
 The Log Levels are in the following order, with the more verbose levels at the bottom.
 Setting the log level to Off will disable all logging.
-Also note that Error is the default level.
 
 - Off
 - Error
@@ -100,16 +107,40 @@ Also note that Error is the default level.
 
 ### HeaderType & Status
 
-While working on some example programs for afire I couldn't remember if 307 or 308 was the status code for a PermanentRedirect (its 308).
-So I decided to add a big enum with all of the standard status codes, with a useful description in the doc comment.
-This new enum is called `Status` and its used in `afire::Request` and `afire::Response`.
+While working on some example programs for afire I couldn't remember if 307 or 308 was the status code for a permanent redirect (its 308).
+So I decided to add a big enum with all of the standard status codes, with a useful description in each doc comment.
+This new enum is called [`Status`][status] and its used in `afire::Request` and `afire::Response`.
 When adding a status code to a Response you must supply a type that impls `Into<Status>`, so this could be a Status variant or just any u16.
 This means that you don't have to update all of your calls to `Response::status`.
 
-I also decided to add an enum for menu of the different headers used, so I created the HeaderTypes enum.
+I also decided to add an enum for many of the different headers used, so I created the [HeaderTypes][header-types] enum.
 Just like the Status enum, the functions that accept it will also still accept the old representation, a &str or String in this case.
 
 ### Header & Query Methods
+
+Previously to access a header you could do `req.header("...")` to get an `Option<String>`, this has been changed.
+You can now access `req.headers` to get a [Headers][headers] struct, which can hold many different Headers.
+You can use the following methods on it:
+
+```rust
+// See if the collection contains a header of type name
+pub fn has(&self, name: impl Into<HeaderType>) -> bool
+
+// Get the value of the first header of type `name`
+pub fn get(&self, name: impl Into<HeaderType>) -> Option<&str>
+
+// Like get but returns a mutable reference to the value
+pub fn get_mut(&mut self, name: impl Into<HeaderType>) -> Option<&mut String>
+
+// Like get but returns the whole Header struct, not just the value
+pub fn get_header(&self, name: impl Into<HeaderType>) -> Option<&Header>
+
+// Like get_header but it returns a mutable reference to the Header
+pub fn get_header_mut(&mut self, name: impl Into<HeaderType>) -> Option<&mut Header>
+```
+
+The [Query][query] struct has been updated to have methods more similar to that of the new Headers struct.
+It has `has`, `get`, `get_mut` and `get_query_mut` methods, which function like the ones on Headers.
 
 ### IpAddr
 
@@ -139,20 +170,17 @@ Server::new(Ipv4Addr::LOCALHOST, 8080);
 ### New Errors
 
 There is not too much news here, but two new types of errors have been introduced: Startup errors and Stream errors.
-A startup error can either be an InvalidIp error or a NoState error.
+A startup error can either be an InvalidIp error, a NoState error or an InvalidSocketTimeout error.
+You can read more about whey they each mean in the [docs][startup-error].
 The Stream error can currently only be a UnexpectedEof error.
 The IO error type also now shows more information if triggered.
 
 ### New Extensions
 
-Two new extensions have been added to afire.
-The first being a new middleware: Date.
-This is Middleware to add the HTTP Date header (as defined in [RFC 9110, Section 5.6.7][rfc-9110-5-6-7]).
+A new extension has been added to afire.
+Its a new middleware called Date, it adds the HTTP Date header (as defined in [RFC 9110, Section 5.6.7][rfc-9110-5-6-7]) to outgoing responses.
 The header that is added by this middleware looks like this: `Date: Wed, 08 Feb 2023 23:39:57 GMT`.
 This is technically required for all servers that have a clock, so I may move it to the core library at some point.
-
-The other extension is a module called `util`.
-Im still figuring out if it makes any sense to include, but it is a collection of random utilities that are helpful when building webapp backends.
 
 ### Yet Another Middleware Rewrite
 
@@ -210,7 +238,7 @@ In conclusion, I need to remember to add to the change log when I change things.
 Its getting a bit old reading through huge diffs trying to pick out api changes.
 
 Looking back at [afire v1.2.0 release notes][afire-1.2.0], I cant believe I thought I would make the next release in around a month.
-I forgot I had written down some hopes for the next version, but im happy to report that bolth goals (keep-alive and streaming support) have been achieved in this version.
+I forgot I had written down some hopes for the next version, but im happy to report that both goals (keep-alive and streaming support) have been achieved in this version.
 
 Have an excellent day! — Connor
 
@@ -223,7 +251,19 @@ Have an excellent day! — Connor
 [set-run]: https://github.com/Basicprogrammer10/afire/blob/9d1dd37a6148f85bef65b79587c0f5bfbf4070c0/lib/server.rs#L358
 [actix-web]: https://actix.rs
 [persistant-connections]: https://www.rfc-editor.org/rfc/rfc2068.html#section-19.7.1
-[response-body]: //TODO
+[response-body]: https://github.com/Basicprogrammer10/afire/blob/95c22c3a5ef21ac8653c5107c983f80520f21440/lib/response.rs#L40
+[res-text]: https://docs.rs/afire/latest/afire/prelude/struct.Response.html#method.text
+[res-bytes]: https://docs.rs/afire/latest/afire/prelude/struct.Response.html#method.bytes
+[res-stream]: https://docs.rs/afire/latest/afire/prelude/struct.Response.html#method.stream
+[trace-macro]: https://docs.rs/afire/latest/afire/macro.trace.html
+[set-log-level]: https://docs.rs/afire/latest/afire/trace/fn.set_log_level.htmls
+[set-log-color]: https://docs.rs/afire/latest/afire/trace/fn.set_log_color.html
+[trace-level]: https://docs.rs/afire/latest/afire/trace/enum.Level.html
+[status]: https://docs.rs/afire/latest/afire/enum.Status.html
+[header-types]: https://docs.rs/afire/latest/afire/header/enum.HeaderType.html
+[headers]: https://docs.rs/afire/latest/afire/header/struct.Headers.html
+[query]: https://docs.rs/afire/latest/afire/struct.Query.html
+[startup-error]: https://docs.rs/afire/latest/afire/error/enum.StartupError.html
 [half-stack]: https://github.com/Basicprogrammer10/half-stack
 [socket-addr]: https://doc.rust-lang.org/std/net/enum.SocketAddr.html
 [rfc-9110-5-6-7]: https://www.rfc-editor.org/rfc/rfc9110.html#section-5.6.7
