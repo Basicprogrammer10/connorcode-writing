@@ -1,7 +1,7 @@
 @Title = afire Update (V1.2.0)
 @Author = Connor Slade
 @Date = 06-24-22
-@Description = Updates to afire in V1.1.0
+@Description = Updates to afire in V1.2.0
 @Tags = afire, afire v1.2.0, afire update
 @Path = afire/update-4
 @Assets = .
@@ -9,8 +9,6 @@
 ---
 
 # 🔥 afire v1.2.0
-
-_damn its been a hot sec_
 
 It's been over two months and 48 commits since the last afire release and I have some new and somewhat interesting features to show you!
 

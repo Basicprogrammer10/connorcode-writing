@@ -12,13 +12,6 @@
 
 > **A blazing fast web framework for Rust**
 
-<div ad info>
-Note
-
-An afire update (2.0.0) is coming very soon!
-
-</div>
-
 ## Links
 
 - [GitHub](https://github.com/Basicprogrammer10/afire)
@@ -31,6 +24,7 @@ An afire update (2.0.0) is coming very soon!
 
 ## Updates
 
+- [`[2.0.0]` Update 02-10-23](/writing/afire/update-5)
 - [`[1.2.0]` Update 06-24-22](/writing/afire/update-4)
 - [`[1.1.0]` Update 04-10-22](/writing/afire/update-3)
 - [`[1.0.0]` Update 03-14-22](/writing/afire/update-2)
@@ -47,8 +41,9 @@ Documentation is great but, sometimes the best way to learn how to use something
 | amplify             | A programming challenge thing    |       [📀](https://github.com/Basicprogrammer10/amplify)       | [🔗](https://amplify.connorcode.com/) |
 | Plaster Box         | Clean and Simple Pastebin        |     [📀](https://github.com/Basicprogrammer10/plaster-box)     |  [🔗](https://paste.connorcode.com/)  |
 | FOTD Bot            | Fact of the Day Bot              |      [📀](https://github.com/Basicprogrammer10/FOTD-Bot)       |  [🔗](https://fotd.connorcode.com/)   |
+| version             | Version Checker API              |       [📀](https://github.com/Basicprogrammer10/version)       | [🔗](https://version.connorcode.com/) |
 | Photo-Server        | Self hosted photo album server   |    [📀](https://github.com/Basicprogrammer10/Photo-Server)     | [🔗](https://photos.connorcode.com/)  |
-| Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |   [🔗](https://tmp.connorcode.com/)   |
+| Handcrafted-HTTP    | An HTTP Escape Room              |  [📀](https://github.com/Basicprogrammer10/Handcrafted-HTTP)   |                  ❌                   |
 | Cool Beans          | A chilled beans store...         |     [📀](https://github.com/Basicprogrammer10/cool-beans)      |                  ❌                   |
 | Journey-to-the-Moon | A choose your own adventure game | [📀](https://github.com/Basicprogrammer10/Journey-to-the-Moon) |                  ❌                   |
 
