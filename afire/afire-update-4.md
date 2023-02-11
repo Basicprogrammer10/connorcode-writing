@@ -35,7 +35,7 @@ struct App {
 fn main() {
   let mut server = Server::<App>::new("localhost", 8080).state(App::default());
 
-  // Add a statefull catch all route that takes in state and the request
+  // Add a stateful catch all route that takes in state and the request
   server.stateful_route(Method::ANY, "**", |app, _req| {
       // Respond with and increment request count
       Response::new().text(app.count.fetch_add(1, Ordering::Relaxed))

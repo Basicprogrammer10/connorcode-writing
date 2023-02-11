@@ -113,13 +113,67 @@ Just like the Status enum, the functions that accept it will also still accept t
 
 ### IpAddr
 
+This is another remnant from the very beginning of afire.
+In previous versions of afire the client address was stored as a string ('{IP}:{PORT}') in the Request struct.
+This meant if you wanted to get just the IP address on its own you would have to split the string on ':', this is not very nice.
+So now the `address` field on Server holds a [SocketAddr][socket-addr], which has methods like `ip` and `port`.
+This change has been sitting in the dev branch for a few months now, its good to finally get it released.
+
+The other IP Address related change is in the `Server::new` function.
+Previously you had to define the IP to bind to as a string (`x.x.x.x`) but you can now use a Ipv4Addr, [u8; 4], String or &str.
+This allows you to use the `Ipv4Addr::LOCALHOST` const as a bind IP, which I think is nicer that defining it as a string.
+
+```rust
+use std::net::Ipv4Addr;
+
+// Create a new server on localhost with a string
+Server::new("127.0.0.1", 8080);
+
+// Create a new server on localhost with a [u8; 4]
+Server::new([127, 0, 0, 1], 8080);
+
+// Create a new server on localhost with the Ipv4Addr const
+Server::new(Ipv4Addr::LOCALHOST, 8080);
+```
+
 ### New Errors
+
+There is not too much news here, but two new types of errors have been introduced: Startup errors and Stream errors.
+A startup error can either be an InvalidIp error or a NoState error.
+The Stream error can currently only be a UnexpectedEof error.
+The IO error type also now shows more information if triggered.
 
 ### New Extensions
 
+Two new extensions have been added to afire.
+The first being a new middleware: Date.
+This is Middleware to add the HTTP Date header (as defined in [RFC 9110, Section 5.6.7][rfc-9110-5-6-7]).
+The header that is added by this middleware looks like this: `Date: Wed, 08 Feb 2023 23:39:57 GMT`.
+This is technically required for all servers that have a clock, so I may move it to the core library at some point.
+
+The other extension is a module called `util`.
+Im still figuring out if it makes any sense to include, but it is a collection of random utilities that are helpful when building webapp backends.
+
 ### Yet Another Middleware Rewrite
 
-(mention res.modify)
+It hasn't even been a single release since the middleware system last changed.
+At least I think im getting closer to a more permanent solution (although thats what I thought last time).
+In the previous version I made it so you had to deal with Requests and Responses in Results when making middleware.
+But I found that I rarely needed to handle the error cases and almost always just continued if there was an error.
+So with this new-new system, you have the option to deal with the results or just only handle the event if its all Ok.
+
+There are now two types of hooks: raw and non-raw (very creative, i know).
+The raw hooks are passed a Result, and their default implementation calls the non-raw hooks if all the Result is Ok.
+This allows you to handle errors (like page not found), while maintaining a clean API for middleware that doesn't need to handle errors.
+There are these normal and raw versions of handlers for (pre, post, and end).
+These handlers will be passed mutable references to the Request and or Response when applicable.
+
+The type returned from middleware hooks has also changed.
+Previously there was a `MiddleResponse` and a `MiddleRequest`, but both of those have been combined into the `MiddleResult`.
+Its an enum with three variants: Continue, Abort and Send(Response).
+Continue is the default behavior, it does basically nothing; Abort stops executing the current middleware chain, and Send immediately sends the supplied Response.
+
+Middleware is still kinda complicated to write (although simpler now), so I would recommend reeding into the docs and some examples if you want to learn more.
 
 ### Misc
 
@@ -145,10 +199,20 @@ Just like the Status enum, the functions that accept it will also still accept t
 
 ## The Future
 
+I made a lot of progress on afire with this update, but there is always more do add!
+Currently im working on a more batteries-included extension to afire called [half-stack][half-stack], you can check it out on Github.
+I also want to add HTTPS support somehow to afire, without adding any dependencies.
+Farther in the future I hope to add websocket support, which will probably require lots more changes.
+
 ## Conclusion
 
-I need to remember to add to the change log when I change things.
+In conclusion, I need to remember to add to the change log when I change things.
 Its getting a bit old reading through huge diffs trying to pick out api changes.
+
+Looking back at [afire v1.2.0 release notes][afire-1.2.0], I cant believe I thought I would make the next release in around a month.
+I forgot I had written down some hopes for the next version, but im happy to report that bolth goals (keep-alive and streaming support) have been achieved in this version.
+
+Have an excellent day! — Connor
 
 <!-- LINKS -->
 
@@ -160,3 +224,7 @@ Its getting a bit old reading through huge diffs trying to pick out api changes.
 [actix-web]: https://actix.rs
 [persistant-connections]: https://www.rfc-editor.org/rfc/rfc2068.html#section-19.7.1
 [response-body]: //TODO
+[half-stack]: https://github.com/Basicprogrammer10/half-stack
+[socket-addr]: https://doc.rust-lang.org/std/net/enum.SocketAddr.html
+[rfc-9110-5-6-7]: https://www.rfc-editor.org/rfc/rfc9110.html#section-5.6.7
+[afire-1.2.0]: /writing/afire/update-4
