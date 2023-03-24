@@ -1,7 +1,7 @@
 @Title = Fast Doll
 @Author = Connor Slade
 @Date = 03-20-23
-@Description = Rendering the inventory player modal at full speed
+@Description = Rendering the inventory player model at full speed
 @Tags = Minecraft
 @Path = minecraft/fast-doll
 @Assets = .
@@ -131,7 +131,7 @@ Be sure to vote for it if you want it fixed.
 <!-- LINKS -->
 
 [sigma-utils]: https://github.com/Basicprogrammer10/SigmaUtils
-[modrinth]: https://modrinth.com/mod/fast-doll
+[modrinth]: https://modrinth.com/mod/fastdoll
 [curse-forge]: https://www.curseforge.com/minecraft/mc-mods/fast-doll
 [source]: https://github.com/Basicprogrammer10/minecraft-mods/tree/master/fast-doll
 [yarn]: https://github.com/FabricMC/yarn
