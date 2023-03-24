@@ -103,9 +103,7 @@ Pretty cool, huh? This took way too long to make, lol.
 ## 🥨 Conclusion
 
 This is my first Minecraft related article,,, so that's cool.
-The same farm concept can be used for a lava farm as well (new article idea??).
-A lava farm would be a lot smaller because it is generated much faster.
-Figuring out the best size required plotting geometric distributions and other calculus stuff, so keep an eye out for that article.
+I plan on working on a Lava farm in the future so keep an eye out for that article.
 
 <script defer>
   let images = new Array(37);

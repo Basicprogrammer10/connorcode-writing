@@ -32,7 +32,7 @@ Today is <span date>XXXX</span> on the International Fixed Calendar.
 | 15  | 16  | 17  | 18  | 19  | 20  | 21  |
 | 22  | 23  | 24  | 25  | 26  | 27  | 28  |
 
-## 🦝 Rant
+## 🦝 History
 
 From the creation of the calendar that the Gregorian calendar was (indirectly) based off of over a thousand years ago the days per month were inconsistent.
 It went beck and forth between 29 and 30 and as changes to this system were made days were shifted around more, and we eventually got to the mess that we now call a calendar.
@@ -51,12 +51,11 @@ Sadly I don't think It will catch on any time soon, but that's not going to stop
 
 I think this system is cool and I wanna use it!
 So from now on I will be using the International Fixed Calendar system and number dates as years since 1970 (It works for epoch time :p).
-For my public stuff I will still use _normal_ dates as to not confuse people with articles released in the year 52.
+For my public stuff I will still use _normal_ gregorian dates as to not confuse people with articles released in the year 52.
 
 ## 🎓 Conclusion
 
-So that was a nice short little arcile!
-Hopefully you learned somthing new.
+So that was a nice short little article!
 If you want to learn more about the International Fixed Calendar system check it out on wikipedia [here][ifc-wiki].
 
 Happy Tuesday, March 24th, 52.

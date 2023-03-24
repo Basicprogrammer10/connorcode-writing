@@ -76,7 +76,9 @@ Fixing this should just be easy enough, right?
 I started by just adding in the tick delta from `client.renderTickCounter.tickDelta` where client is the `MinecraftClient` instance.
 Unfortunately, this didn't really work, it made the model wiggle around a lot.
 
-<video controls src="../assets/minecraft/fast-doll/jitter-bug.mp4" width="50%"></video>
+<div style="display: flex;justify-content: center;">
+    <video controls src="../assets/minecraft/fast-doll/jitter-bug.mp4" style="width: 50%;" />
+</div>
 
 To do the interpolation between ticks, entities (extending `Entity`) have various 'previous' fields for x, y, z, yaw, pitch, and horizontal speed (Some classes inheriting from Entity have more previous fields).
 These fields are updated every tick, and are used between ticks to smoothly render the entity.
