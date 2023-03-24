@@ -10,15 +10,18 @@
 
 # Fast Doll
 
-A while ago I was trying to add a bedrock like player model to my Utility Mod, [SigmaUtils][sigma-utils].
-While doing this I found that the inventory player model was only updating every tick, causing it to look laggy / choppy.
+A while ago, I was trying to add a bedrock like player model to my Utility Mod, [SigmaUtils][sigma-utils].
+While doing this, I found that the inventory player model was only updating every tick, causing it to look laggy / choppy.
 Now, five months later I finally fixed it, and released a mod so _the world_ can finally play minecraft the way it was meant to be played.
 
 <div ad info>
 Mod Info
 
-You can download the mod from Modrinth [here][modrinth] (prefered) or from CurseForge [here][curse-forge].
-If you want to see the source, you can on GitHub, you can find it [here][source].
+Downloads:
+
+- [Modrinth][modrinth] (preferred)
+- [CurseForge][curse-forge]
+- [GitHub][source] (source)
 
 </div>
 
@@ -33,22 +36,22 @@ I will be using [Yarn Mappings][yarn] for the class, field, variable, and method
 
 So you might be wondering why this is happening in the first place.
 To explain that, we will first need to see how minecraft renders normally renders entities.
-In `MinecraftClient`'s main `render` function, a boolean is paseed that determines if the game should tick or not.
+In `MinecraftClient`'s main `render` function, a boolean is passed that determines if the game should tick or not.
 If this boolean is true, then we call the client's tick method, otherwise we are between ticks, and we should just render the game.
 
-The problem with this is that movement of entities would look choppy if thair positions and rotations were only updated per tick.
+The problem with this is that movement of entities would look choppy if their positions and rotations were only updated per tick.
 Mojang's solution was to create a `tickDelta`, which is the percentage of the way between ticks.
-Using this value, the positions, rotations, and animations of entities can be interpolated between ticks.
+Using this value, the positions, rotations, and animations of entities can be linearly interpolated between ticks.
 This makes the game look much smoother.
 
 You might be able to see where this is going.
 For some reason, when rendering the inventory player model, the tick delta is not passed through, but just set to 1.0.
-This causes the model to only update 20 times a second, wihch looks very choppy.
+This causes the model to only update 20 times a second, which looks very choppy.
 
 ## How I Fixed it
 
 I first tried to fix this problem 5 months ago, but for some reason I didn't get it to work.
-But after getting it fixed, it is surprisingly simple.
+But now, after getting it fixed, it is surprisingly simple.
 If Mojang were to fix this, it would take only about 20 lines of code.
 But because I'm doing this through fabric and [mixins][mixin], it takes a bit more.
 The code that renders the player model is in the `InventoryScreen` class. Below is its `drawEntity` function.
@@ -66,24 +69,18 @@ public static void drawEntity(...) {
 }
 ```
 
-As you can clearly see, the tick delta is being set to 1.0.
+As you can clearly see, the tick delta is always being set to 1.0.
 Fixing this should just be easy enough, right?
-I started by just adding in the tick delta.
-The below code shows how to get the tick delta.
-
-```java
-client.isPaused() ? client.pausedTickDelta : client.renderTickCounter.tickDelta;
-```
-
+I started by just adding in the tick delta from `client.renderTickCounter.tickDelta` where client is the `MinecraftClient` instance.
 Unfortunately, this didn't really work, it made the model wiggle around a lot.
 
-<!-- TODO: Put vieo in repo assets -->
+<video controls src="../assets/minecraft/fast-doll/jitter-bug.mp4"></video>
 
-<video controls src="https://cdn.discordapp.com/attachments/837875259092500493/1086852611522703441/java_AnXS9LPGuy.mp4"></video>
-
-The cause of this wiggling ended up being that the renderer was interpolating between the real player's position at the list tick and the normalized of the player model.
-This is why the tick delta was being set to 1, to completely ignore the previous position and rotation data.
-Once I figured this out, fixing it was as easy as setting the previous yaws and pitches to the current ones, then setting them back after rednering.
+To do the interpolation between ticks, entities (extending `Entity`) have various 'previous' fields for x, y, z, yaw, pitch, and horizontal speed.
+These fields are updated every tick, and are used between ticks to smoothly render the entity.
+The issue I faced here occurred because the previous fields were still set to the player's actual position and rotation, while the current fields were set to the normalized position and rotation.
+I suspect that Mojang originally set the tick delta to 1.0 to just ignore these previous fields.
+Once I figured this out, fixing it was as easy as setting the previous yaws and pitches to the current ones, then setting them back after rendering:
 
 ```java
 float h = entity.prevBodyYaw;
@@ -107,11 +104,23 @@ You can view the full mixin [here on GitHub][full-mixin]
 ## The Mod
 
 I first added this fix as a module to my Utility Mod, [SigmaUtils][sigma-utils], but I wanted to make it a standalone mod, so it could be posted onto mod sharing sites like Modrinth and CurseForge.
-So I made a small standalone mod that just adds this fix.
-Again, you can download the mod on [Modrinth][modrinth] (preferred) / [Curse Forge][curse-forge] or see the full source code on [Github][source].
+So that's why I made a small standalone mod that just adds this fix.
+The mod has the mixin shown above and a super simple config screen that I might add some more options to in the future.
+Download links [here](#fast-doll).
+
 Here is a video of the mod in action.
 
+<video controls src="../assets/minecraft/fast-doll/showcase.mp4"></video>
+
 ## Conclusion
+
+So far, the mod has gotten many downloads on Modrinth and CurseForge:
+
+- ![Modrinth Downloads](https://img.shields.io/modrinth/dt/OjbSENEi)
+- ![CurseForge Downloads](https://cf.way2muchnoise.eu/fast-doll.svg) (slow to update)
+
+I also submitted [a bug report][bug-report] to Mojang, so we will see if they fix it in the future.
+Be sure to vote for it if you want it fixed.
 
 <!-- LINKS -->
 
@@ -122,3 +131,4 @@ Here is a video of the mod in action.
 [yarn]: https://github.com/FabricMC/yarn
 [mixin]: https://github.com/SpongePowered/Mixin
 [full-mixin]: https://github.com/Basicprogrammer10/minecraft-mods/blob/075f7843dddde8e4e37fe5305d1746d50ae21140/fast-doll/src/main/java/com/connorcode/fastdoll/mixin/InventoryScreenMixin.java
+[bug-report]: https://bugs.mojang.com/browse/MC-261134
