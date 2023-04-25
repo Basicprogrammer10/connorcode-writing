@@ -16,7 +16,8 @@
 
 # 🔥 afire v2.1.0
 
-// TODO: Intro
+This update is not as big as the previous one, but it still brings some nice quality-of-life improvements to afire.
+Some of the main changes are: Custom log formatters, a real IP extension, and Multipart request support.
 
 <div ad info>
 Info
@@ -35,8 +36,10 @@ You can also find the afire docs on [docs.rs here](https://docs.rs/afire/latest/
 [tokio-tracing]: https://github.com/tokio-rs/tracing
 
 You can now use your own Formatters with the [`trace!`] macro.
+The default formatter just prints the log to stdout, if you change the formatter you can do whatever you would like.
+The formatters format method is only called if the global log level allows that message to be logged.
 This could allow you to pipe the trace events into another logging system like [tokio-tracing].
-Below is an example of how you could do that.
+Below is an example of how you could do that:
 
 ```rust
 use afire::trace::{self, Formatter, Level};
@@ -69,14 +72,8 @@ fn main() {
 
 ### Real IP Extension
 
-[ngnix-docs]: https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy
-
-<div ad warn>
-Warning
-
-Make sure your reverse proxy is overwriting the specified header on the incoming requests so clients cant spoof their original IPs.
-
-</div>
+[nginx-docs]: https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy
+[nginx]: https://nginx.org
 
 This extension lets you get the actual IP address of a request that has been passed through a <span title="an application that sits in front of back-end applications and forwards client (e.g. browser) requests to those applications - Wikipedia">reverse proxy</span>.
 As with all extensions you need to enable the `extensions` feature flag for them to be accessible.
@@ -91,7 +88,14 @@ The `real_ip_header` function will check if the request is coming from a loopbac
 If the request did not come from loopback the raw socket address will be returned.
 The `real_ip` function calls the previous function with the default header of `X-Forwarded-For`.
 
-If you are using [Ngnix] this header can be added like this ([official docs][nginx-docs]):
+<div ad warn>
+Warning
+
+Make sure your reverse proxy is overwriting the specified header on the incoming requests so clients cant spoof their original IPs.
+
+</div>
+
+If you are using [Nginx][nginx] the header can be added like this ([official docs][nginx-docs]):
 
 ```conf
 location / {
@@ -102,7 +106,10 @@ location / {
 
 ### Multipart Request Parser
 
-HTTP [Multipart Requests] are often used to upload multiple file to a server with a single request.
+[multipart-request]: https://stackoverflow.com/a/19712083/12471934
+[`MultipartData`]: https://docs.rs/afire/latest/afire/multipart/struct.MultipartData.html
+
+HTTP [Multipart Requests][multipart-request] are often used to upload multiple file to a server with a single request.
 These can now be parsed with the [`MultipartData`] struct.
 Here is an example route that accepts any file (in a multipart file field) and echos it back to the client.
 
@@ -139,6 +146,8 @@ Response::end()
 The reason this was introduced is to allow for the possibility of continuing from routes and running the next route that matches the path.
 
 ### Websocket Progress
+
+[websocket-issue]: https://github.com/Basicprogrammer10/afire/issues/29
 
 Although [Websocket support][websocket-issue] is not yet finished, or even close really, Ive made some progress on it that is worth mentioning.
 I have implemented the WS handshake, which wouldn't normally be difficult at all, but because afire is dependency free I had to implement base64 en/decoding as well as MD5 hashing.
@@ -177,17 +186,13 @@ These are in place of just using `Vec`s to hold specific elements and make inter
 
 [`Request`]: https://docs.rs/afire/latest/afire/struct.Request.html
 [request::body_str]: https://docs.rs/afire/latest/afire/struct.Request.html#method.body_str
-[string::from_utf8_lossy]: https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy
-[server]: https://docs.rs/afire/latest/afire/struct.Server.html
 [server::app]: https://docs.rs/afire/latest/afire/struct.Server.html#method.app
-[server::state]: https://docs.rs/afire/latest/afire/struct.Server.html#structfield.state
-[query]: https://docs.rs/afire/latest/afire/struct.Query.html
 [query::get_query]: https://docs.rs/afire/latest/afire/struct.Query.html#method.get_query
 
 - Added support for serving IPv6 addresses
-- Added a [`body_str`][request::body_str] method to [`Request`], which converts the request body into a string using [`String::from_utf8_lossy`][string::from_utf8_lossy]
-- Added a [`app`][server::app] method to [`Server`][server] to get a reference to the server state after passing it to the [`state`][server::state] method
-- Added a [`get_query`][query::get_query] method on [`Query`][query] which gets the key value pare (if it exists) as a `[String; 2]`
+- Added a [`body_str`][request::body_str] method to `Request`, which converts the request body into a string using `String::from_utf8_lossy`
+- Added a [`app`][server::app] method to `Server` to get a reference to the server state after passing it to the `state` method
+- Added a [`get_query`][query::get_query] method on `Query` which gets the key value pare (if it exists) as a `[String; 2]`
 
 ## Changes
 
@@ -204,6 +209,10 @@ These are in place of just using `Vec`s to hold specific elements and make inter
 - Fix Logger middleware always appending ? to the path. It would previously return '?' if there was no query, its now ''.
 - Don't consider sockets closing to be an error (only printed in debug tracing)
 - Mild performance improvements in the path matcher with catch-all routes
+
+## The Future
+
+// TODO: touch on how some of the goals from the previous 'the future' section are going and outline some more hopes for the future (optional body loading + more frequent smaller releases)
 
 ## Conclusion
 
