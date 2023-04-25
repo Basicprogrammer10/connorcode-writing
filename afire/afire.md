@@ -24,6 +24,7 @@
 
 ## Updates
 
+- [`[2.1.0]` Update 04-25-23](/writing/afire/update-6)
 - [`[2.0.0]` Update 02-10-23](/writing/afire/update-5)
 - [`[1.2.0]` Update 06-24-22](/writing/afire/update-4)
 - [`[1.1.0]` Update 04-10-22](/writing/afire/update-3)
