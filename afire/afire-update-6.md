@@ -229,7 +229,7 @@ But with half-stack, I'm still trying to figure out what I want it to be.
 It could either keep with the dependency free nature of afire, which would be a fun challenge, but I would also make some kinds of compatibility impossible to do safely.
 I already wrote my own JSON library (idk why :sob:) and this was the inspiration for half-stack, because I didn't want all that work to go to waste.
 
-Anyway, is a new goal I have for, maybe not the next release, but the future of afire.
+Anyway, I have a new goal I have for, maybe not the next release, but the future of afire.
 It is _optional body loading_, which would allow running the route right after loading the request line (method, path, version) and headers, but before loading the body.
 This would allow for faster responses in some cases and would also allow for lower memory usage in some cases.
 It would be kinda difficult to implement for not too much gain, and if you don't use the body it would still have to be send over the socket but just ignored.

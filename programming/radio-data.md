@@ -5,6 +5,7 @@
 @Tags = radio, data
 @Path = programming/radio-data
 @Assets = .
+@Hidden = true
 
 ---
 
