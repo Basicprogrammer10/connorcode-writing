@@ -28,7 +28,7 @@ You can also find the afire docs on [docs.rs here](https://docs.rs/afire/latest/
 
 Jumping right in with the _biggest_ change first: [Server-Sent Events][sse].
 Before this update, I didn't even know what SSE was so ill give a quick rundown.
-Its kinda like a simpler one-way websocket, you can only send data from the server to the client (which is why its _server-sent_ events).
+Its kinda like a simpler one-way Websocket, you can only send data from the server to the client (which is why it's _server-sent_ events).
 
 So how do you use this new feature?
 Here is a quick example:
@@ -100,7 +100,7 @@ Logger::new()
 ### ServeStatic supports '..'
 
 Now, instead of just ignoring '..' in paths, it will now go up a directory.
-Note: The highest you can can go is the data directory that you define, so there is no path traversal vulnerability.
+Note: The highest you can go is the data directory that you define, so there is no path traversal vulnerability.
 
 ```
 == OLD ==
@@ -115,7 +115,7 @@ GET /static/../../etc/passwd -> GET /etc/passwd
 A new middleware has been added to support the [HTTP `HEAD` method][head], which is used to get the headers of a response without getting the body (for GET requests only).
 It does this by changing the method to GET and adding a special header (`afire::head`).
 Once the response is processed by the normal route handler, the middleware will check if the header is present.
-If it is, any body data will be discarded and the Content-Length header will be added, if it is not already present.
+If there is any body data, it will be discarded and the Content-Length header will be added, if it is not already present.
 On static responses, the length is already known, but with streaming responses, the stream will be read to the end to get the length by default.
 
 Using this middleware is very simple:
@@ -138,15 +138,36 @@ The `Cookie` header is excluded by default because it could contain sensitive in
 
 ## Changes
 
-- Progress on Websocket support
-- Logger now holds a persistent file handle instead of opening and closing it every time
-- Use binary search on ServeStatic MMIE types (save those clock cycles)
-- Some optimizations throughout afire
+- Progress on Websocket support. It's still not complete, but we are getting closer.
+- Logger now holds a persistent file handle instead of opening and closing it every time.
+- Use binary search on ServeStatic MMIE types.
+  Because there are so few default types, this doesn't make much of a difference, but eh.
+- Some optimizations throughout afire.
 - Accept `impl Into<HeaderType>` in `RequestId::new` instead of just `AsRef<str>`.
   This allows for using `HeaderType`s as well as strings to set the header.
 - Update `ServeStatic` to send a Content-Length header when streaming a file.
 
 ## Conclusion
+
+Not too big of an update, but SSE was a good way to ease into Websockets.
+There are some big changes I want to make to the way routes work.
+Instead of each handler taking a `Request` and returning a `Response`, I want to make it, so each handler is given a server context and a request context.
+This way routes could have some control over the server and thread pool, which will be important for Websockets.
+The routes would then return Result<(), \_> so they can use the `?` operator instead of panicking, which would look something like this:
+
+```rust
+server.route("/api/user/{id}", |ctx, req| {
+    let id = req.param("id");
+    let user = ctx.state.db.get_user(id)?;
+
+    // Not 100% sure how this would work yet
+    // Maybe you would have to get a response builder from the context?
+    ctx.send(user)?;
+    Ok(())
+});
+```
+
+Still not entirely sure, but this is a _very_ breaking change, so I want to make sure I get it right.
 
 <!--  -->
 
