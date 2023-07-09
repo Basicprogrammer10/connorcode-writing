@@ -1,9 +1,9 @@
 @Title = Using libmpv in Rust
 @Author = Connor Slade
 @Date = 07-09-23
-@Description =
-@Tags =
-@Path = programming/using-libmpv-in-rust
+@Description = Compiling and linking with libmpv-rs in rust
+@Tags = Rust, libmpv, mpv, libmpv-rs, video-presenter
+@Path = tutorial/using-libmpv-in-rust
 @Assets = .
 
 ---
@@ -14,7 +14,7 @@
 Info
 
 If you are having trouble using `libmpv` with rust on Windows, this article may be helpful.
-(Skip to [Linking::Windows](#windows) if you already know how to use `libmpv-rs`)
+(Skip to [Compiling::Windows](#windows) if you already know how to use `libmpv-rs`)
 
 </div>
 
@@ -22,9 +22,11 @@ I recently finish a project I had been wanting to work on for a long time ([vide
 It allows you to define cuepoints on a video and kinda use it like a slideshow, skipping to different cuepoints and waiting before continuing past one.
 Anyway, to support a wide selection of video formats, I decided to use [libmpv](https://github.com/mpv-player/mpv/blob/master/DOCS/man/libmpv.rst) ([source](https://github.com/mpv-player/mpv/tree/master/libmpv)).
 
+This article is mostly about compiling and linking with the libmpv library in Rust, but there is a small code example too.
+
 ## The Code
 
-When I searched for "libmpv rust" I found the `mpv` crate, but that is deprecated and the README suggested using [`libmpv-rs`](https://github.com/ParadoxSpiral/libmpv-rs).
+When I searched for "libmpv rust" I found the `mpv` crate, but that is deprecated and the README suggested using [`libmpv-rs`](https://github.com/ParadoxSpiral/libmpv-rs), so thats what I picked.
 Using this crate is fairly easy, here is a simple example to play 'video.mp4'.
 
 Cargo.toml:
@@ -55,7 +57,6 @@ fn main() {
         .unwrap();
 
     loop {
-        // Not sure why the api is like this
         // The timeout is completely arbitrary, but I saw 1000 being used in other projects, so
         let event = match events.wait_event(1000.0) {
             Some(e) => e.unwrap(),
@@ -69,7 +70,7 @@ fn main() {
                 change: PropertyData::Double(val),
                 ..
             } => {
-                println!("{val}s");
+                println!("Time: {val}s");
             }
             _ => {}
         }
@@ -77,7 +78,7 @@ fn main() {
 }
 ```
 
-## Linking
+## Compiling
 
 ### Linux
 
@@ -178,3 +179,12 @@ Just remember to also ship this DLL if you are publishing your program.
 
 Hopefully this was able to help someone.
 I was easily able to get my [video-presenter](https://github.com/Basicprogrammer10/video-presenter) program to work on Linux, but had a lot of trouble compiling and running it on Windows.
+I just figured it out today, and decided it might be worth sharing if anyone else is in a similar position.
+
+## References
+
+Here are some more resources that may also be helpful:
+
+- [libmpv Docs](https://github.com/mpv-player/mpv/blob/master/DOCS/man/libmpv.rst)
+- [Compiling mpv on Windows](https://github.com/mpv-player/mpv/blob/master/DOCS/compile-windows.md#linking-libmpv-with-msvc-programs)
+- [libmpv-rs Github Issue](https://github.com/ParadoxSpiral/libmpv-rs/issues/26#issuecomment-1522178420)

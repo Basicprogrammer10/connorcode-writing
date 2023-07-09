@@ -11,5 +11,6 @@
 
 # 🛼 Tutorials
 
+- [Using libmpv in Rust](/writing/tutorial/using-libmpv-in-rust)
 - [Web Hosting](/writing/tutorial/web-hosting)
 - [Rust Crate](/writing/tutorial/rust-crate)

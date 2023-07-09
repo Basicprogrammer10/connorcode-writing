@@ -11,7 +11,6 @@
 
 # 📀 Programming
 
-- [Using libmpv in Rust](/writing/programming/using-libmpv-in-rust)
 - [Radio Data](/writing/programming/radio-data)
 - [Creating a Calculator](/writing/programming/creating-a-calculator)
 - [Encoding Data with Sound](/writing/programming/encoding-data-with-sound)
