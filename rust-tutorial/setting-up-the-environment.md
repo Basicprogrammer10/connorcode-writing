@@ -8,6 +8,7 @@
 
 ---
 
+<link rel="stylesheet" href="../assets/rust-tutorial/style.css" />
 <style>
   [extension-icon] {
     width: 100px;
@@ -62,7 +63,7 @@ This contains the compiler backend stuff that the rust compiler uses behind the 
 
 Now that you've run rustup, you should get a menu in the terminal that looks like this:
 
-```
+```text
    default host triple: x86_64-unknown-linux-gnu
      default toolchain: stable (default)
                profile: default
@@ -77,7 +78,7 @@ Now that you've run rustup, you should get a menu in the terminal that looks lik
 Select 1, for Proceed with installation.
 If all goes well you should then get the following message:
 
-```
+```text
 Rust is installed now. Great!
 
 To get started you may need to restart your current shell.
@@ -114,7 +115,7 @@ So now lets make a new crate for use in the next lesson.
 We will call it `hello_world` (but feel free to change the name if you would like).
 Run `cargo new hello_world` to make the base project structure.
 
-```
+```text
 ➜ cargo new hello_world
      Created binary (application) `hello_world` package
 
@@ -143,7 +144,9 @@ You can also try to follow along with another text editor if you would prefer.
 | <img src="../assets/rust-tutorial/setting-up-the-environment/crates.png" extension-icon />           | [crates](https://marketplace.visualstudio.com/items?itemName=serayuzgur.crates)                    | **Helps Rust developers managing dependencies with Cargo.toml. Only works with dependencies from crates.io.** (Optional) Useful for checking, at a glance if your dependencies are out of date.                                                                                                                                                 |
 | <img src="../assets/rust-tutorial/setting-up-the-environment/error-lense.png" extension-icon />      | [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)             | **Improve highlighting of errors, warnings and other language diagnostics.** (Optional) This one is very much personal preference, but I like it so Im shareing it here. It makes errors and warnings from rust&ndash;analyzer (and other language servers) stand out more but highlighting the line and putting a text description next to it. |
 
----
+<div center>
 
 | [Previous Chapter](/writing/rust-tutorial) | [Next Chapter](/writing/rust-tutorial/hello-world) |
 | ------------------------------------------ | -------------------------------------------------- |
+
+</div>

@@ -8,9 +8,10 @@
 
 ---
 
+<link rel="stylesheet" href="../assets/rust-tutorial/style.css" />
 <script src="../assets/rust-tutorial/runner.js"></script>
 
-# Hello World
+# Rust Tutorial &mdash; Hello World
 
 So by now, we have created a rust crate, but haven't even seen any rust code!
 Lets change that now.

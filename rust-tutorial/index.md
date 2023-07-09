@@ -8,11 +8,7 @@
 
 ---
 
-<style>
-    [title] {
-        text-decoration: underline;
-    }
-</style>
+<link rel="stylesheet" href="../assets/rust-tutorial/style.css" />
 
 # Rust Tutorial
 
@@ -24,9 +20,7 @@ We start with `n` chapters to learn rust from (that encourage you to try stuff o
 <div ad note>
 Note
 
-##
-
-## This is still a <u>work in progress</u>.
+This is still a <u>work in progress</u>.
 
 If you have any suggestions or want to report any errors, you can do so on [Github](https://github.com/basicprogrammer10/connorcode-writing).
 
@@ -42,11 +36,11 @@ When you need to do hold data in your program, you have to request some from the
 In languages like C and C++ you can then use a <span title="">pointer</span> to reference that memory, but this leaves room for various bugs, often with security implications.
 A both Microsoft and Google Chrome security research has shown that ~70% of security vulnerabilities are caused by memory safety issues.
 
-If you are ready, you can jump right into chapter one: [Setting up the environment](/writing/rust-tutorial/setting-up-the-enviroment).
+If you are ready, you can jump right into chapter one: [Setting up the environment](/writing/rust-tutorial/setting-up-the-environment).
 
 ## Lessons
 
-1. [Setting up the environment](/writing/rust-tutorial/setting-up-the-enviroment)
+1. [Setting up the environment](/writing/rust-tutorial/setting-up-the-environment)
 2. [Hello World](/writing/rust-tutorial/hello-world)
 3. [Variables and Types]()
 4. [Conditionals and Loops]()
