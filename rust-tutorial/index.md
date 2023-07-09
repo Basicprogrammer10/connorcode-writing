@@ -5,6 +5,7 @@
 @Tags =
 @Path = rust-tutorial
 @Assets = .
+@Hidden=true
 
 ---
 

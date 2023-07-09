@@ -5,6 +5,7 @@
 @Tags =
 @Path = rust-tutorial/setting-up-the-environment
 @Assets = .
+@Hidden=true
 
 ---
 

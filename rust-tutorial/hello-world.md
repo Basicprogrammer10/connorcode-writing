@@ -5,6 +5,7 @@
 @Tags =
 @Path = rust-tutorial/hello-world
 @Assets = .
+@Hidden=true
 
 ---
 
