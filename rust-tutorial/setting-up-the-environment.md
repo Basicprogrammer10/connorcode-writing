@@ -144,7 +144,7 @@ You can also try to follow along with another text editor if you would prefer.
 | <img src="../assets/rust-tutorial/setting-up-the-environment/crates.png" extension-icon />           | [crates](https://marketplace.visualstudio.com/items?itemName=serayuzgur.crates)                    | **Helps Rust developers managing dependencies with Cargo.toml. Only works with dependencies from crates.io.** (Optional) Useful for checking, at a glance if your dependencies are out of date.                                                                                                                                                 |
 | <img src="../assets/rust-tutorial/setting-up-the-environment/error-lense.png" extension-icon />      | [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)             | **Improve highlighting of errors, warnings and other language diagnostics.** (Optional) This one is very much personal preference, but I like it so Im shareing it here. It makes errors and warnings from rust&ndash;analyzer (and other language servers) stand out more but highlighting the line and putting a text description next to it. |
 
-<div center>
+<div page-links>
 
 | [Previous Chapter](/writing/rust-tutorial) | [Next Chapter](/writing/rust-tutorial/hello-world) |
 | ------------------------------------------ | -------------------------------------------------- |

@@ -63,7 +63,9 @@ We will touch more on adding and using dependencies in a later chapter.
 
 <!-- ADD LINK -->
 
----
+<div page-links>
 
 | [Previous Chapter](/writing/rust-tutorial/setting-up-the-environment) | [Next Chapter]() |
 | --------------------------------------------------------------------- | ---------------- |
+
+</div>

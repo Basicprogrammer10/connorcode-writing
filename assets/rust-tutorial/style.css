@@ -1,6 +1,6 @@
-[center] {
-  display: relative;
-  left: 50%;
+[page-links] {
+  position: relative;
+  left: 75%;
   transform: translateX(-50%);
+  margin-top: 16px;
 }
-

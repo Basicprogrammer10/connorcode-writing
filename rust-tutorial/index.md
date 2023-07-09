@@ -42,7 +42,7 @@ If you are ready, you can jump right into chapter one: [Setting up the environme
 
 1. [Setting up the environment](/writing/rust-tutorial/setting-up-the-environment)
 2. [Hello World](/writing/rust-tutorial/hello-world)
-3. [Variables and Types]()
+3. [Variables and Types](/writing/rust-tutorial/vars-and-types)
 4. [Conditionals and Loops]()
 5. [Functions]()
 6. [Structs, Enums and Unions]()
