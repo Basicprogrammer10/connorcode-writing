@@ -1,0 +1,65 @@
+@import url("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
+.markdown-body [ad] {
+  margin: 16px 0 16px 0;
+  border-radius: 4px;
+  padding: 10px;
+  padding-bottom: 0.2em;
+}
+.markdown-body [ad]:before {
+  font: normal normal normal 16px/1 FontAwesome;
+  font-size: inherit;
+}
+.markdown-body [ad] p {
+  margin: 10px 0 0 0;
+}
+.markdown-body [info] {
+  background: rgba(0, 65, 115, 0.5);
+  border-left: solid 5px #004173;
+}
+.markdown-body [info]:before {
+  content: "\f05a";
+}
+.markdown-body [tip] {
+  background: rgba(5, 75, 22, 0.5);
+  border-left: solid 5px #054b16;
+}
+.markdown-body [tip]:before {
+  content: "\f0eb";
+}
+.markdown-body [note] {
+  background: rgba(59, 46, 88, 0.5);
+  border-left: solid 5px #3b2e58;
+}
+.markdown-body [note]:before {
+  content: "\f249";
+}
+.markdown-body [warn] {
+  background: rgba(106, 75, 22, 0.5);
+  border-left: solid 5px #6a4b16;
+}
+.markdown-body [warn]:before {
+  content: "\f071";
+}
+.markdown-body [caution] {
+  background: rgba(99, 0, 1, 0.5);
+  border-left: solid 5px #630001;
+}
+.markdown-body [caution]:before {
+  content: "\f00d";
+}
+
+a {
+  text-decoration-style: dashed;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 2px dashed;
+}
+
+/*# sourceMappingURL=markdown.css.map */
