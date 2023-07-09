@@ -1,3 +1,13 @@
+@Title = Rust Tutorial
+@Author = Connor Slade
+@Date = 07-08-22
+@Description =
+@Tags =
+@Path = rust-tutorial
+@Assets = .
+
+---
+
 <style>
     [title] {
         text-decoration: underline;
@@ -32,10 +42,12 @@ When you need to do hold data in your program, you have to request some from the
 In languages like C and C++ you can then use a <span title="">pointer</span> to reference that memory, but this leaves room for various bugs, often with security implications.
 A both Microsoft and Google Chrome security research has shown that ~70% of security vulnerabilities are caused by memory safety issues.
 
+If you are ready, you can jump right into chapter one: [Setting up the environment](/writing/rust-tutorial/setting-up-the-enviroment).
+
 ## Lessons
 
-1. [Setting up the environment](./setting-up-the-enviroment)
-2. [Hello World]()
+1. [Setting up the environment](/writing/rust-tutorial/setting-up-the-enviroment)
+2. [Hello World](/writing/rust-tutorial/hello-world)
 3. [Variables and Types]()
 4. [Conditionals and Loops]()
 5. [Functions]()
