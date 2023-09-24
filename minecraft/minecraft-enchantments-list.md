@@ -1,7 +1,7 @@
 @Title = List of Minecraft Enchantments
 @Author = Connor Slade
 @Date = 09-24-23
-@Description = All minecraft enchantments.
+@Description = Downloadable and interactive list of all minecraft enchantments.
 @Tags = minecraft, enchantments, minecraft enchantments, list of enchantments, list of minecraft enchantments, minecraft enchantment list
 @Path = minecraft/list-of-minecraft-enchantments
 @Assets = .
@@ -48,7 +48,7 @@ There may or may not be new enchantments that are not on this list.
 If you just want to get the enchantments (with their max-level) for use in your own checklist, you can view them all in the following formats:
 
 - [Plain Text](../assets/minecraft/minecraft-enchantments-list/enchants.txt)
-- [Markdown](../assets/minecraft/minecraft-enchantments-list/enchants.md)
+- [Markdown](../assets/minecraft/minecraft-enchantments-list/enchants.markdown)
 - [HTML](../assets/minecraft/minecraft-enchantments-list/enchants.html)
 - [JSON](../assets/minecraft/minecraft-enchantments-list/data.json)
 
