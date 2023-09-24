@@ -47,10 +47,10 @@ There may or may not be new enchantments that are not on this list.
 
 If you just want to get the enchantments (with their max-level) for use in your own checklist, you can view them all in the following formats:
 
-- [Plain Text](/assets/minecraft/minecraft-enchantments-list/enchants.txt)
-- [Markdown](/assets/minecraft/minecraft-enchantments-list/enchants.md)
-- [HTML](/assets/minecraft/minecraft-enchantments-list/enchants.html)
-- [JSON](/assets/minecraft/minecraft-enchantments-list/data.json)
+- [Plain Text](../assets/minecraft/minecraft-enchantments-list/enchants.txt)
+- [Markdown](../assets/minecraft/minecraft-enchantments-list/enchants.md)
+- [HTML](../assets/minecraft/minecraft-enchantments-list/enchants.html)
+- [JSON](../assets/minecraft/minecraft-enchantments-list/data.json)
 
 ## Interactive List
 
