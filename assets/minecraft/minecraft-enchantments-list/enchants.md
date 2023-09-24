@@ -1,0 +1,38 @@
+- [ ] Fire Protection IV
+- [ ] Feather Falling IV
+- [ ] Blast Protection IV
+- [ ] Projectile Protection IV
+- [ ] Respiration III
+- [ ] Aqua Affinity
+- [ ] Thorns III
+- [ ] Depth Strider III
+- [ ] Frost Walker II
+- [ ] Curse of Binding
+- [ ] Soul Speed III
+- [ ] Swift Sneak III
+- [ ] Sharpness V
+- [ ] Smite V
+- [ ] Bane of Arthropods V
+- [ ] Knockback II
+- [ ] Fire Aspect II
+- [ ] Looting III
+- [ ] Sweeping Edge III
+- [ ] Efficiency V
+- [ ] Silk Touch
+- [ ] Unbreaking III
+- [ ] Fortune III
+- [ ] Power V
+- [ ] Punch II
+- [ ] Flame
+- [ ] Infinity
+- [ ] Luck of the Sea III
+- [ ] Lure III
+- [ ] Loyalty III
+- [ ] Impaling V
+- [ ] Riptide III
+- [ ] Channeling
+- [ ] Multishot
+- [ ] Quick Charge III
+- [ ] Piercing IV
+- [ ] Mending
+- [ ] Curse of Vanishing
